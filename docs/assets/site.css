@@ -84,10 +84,11 @@ section h3 { font-size: 19px; margin: 24px 0 8px; }
 .rule { border: 0; border-top: 1px solid var(--hair); margin: 40px 0; }
 
 /* title block on the home page */
-.title-block h1 { font-size: clamp(28px, 4.2vw, 44px); max-width: 24ch; }
+.title-block h1 { font-size: clamp(28px, 4.2vw, 44px); }
 .title-block h1 .model { display: block; font-size: 1.25em; letter-spacing: -0.01em; margin-bottom: 8px; }
 .authors { font-size: 19px; margin-top: 16px; }
-.affil { color: var(--sub); font-size: 15px; margin-top: 4px; }
+.affil { color: var(--grey-d); font-size: 15px; margin-top: 4px; }
+.affil span { white-space: nowrap; }
 .affil span + span::before { content: ""; display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: var(--orange); margin: 0 8px; vertical-align: middle; }
 
 /* poster */
@@ -196,7 +197,7 @@ figure.fig.narrow { max-width: 860px; }
 .toc a { color: var(--grey-d); }
 
 /* the poster's one-line claim, under the title */
-.headline { font-size: clamp(20px, 2.6vw, 26px); font-weight: 500; margin-top: 16px; max-width: 40ch; }
+.headline { font-size: clamp(20px, 2.6vw, 26px); font-weight: 500; margin-top: 16px; }
 
 /* questions people ask (architecture) */
 .qa { max-width: none; }
@@ -230,3 +231,13 @@ figure.fig.small { max-width: 480px; }
 main p, main li, main dd, main figcaption { max-width: 58ch; }
 main a:not(.card):not(.img) { white-space: nowrap; }
 .actions { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 16px; font-size: 17px; }
+
+/* the title block: the title across the width, then the claim on the left and the people on the right */
+@media (min-width: 900px) {
+  .title-block { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: 40px; align-items: start; }
+  .title-block h1 { grid-column: 1 / -1; }
+  .title-block .headline { grid-column: 1; max-width: none; }
+  .title-block .authors, .title-block .affil, .title-block .actions { grid-column: 2; }
+  .title-block .authors { margin-top: 20px; }
+  .title-block .actions { margin-top: 16px; }
+}
