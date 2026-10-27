@@ -66,8 +66,10 @@
     return EFFECT_ORDER.length;
   }
 
+  var EFFECT_NAMES = { hpf: "high-pass", low_shelf: "low shelf", peak: "peak EQ", high_shelf: "high shelf", lpf: "low-pass",
+                       comp: "compressor", sat: "saturation", clip: "clipper", delay: "delay", reverb: "reverb", out: "output" };
   function prettyEffect(name) {
-    return String(name).replace(/_/g, " ");
+    return EFFECT_NAMES[String(name)] || String(name).replace(/_/g, " ");
   }
 
   function fmtNum(v) {
@@ -116,12 +118,62 @@
     });
   }
 
+  var RANGES = {};   // filled from clips/knob_ranges.json: {"peak.freq": {lo, hi, scale, unit}}
+  var UNITS = { freq: " Hz", cutoff: " Hz", gain_db: " dB", threshold_db: " dB", drive_db: " dB", attack_ms: " ms",
+                release_ms: " ms", time_ms: " ms", slope: " dB/oct" };
+  function fmtVal(k, v) {
+    if (typeof v !== "number") return String(v);
+    if (k === "slope") return String(Math.round(v)) + UNITS[k];
+    var a = Math.abs(v), d = a >= 100 ? 0 : a >= 10 ? 1 : 2;
+    return v.toFixed(d) + (UNITS[k] || "");
+  }
+  function pos(r, v) {           // where a value sits on its knob's track, 0 to 1
+    var x;
+    if (r.scale === "log" && r.lo > 0 && v > 0) x = (Math.log(v) - Math.log(r.lo)) / (Math.log(r.hi) - Math.log(r.lo));
+    else x = (v - r.lo) / (r.hi - r.lo);
+    return Math.max(0, Math.min(1, x));
+  }
+  // one knob: its name, a track across the knob's full range with the true value (ink) and the predicted value
+  // (orange) marked and the gap between them shaded, then the two numbers
+  function knobRow(fx, k, tv, pv) {
+    var r = RANGES[fx + "." + k];
+    var row = el("div", "knob");
+    row.appendChild(el("span", "kname", prettyParam(k)));
+    var track = el("div", "track");
+    if (r && r.choices) {
+      r.choices.forEach(function (c) {
+        var tag = el("span", "choice" + (tv === c ? " t" : "") + (pv === c ? " p" : ""), fmtVal(k, c));
+        track.appendChild(tag);
+      });
+      track.className = "track choices";
+    } else if (r && typeof tv === "number" && typeof pv === "number") {
+      var a = pos(r, tv), bp = pos(r, pv);
+      var gap = el("span", "gap"); gap.style.left = (Math.min(a, bp) * 100) + "%"; gap.style.width = (Math.abs(a - bp) * 100) + "%";
+      var mt = el("span", "tick t"); mt.style.left = (a * 100) + "%"; mt.title = "true " + fmtVal(k, tv);
+      var mpp = el("span", "tick p"); mpp.style.left = (bp * 100) + "%"; mpp.title = "predicted " + fmtVal(k, pv);
+      track.appendChild(gap); track.appendChild(mt); track.appendChild(mpp);
+    } else {
+      track.className = "track none";
+    }
+    row.appendChild(track);
+    var vals = el("span", "kvals");
+    vals.appendChild(el("b", null, typeof tv === "number" ? fmtVal(k, tv) : "\u2014"));
+    vals.appendChild(document.createTextNode(" "));
+    vals.appendChild(el("i", null, typeof pv === "number" ? fmtVal(k, pv) : "\u2014"));
+    row.appendChild(vals);
+    return row;
+  }
+
+  var PARAM_NAMES = { gain_db: "gain", threshold_db: "threshold", attack_ms: "attack", release_ms: "release",
+                      drive_db: "drive", time_ms: "time", room_size: "room size", q: "Q" };
+  function prettyParam(k) { return PARAM_NAMES[k] || k; }
+
   function chainTable(item) {
     var t = indexChain(item.chain_true), p = indexChain(item.chain_pred);
     var stems = stemOrder(Object.keys(Object.assign({}, t, p)));
     var table = el("table", "chain-table");
     var thead = el("thead"), hr = el("tr");
-    ["Stem", "Effect", "True chain", "Predicted"].forEach(function (h) { hr.appendChild(el("th", null, h)); });
+    ["Stem", "Effect", "Knobs: true value in ink, predicted in orange, on the knob's full range"].forEach(function (h) { hr.appendChild(el("th", null, h)); });
     thead.appendChild(hr); table.appendChild(thead);
     var tbody = el("tbody");
     var agree = 0, total = 0;
@@ -134,29 +186,26 @@
         var r0 = el("tr");
         r0.appendChild(el("td", "stem", stem));
         var c0 = el("td", "miss", "no effects on in either chain");
-        c0.colSpan = 3; r0.appendChild(c0);
+        c0.colSpan = 2; r0.appendChild(c0);
         tbody.appendChild(r0);
         return;
       }
       effects.forEach(function (fx, i) {
-        var tr = el("tr");
-        var stemCell = el("td", "stem", i === 0 ? stem : "");
-        tr.appendChild(stemCell);
-        tr.appendChild(el("td", null, prettyEffect(fx)));
         var inT = Object.prototype.hasOwnProperty.call(ts, fx);
         var inP = Object.prototype.hasOwnProperty.call(ps, fx);
         total += 1; if (inT === inP) agree += 1;
-        [[inT, ts[fx]], [inP, ps[fx]]].forEach(function (pair) {
-          var td = el("td", pair[0] ? null : "miss");
-          if (pair[0]) {
-            td.appendChild(el("span", "pill on", "on"));
-            var txt = fmtParams(pair[1]);
-            if (txt) td.appendChild(el("span", "params", txt));
-          } else {
-            td.appendChild(el("span", "pill", "off"));
-          }
-          tr.appendChild(td);
+        var tr = el("tr", inT === inP ? null : "switch-miss");
+        tr.appendChild(el("td", "stem", i === 0 ? stem : ""));
+        var fxCell = el("td", "fx");
+        fxCell.appendChild(el("span", null, prettyEffect(fx)));
+        if (inT !== inP) fxCell.appendChild(el("span", "params", inT ? "true on, predicted off" : "predicted on, true off"));
+        tr.appendChild(fxCell);
+        var kc = el("td", "knobs");
+        var keys = Object.keys(Object.assign({}, ts[fx] || {}, ps[fx] || {}));
+        keys.forEach(function (k) {
+          kc.appendChild(knobRow(fx, k, inT ? (ts[fx] || {})[k] : undefined, inP ? (ps[fx] || {})[k] : undefined));
         });
+        tr.appendChild(kc);
         tbody.appendChild(tr);
       });
     });
@@ -396,7 +445,10 @@
     return item && typeof item === "object" && (item.dry || item.processed || item.predicted);
   }
 
-  fetch(MANIFEST, { cache: "no-cache" })
+  // the knob ranges come first, so the chain tables can draw their tracks; a missing file only loses the tracks
+  fetch("clips/knob_ranges.json", { cache: "no-cache" }).then(function (r) { return r.ok ? r.json() : {}; })
+    .then(function (kr) { RANGES = kr || {}; }).catch(function () { RANGES = {}; })
+    .then(function () { return fetch(MANIFEST, { cache: "no-cache" }); })
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then(function (data) {
       var items = Array.isArray(data) ? data.filter(valid) : [];

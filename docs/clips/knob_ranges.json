@@ -1,0 +1,172 @@
+{
+ "hpf.cutoff": {
+  "lo": 20.0,
+  "hi": 500.0,
+  "scale": "log",
+  "unit": "Hz"
+ },
+ "low_shelf.freq": {
+  "lo": 50.0,
+  "hi": 500.0,
+  "scale": "log",
+  "unit": "Hz"
+ },
+ "low_shelf.gain_db": {
+  "lo": -12.0,
+  "hi": 12.0,
+  "scale": "linear",
+  "unit": "dB"
+ },
+ "peak.freq": {
+  "lo": 100.0,
+  "hi": 10000.0,
+  "scale": "log",
+  "unit": "Hz"
+ },
+ "peak.gain_db": {
+  "lo": -12.0,
+  "hi": 12.0,
+  "scale": "linear",
+  "unit": "dB"
+ },
+ "peak.q": {
+  "lo": 0.5,
+  "hi": 4.0,
+  "scale": "log",
+  "unit": "Q"
+ },
+ "high_shelf.freq": {
+  "lo": 2000.0,
+  "hi": 12000.0,
+  "scale": "log",
+  "unit": "Hz"
+ },
+ "high_shelf.gain_db": {
+  "lo": -12.0,
+  "hi": 12.0,
+  "scale": "linear",
+  "unit": "dB"
+ },
+ "lpf.cutoff": {
+  "lo": 2000.0,
+  "hi": 20000.0,
+  "scale": "log",
+  "unit": "Hz"
+ },
+ "comp.threshold_db": {
+  "lo": -24.0,
+  "hi": 0.0,
+  "scale": "linear",
+  "unit": "dB"
+ },
+ "comp.ratio": {
+  "lo": 1.5,
+  "hi": 10.0,
+  "scale": "linear",
+  "unit": ":1"
+ },
+ "comp.attack_ms": {
+  "lo": 1.0,
+  "hi": 50.0,
+  "scale": "log",
+  "unit": "ms"
+ },
+ "comp.release_ms": {
+  "lo": 50.0,
+  "hi": 500.0,
+  "scale": "log",
+  "unit": "ms"
+ },
+ "sat.drive_db": {
+  "lo": 0.0,
+  "hi": 30.0,
+  "scale": "linear",
+  "unit": "dB"
+ },
+ "clip.threshold_db": {
+  "lo": -20.0,
+  "hi": 0.0,
+  "scale": "linear",
+  "unit": "dB"
+ },
+ "delay.time_ms": {
+  "lo": 50.0,
+  "hi": 500.0,
+  "scale": "linear",
+  "unit": "ms"
+ },
+ "delay.feedback": {
+  "lo": 0.0,
+  "hi": 0.5,
+  "scale": "linear",
+  "unit": ""
+ },
+ "delay.mix": {
+  "lo": 0.0,
+  "hi": 0.5,
+  "scale": "linear",
+  "unit": ""
+ },
+ "reverb.room_size": {
+  "lo": 0.1,
+  "hi": 0.9,
+  "scale": "linear",
+  "unit": ""
+ },
+ "reverb.damping": {
+  "lo": 0.1,
+  "hi": 0.9,
+  "scale": "linear",
+  "unit": ""
+ },
+ "reverb.wet": {
+  "lo": 0.05,
+  "hi": 0.5,
+  "scale": "linear",
+  "unit": ""
+ },
+ "reverb.dry": {
+  "lo": 0.5,
+  "hi": 1.0,
+  "scale": "linear",
+  "unit": ""
+ },
+ "reverb.width": {
+  "lo": 0.5,
+  "hi": 1.0,
+  "scale": "linear",
+  "unit": ""
+ },
+ "out.gain_db": {
+  "lo": -12.0,
+  "hi": 12.0,
+  "scale": "linear",
+  "unit": "dB"
+ },
+ "out.pan": {
+  "lo": -1.0,
+  "hi": 1.0,
+  "scale": "linear",
+  "unit": ""
+ },
+ "out.width": {
+  "lo": 0.0,
+  "hi": 2.0,
+  "scale": "linear",
+  "unit": ""
+ },
+ "hpf.slope": {
+  "choices": [
+   6.0,
+   12.0
+  ],
+  "unit": "dB/oct"
+ },
+ "lpf.slope": {
+  "choices": [
+   6.0,
+   12.0
+  ],
+  "unit": "dB/oct"
+ }
+}
