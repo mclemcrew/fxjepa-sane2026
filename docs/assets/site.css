@@ -142,8 +142,8 @@ dl.terms dd { margin: 0; color: var(--grey-d); }
 .example-head h3 { margin: 0; font-size: 21px; }
 .example-head .artist { color: var(--grey-d); font-weight: 400; }
 .example-meta { font-size: 14px; color: var(--sub); margin-top: 4px; }
-.m8 { font-size: 14px; color: var(--grey-d); white-space: nowrap; }
-.m8 b { font-size: 20px; color: var(--ink); font-weight: 700; margin-left: 4px; }
+.score { font-size: 14px; color: var(--grey-d); white-space: nowrap; }
+.score b { font-size: 20px; color: var(--ink); font-weight: 700; margin-left: 4px; }
 .players { margin-top: 14px; display: grid; gap: 10px; }
 .player { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 4px 12px; align-items: center; background: var(--cream); border: 1px solid var(--hair); border-radius: 8px; padding: 8px 12px 8px 8px; }
 .player.playing { border-color: var(--orange); }
@@ -203,3 +203,6 @@ td.nw { white-space: nowrap; }
 /* keep anchored headings clear of the sticky header */
 section[id], h3[id] { scroll-margin-top: 72px; }
 figure.fig.small { max-width: 480px; }
+
+.score .scale { font-size: 12px; color: var(--grey-d); font-weight: 400; }
+.eqn { font-size: 17px; margin: 8px 0 12px; }

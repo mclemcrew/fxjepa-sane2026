@@ -32,7 +32,7 @@ SOFTWARE.
 
 ## Poster, figures and written text
 
-`poster.png`, `poster.pdf`, `figures/` and the prose on the pages are copyright 2026 the authors and are not covered by the MIT License. The Universal Audio logo on the poster is a trademark of Universal Audio, Inc. and is not licensed for reuse.
+The prose on the pages and the figures in `figures/` are released under the Creative Commons Attribution 4.0 licence (CC BY 4.0), Michael Clemens, Universal Audio, 2026; they are not covered by the MIT License. `poster.png` and `poster.pdf` are copyright 2026 Universal Audio, all rights reserved. The Universal Audio logo on the poster is a trademark of Universal Audio, Inc. and is not licensed for reuse.
 
 ## Third-party code
 
@@ -42,9 +42,8 @@ SOFTWARE.
 
 Every clip in `clips/` is a 10-second excerpt of a [Free Music Archive](https://freemusicarchive.org/) track released under a Creative Commons license that allows derivatives (CC BY or CC BY-SA). The dry, processed and predicted versions are adaptations of the original recording. Changes made: excerpted, split into four stems, each stem processed through an effects chain and summed again, level-matched across the three versions of a clip, and encoded as MP3. Each clip keeps the license of its source track; the ShareAlike clips are shared under the same license as their source. No audio here comes from MoisesDB, MUSDB18 or Universal Audio.
 
-The table below is filled from `clips/manifest.json` by `build_site.py`. `clips/manifest.example.json` holds placeholder entries for testing the page layout and is never read by the live page.
+The table below is filled from `clips/manifest.json` at build time.
 
-<!-- BEGIN:credits -->
 | Clip | Track | Artist | License | FMA page |
 |---|---|---|---|---|
 | q0555 | simple | Orbique | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | https://freemusicarchive.org/music/Orbique/none_given_1578/17_-_orbique_-_simple_-_always_now_never_after/ |
@@ -55,4 +54,3 @@ The table below is filled from `clips/manifest.json` by `build_site.py`. `clips/
 | q0867 | What You Know | Droopies | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | https://freemusicarchive.org/music/Droopies/Droopies/Droopies_-_Droopies_-_09_What_You_Know/ |
 | q0124 | Big Plans (J. Glaze Remix) | Kellee Maize & J. Glaze Productions | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | https://freemusicarchive.org/music/Kellee_Maize__J_Glaze_Productions/The_Remixes/Big_Plans_J_Glaze_Remix/ |
 | q0477 | Stop | Vienna Ditto | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | https://freemusicarchive.org/music/Vienna_Ditto/Ugly_1501/Vienna_Ditto_-_Ugly_-_03_Stop/ |
-<!-- END:credits -->

@@ -27,7 +27,7 @@
   <p class="lede">Each example has three versions of the same clip: the dry stems, the processed version, and the dry stems rendered through the settings FX-JEPA predicted from the first two.</p>
 
   <section class="prose" style="margin-top:24px">
-    <p>Press play on any row. Switching rows within an example keeps the playback position, so you can flip between the processed version and our render at the same moment. All three versions of a clip share one playback gain, so a level difference you hear is part of the result.</p>
+    <p>Press play on any row. Switching rows within an example keeps the playback position, so you can flip between the processed version and our render at the same moment. The three versions of a clip were level-matched before encoding, so what differs between them is the processing.</p>
     <p class="note">Each example is one of the 1,000 held-out clips, from a Free Music Archive song. The processed version comes from our effect strip, built from open-source effects, with a known chain, so it's in-domain, and the render uses the chain predicted by our best model (conv first layer + slot readout). The dry stems are separated from a finished FMA release, so they already carry the artist's own mix; "dry" means before our chain. Stems that were silent in the excerpt are left out of all three versions, as they are in scoring. These clips illustrate the task; they aren't a listening test, and a handful of examples can't show average quality. The <a href="results.html">results page</a> has the measured numbers: across the 1,000 held-out clips, handing back the dry audio scores 1.17 MRSTFT and the best model averages 0.413. MRSTFT is a spectral distance between our render and the reference; lower is better.</p>
     <p class="note">How we chose the 8: from held-out clips of FMA tracks whose Creative Commons license allows derivatives, picked so that all 11 effect types show up across the set. Their MRSTFT runs from 0.156 to 0.550 against the mean of 0.413 over all 1,000 held-out clips, so 5 of the 8 are better than average; the last three, 0.422, 0.446 and 0.550, are worse.</p>
   </section>
@@ -42,7 +42,6 @@
       <p>Every song comes from the <a href="https://freemusicarchive.org/">Free Music Archive</a> under a Creative Commons license that allows derivatives. Our changes: excerpted to 10 seconds, split into four stems, each stem processed through an effects chain (the true one or the predicted one) and summed again, level-matched across the three versions, and encoded as MP3. Nothing here comes from Universal Audio products or data.</p>
     </div>
     <div class="table-scroll">
-<!-- BEGIN:credits -->
 <table>
 <thead><tr><th>Track</th><th>Artist</th><th>License</th><th>Source</th></tr></thead>
 <tbody>
@@ -56,19 +55,16 @@
 <tr><td>Stop</td><td>Vienna Ditto</td><td><a href="https://creativecommons.org/licenses/by/4.0/" title="Attribution">CC BY 4.0</a></td><td><a href="https://freemusicarchive.org/music/Vienna_Ditto/Ugly_1501/Vienna_Ditto_-_Ugly_-_03_Stop/">FMA track page</a></td></tr>
 </tbody>
 </table>
-<!-- END:credits -->
     </div>
   </section>
 </main>
 
 <footer class="site-foot">
   <div class="wrap">
-<!-- BEGIN:footer -->
 <p>Data: FMA stems split with SCNet, plus MoisesDB studio stems. Public datasets and open-source effects only. No UA plugins, models or data.</p>
 <p>Effects: MultiAFx EQ, torchcomp compressor, tanh saturation, hard clip, delay, Freeverb. Fixed order, 44.1 kHz, 10 s clips. Knob ranges and delay scoring: <a href="results.html#knob-ranges">results page</a>.</p>
 <p>Michael Clemens, Oleksandr Tsymbalenko, Tim Stilson, Scott Van Duyne, Universal Audio. SANE 2026, MIT, 30 October 2026, poster AM-10. Contact: <a href="mailto:mclemens@uaudio.com">mclemens@uaudio.com</a>.</p>
-<p>Site code is MIT licensed; audio credits are on the <a href="listen.html#credits">listen page</a>.</p>
-<!-- END:footer -->
+<p>Site code is MIT licensed and the page text and figures are CC BY 4.0; audio credits are on the <a href="listen.html#credits">listen page</a>.</p>
   </div>
 </footer>
 

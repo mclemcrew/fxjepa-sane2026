@@ -1,13 +1,12 @@
 /* Listening examples for the FX-JEPA companion site.
    Reads clips/manifest.json (a list of examples) and builds three paired players per example.
-   listen.html?demo loads clips/manifest.example.json instead, for layout testing only. */
+   */
 (function () {
   "use strict";
 
   var root = document.getElementById("examples");
   var params = new URLSearchParams(window.location.search);
-  var demo = params.has("demo");
-  var MANIFEST = demo ? "clips/manifest.example.json" : "clips/manifest.json";
+  var MANIFEST = "clips/manifest.json";
 
   var STEM_ORDER = ["vocals", "bass", "drums", "other"];
   // canonical effect order of the strip; keys are normalized names
@@ -17,7 +16,7 @@
     ["delay"], ["reverb"], ["output", "out"]
   ];
   var ROWS = [
-    { key: "dry", label: "Dry stems", hint: "summed, before any effects" },
+    { key: "dry", label: "Dry stems", hint: "summed, before our chain" },
     { key: "processed", label: "Processed version", hint: "the reference, true chain" },
     { key: "predicted", label: "FX-JEPA render", hint: "dry stems through the predicted settings" }
   ];
@@ -292,9 +291,10 @@
       h.appendChild(el("span", "artist", "by " + item.artist));
     }
     head.appendChild(h);
-    if (typeof item.m8_pred === "number" && isFinite(item.m8_pred)) {
-      var m = el("div", "m8", "MRSTFT of this prediction");  // m8_pred: scoreboard.csv column m8
-      m.appendChild(el("b", null, item.m8_pred.toFixed(3)));
+    if (typeof item.mrstft === "number" && isFinite(item.mrstft)) {
+      var m = el("div", "score", "MRSTFT of this prediction");
+      m.appendChild(el("b", null, item.mrstft.toFixed(3)));
+      m.appendChild(el("span", "scale", " (0 = identical, 0.413 = model mean, 1.17 = dry unchanged)"));
       m.title = "Spectral error of the FX-JEPA render against the processed version, over 8 channels. Lower is better.";
       head.appendChild(m);
     }
@@ -346,6 +346,7 @@
     var sum = el("summary", null, "True and predicted chain, per stem");
     det.appendChild(sum);
     if (ct.total) {
+      if (item.listen_for) det.appendChild(el("p", "note", "Listen for: " + item.listen_for));
       det.appendChild(el("p", "note", "Switches agree on " + ct.agree + " of the " + ct.total +
         " effects that are on in either chain. Knob values are in each effect's own units."));
     }
@@ -373,9 +374,6 @@
 
   function render(items) {
     root.innerHTML = "";
-    if (demo) {
-      root.appendChild(el("div", "demo-banner", "Demo data from clips/manifest.example.json. The entries are placeholders for checking the layout and their audio files don't exist."));
-    }
     var built = items.map(buildExample);
     built.forEach(function (b) { root.appendChild(b.card); });
     var mountCard = function (b) { b.players.forEach(mountPlayer); };

@@ -31,11 +31,12 @@ Plain HTML, CSS and JavaScript, no build step needed to serve. The only external
   "predicted": "clips/q0555_pred.mp3",
   "chain_true": {"vocals": [{"effect": "hpf", "params": {"cutoff": 33.8}}]},
   "chain_pred": {"vocals": [{"effect": "hpf", "params": {"cutoff": 69.2}}]},
-  "m8_pred": 0.156
+  "mrstft": 0.156,
+  "listen_for": "..."
 }
 ```
 
-`chain_true` and `chain_pred` may also be wrapped as `{"stems": {...}}`. If the manifest is missing or empty the page shows an "examples are being prepared" note. `listen.html?demo` loads `clips/manifest.example.json` (placeholder entries, no audio) to check the layout.
+`chain_true` and `chain_pred` may also be wrapped as `{"stems": {...}}`. If the manifest is missing or empty the page shows an "examples are being prepared" note. `listen_for` is one sentence per clip, built at build time from the two chains: the switch misses, then the largest knob misses.
 
 ## Run it locally
 
@@ -47,7 +48,7 @@ from this folder, then open http://127.0.0.1:8767/.
 
 ## Licenses
 
-Site code is MIT. The poster, figures and audio have their own terms; see `LICENSES.md`.
+Site code is MIT; page text and figures are CC BY 4.0; the poster, the Universal Audio logo and the audio have their own terms, see `LICENSES.md`.
 
 ## Contact
 

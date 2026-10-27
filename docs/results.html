@@ -37,9 +37,8 @@
 
   <figure class="fig narrow">
     <div class="frame">
-<!-- BEGIN:fig-results -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="1414.0 226.0 710.8 1042.0" role="img" aria-labelledby="title-results">
-<title id="title-results">Bar chart. MRSTFT, 1,000 held-out clips from 929 songs; lower is better. No processing, the dry stems, unchanged: 1.17; Best published encoder, as released, best of four: StemFX, AFx-Rep, FX-Encoder++, RelFX; frozen, small readout on top: 0.869; StemFX design, retrained on our data, our data and recipe: 0.485; FX-Encoder++ design, retrained on our data, our data and recipe: 0.463; Our baseline, ViT-Tiny; all settings from one averaged vector; second run 0.504: 0.492; Baseline + conv first layer, convolutions before the ViT; alone, within run-to-run noise: 0.495; Baseline + slot readout, one query per stem and effect: 0.439; Both changes (FX-JEPA), conv first layer + slot readout: 0.413. Below it, a table of every model we scored: StemFX, released weights, frozen 0.869; AFx-Rep, released weights, frozen 0.893; FX-Encoder++, released weights, frozen 0.897; RelFX, released weights, frozen 1.024; StemFX design (CNN), trained on our data 0.485; FX-Encoder++ design, trained on our data 0.463; Our baseline (ViT) 0.492; Our baseline + slot readout 0.439; FX-JEPA: conv first layer + slot readout (best) 0.413. Run-to-run noise is about 6% for the baseline family and 12% for the best model. Spectral only; no listening test.</title>
+<title id="title-results">Bar chart. MRSTFT, 1,000 held-out clips from 929 songs; lower is better. No processing, the dry stems, unchanged: 1.17; Best published encoder, as released, best of four: StemFX, AFx-Rep, FX-Encoder++, RelFX; frozen, small readout on top: 0.869; StemFX design, retrained on our data, our data and recipe: 0.485; FX-Encoder++ design, retrained on our data, our data and recipe: 0.463; Our baseline, ViT-Tiny; all settings from one learned summary token; second run 0.504: 0.492; Baseline + conv first layer, convolutions before the ViT; alone, within run-to-run noise: 0.495; Baseline + slot readout, one query per stem and effect: 0.439; Both changes (FX-JEPA), conv first layer + slot readout: 0.413. Below it, a table of every model we scored: StemFX, released weights, frozen 0.869; AFx-Rep, released weights, frozen 0.893; FX-Encoder++, released weights, frozen 0.897; RelFX, released weights, frozen 1.024; StemFX design (CNN), trained on our data 0.485; FX-Encoder++ design, trained on our data 0.463; Our baseline (ViT) 0.492; Our baseline + slot readout 0.439; FX-JEPA: conv first layer + slot readout (best) 0.413. Run-to-run noise bounds are about 6% for the baseline family and 12% for the best model (98.75% bootstrap bounds over songs; the observed second-run gaps are 2.4% and 7.3%). Spectral only; no listening test.</title>
 <rect x="1414.0" y="226.0" width="710.8" height="1042.0" fill="#FDFAF4"/>
 <g id="fig-results-results">
 <path d="M 1440 234 H 2098.8 A 18 18 0 0 1 2116.8 252 V 1242 A 18 18 0 0 1 2098.8 1260 H 1440 A 18 18 0 0 1 1422 1242 V 252 A 18 18 0 0 1 1440 234 Z" fill="none" stroke="#191919" stroke-width="2" stroke-linecap="butt" stroke-linejoin="round" stroke-dasharray="12 8"/>
@@ -70,7 +69,7 @@
 <rect x="1448" y="688.894" width="221.829" height="24" fill="#909296" stroke="#191919" stroke-width="1.2" rx="2" ry="2" stroke-linejoin="round"/>
 <text x="1681.829" y="707.734" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#191919" text-anchor="start">0.463</text>
 <text x="1448" y="768.845" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#191919" text-anchor="start">Our baseline</text>
-<text x="1448" y="785.645" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#707378" text-anchor="start">ViT-Tiny; all settings from one averaged vector; second run 0.504</text>
+<text x="1448" y="785.645" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#707378" text-anchor="start">ViT-Tiny; all settings from one learned summary token; second run 0.504</text>
 <line x1="1687.556" y1="790.065" x2="1687.556" y2="820.065" stroke="#DDDEDC" stroke-width="1.2" stroke-linecap="round"/>
 <line x1="1448" y1="790.065" x2="1448" y2="820.065" stroke="#191919" stroke-width="1.4" stroke-linecap="round"/>
 <rect x="1448" y="793.065" width="235.723" height="24" fill="#4c4d4e" stroke="#191919" stroke-width="1.2" rx="2" ry="2" stroke-linejoin="round"/>
@@ -103,7 +102,6 @@
 <text x="1728.281" y="1206.75" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#707378" text-anchor="middle">MRSTFT, 0 = identical to the reference; lower is better</text>
 </g>
 </svg>
-<!-- END:fig-results -->
     </div>
     <figcaption>The results panel from the poster: four summary bars, then every model we scored. The hollow dot marks the best model's second training run. <a href="figures/results.svg">Open the figure on its own</a>.</figcaption>
   </figure>
@@ -111,7 +109,6 @@
   <section>
     <h2>The numbers</h2>
     <div class="table-scroll">
-<!-- BEGIN:results-summary -->
 <table>
 <thead><tr><th>Row</th><th>What it is</th><th class="num">MRSTFT</th></tr></thead>
 <tbody>
@@ -119,21 +116,17 @@
 <tr><td>Best published encoder, as released</td><td>best of four: StemFX, AFx-Rep, FX-Encoder++, RelFX; frozen, small readout on top</td><td class="num">0.869</td></tr>
 <tr><td>StemFX design, retrained on our data</td><td>our data and recipe</td><td class="num">0.485</td></tr>
 <tr><td>FX-Encoder++ design, retrained on our data</td><td>our data and recipe</td><td class="num">0.463</td></tr>
-<tr><td>Our baseline</td><td>ViT-Tiny; all settings from one averaged vector; second run 0.504</td><td class="num">0.492</td></tr>
+<tr><td>Our baseline</td><td>ViT-Tiny; all settings from one learned summary token; second run 0.504</td><td class="num">0.492</td></tr>
 <tr><td>Baseline + conv first layer</td><td>convolutions before the ViT; alone, within run-to-run noise</td><td class="num">0.495</td></tr>
 <tr><td>Baseline + slot readout</td><td>one query per stem and effect</td><td class="num">0.439</td></tr>
 <tr class="best"><td>Both changes (FX-JEPA)</td><td>conv first layer + slot readout</td><td class="num">0.413</td></tr>
 </tbody>
 </table>
-<!-- END:results-summary -->
     </div>
     <h3>
-<!-- BEGIN:results-table-head -->
 Model comparison
-<!-- END:results-table-head -->
     </h3>
     <div class="table-scroll">
-<!-- BEGIN:results-table -->
 <table>
 <thead><tr><th>Model</th><th class="num">MRSTFT</th><th class="num">Second run</th><th class="num">Change vs our baseline</th><th>Call</th></tr></thead>
 <tbody>
@@ -149,31 +142,27 @@ Model comparison
 <tr class="best"><td>FX-JEPA: conv first layer + slot readout (best)</td><td class="num">0.413</td><td class="num">0.443</td><td class="num">-16.1%</td><td>formal call, interval -20% to -12%</td></tr>
 </tbody>
 </table>
-<!-- END:results-table -->
     </div>
     <p class="note">Change against our baseline uses unrounded scores. A formal call is a comparison whose endpoint, interval and decision rule were written down before training; see <a href="#noise">second runs and formal calls</a>.</p>
   </section>
 
   <section id="noise" class="prose">
     <h2>Second runs</h2>
-<!-- BEGIN:results-foot -->
-<p>Run-to-run noise is about 6% for the baseline family and 12% for the best model. Spectral only; no listening test.</p>
-<!-- END:results-foot -->
+<p>Run-to-run noise bounds are about 6% for the baseline family and 12% for the best model (98.75% bootstrap bounds over songs; the observed second-run gaps are 2.4% and 7.3%). Spectral only; no listening test.</p>
     <p>Two models were trained twice with the same recipe and a different random seed: our baseline (first run 0.492, second run 0.504) and the best model (first run 0.413, second run 0.443). On the chart the bar is the first run, and it's the one every comparison on this page uses; the hollow dot on the FX-JEPA row is the best model's second run. Our baseline's second run is in the table. We didn't keep the better of the two. Every other row is a single run.</p>
-    <p>The second runs are our ruler for noise. Two runs of our baseline's recipe differ by up to about 6%, and two runs of the best model's recipe by up to about 12% (98.75% bounds from a paired bootstrap over songs). With one pair per recipe these are rulers, not a seed distribution. A gap smaller than that is treated as noise unless a formal call says otherwise.</p>
+    <p>The second runs are our ruler for noise. Two runs of our baseline's recipe differ by up to about 6%, and two runs of the best model's recipe by up to about 12% (98.75% bounds from a paired bootstrap over songs). With one pair per recipe these are rulers, not a seed distribution. The observed gaps between the two runs are 2.4% (0.492 to 0.504) and 7.3% (0.413 to 0.443); the bounds are wider than the observed gaps because they come from the bootstrap over songs. A gap smaller than that is treated as noise unless a formal call says otherwise.</p>
     <p>A <b>formal call</b> is a pre-registered decision: the endpoint, the interval level and the rule were fixed before the models were trained. The interval comes from a paired bootstrap that resamples songs, not stems, 10,000 times, because stems from one song move together. A call only counts if the new model also comes out ahead of the baseline's second run. Two calls are on the poster: baseline + slot readout against our baseline (-10.9%) and the best model against our baseline (-16.1%, interval -20% to -12%). The StemFX design trained our way has no formal call and sits inside our baseline's noise. The FX-Encoder++ design has no formal call either; <a href="#fxencpp">see below</a>.</p>
     <p>The conv first layer and the slot readout don't show an interaction beyond adding up: the measured interaction is inside the run-to-run floor, so we don't claim one.</p>
   </section>
 
   <section id="fxencpp">
-    <h2>A better encoder helps some</h2>
+    <h2>The FX-Encoder++ design, trained our way</h2>
     <div class="prose">
-      <p>To separate a published design from its released weights, we trained FX-Encoder++'s encoder from random weights with our baseline's data, loss, batch size and seed. It has no hand features. At 70,000 of its 108,000 training steps it scores 0.463, 5.9% below our baseline (0.492). The paired difference per query is -0.029 MRSTFT, with a 95% interval of -0.046 to -0.013 from resampling songs. That interval is reported, not a pre-registered call; the gap is inside the baseline family's run-to-run spread of about 6%, and this design's own spread isn't measured. So the reading is: level with our baseline at 70k, one run. On the 239 queries that no outside readout used for picking an epoch, the gap is smaller: 0.489 against 0.494 (-1%).</p>
-      <p>The readout helps more. The slot readout alone takes our baseline down 10.9%, and that is a formal call.</p>
+      <p>To separate a published design from its released weights, we trained FX-Encoder++'s encoder from random weights with our baseline's data, loss, batch size and seed. It has no hand features. At 70,000 of its 108,000 training steps it scores 0.463 against our baseline's 0.492, a 5.9% gap. The paired difference per query is -0.029 MRSTFT, with a 95% interval of -0.046 to -0.013 from resampling songs. That interval is reported, not a pre-registered call; the gap is inside the baseline family's run-to-run spread of about 6%, and this design's own spread isn't measured. So the reading is: level with our baseline at 70k, one run. On the 239 queries that no outside readout used for picking an epoch, the gap is smaller: 0.489 against 0.494 (-1%).</p>
+      <p>The slot readout alone takes our baseline down 10.9%, and that is a formal call.</p>
     </div>
     <figure class="fig small">
       <div class="frame">
-<!-- BEGIN:fig-fxencpp_curve -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0.0 0.0 300.0 230.0" role="img" aria-labelledby="title-fxencpp_curve">
 <title id="title-fxencpp_curve">Learning curve of the FX-Encoder++ design trained with our recipe: MRSTFT 0.582 at 10k, 0.515 at 20k, 0.494 at 30k, 0.509 at 40k, 0.473 at 50k, 0.450 at 60k and 0.463 at 70k of 108k steps, against our baseline at 0.492. One run.</title>
 <rect x="0.0" y="0.0" width="300.0" height="230.0" fill="#FDFAF4"/>
@@ -217,82 +206,77 @@ Model comparison
 <text x="150" y="213.6" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#707378" text-anchor="middle">loss and seed as our baseline</text>
 </g>
 </svg>
-<!-- END:fig-fxencpp_curve -->
       </div>
       <figcaption>The FX-Encoder++ design trained with our recipe, MRSTFT at each 10k-step snapshot, with our baseline as the dashed reference. <a href="figures/fxencpp_curve.svg">Open the figure on its own</a>.</figcaption>
     </figure>
     <div class="table-scroll">
-<!-- BEGIN:curve -->
 <table>
 <thead><tr><th>Training steps</th><th class="num">10k</th><th class="num">20k</th><th class="num">30k</th><th class="num">40k</th><th class="num">50k</th><th class="num">60k</th><th class="num">70k</th><th class="num">Our baseline, for reference</th></tr></thead>
 <tbody><tr><td>MRSTFT</td><td class="num">0.582</td><td class="num">0.515</td><td class="num">0.494</td><td class="num">0.509</td><td class="num">0.473</td><td class="num">0.450</td><td class="num">0.463</td><td class="num">0.492</td></tr></tbody>
 </table>
-<!-- END:curve -->
     </div>
-    <p class="note">Scored at fixed steps, so no held-out clip picked the snapshot. The learning rate is constant, so an earlier snapshot is a less-trained model, not a different one. The 40k point sitting above our baseline shows how much a single snapshot can move. The run continues to 108k steps, and that score goes in the paper.</p>
+    <p class="note">Scored at fixed steps, so no held-out clip picked the snapshot. The learning rate is constant, so an earlier snapshot is a less-trained model, not a different one. The 40k point sitting above our baseline shows how much a single snapshot can move. The snapshot shown is the latest one scored; the 108k score goes in the paper.</p>
   </section>
 
   <section id="knobs">
     <h2>
-<!-- BEGIN:gain-head -->
 Ablations
-<!-- END:gain-head -->
     </h2>
     <figure class="fig narrow">
       <div class="frame">
-<!-- BEGIN:fig-knobs -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="701.2 793.0 710.8 475.0" role="img" aria-labelledby="title-knobs">
 <title id="title-knobs">Paired bar chart of knob skill, our baseline against the best model, on six knobs: peak freq 0.50 to 0.77, peak gain 0.49 to 0.69, delay time 0.13 to 0.47, room size 0.18 to 0.39, damping 0.03 to 0.18, comp ratio 0.00 to 0.05. Beside each pair, the median miss from our baseline to the best model.</title>
 <rect x="701.2" y="793.0" width="710.8" height="475.0" fill="#FDFAF4"/>
 <g id="fig-knobs-knobs">
 <path d="M 727.2 801 H 1386 A 18 18 0 0 1 1404 819 V 1242 A 18 18 0 0 1 1386 1260 H 727.2 A 18 18 0 0 1 709.2 1242 V 819 A 18 18 0 0 1 727.2 801 Z" fill="none" stroke="#191919" stroke-width="2" stroke-linecap="butt" stroke-linejoin="round" stroke-dasharray="12 8"/>
 <text x="735.2" y="851.48" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="34" font-weight="700" fill="#191919" text-anchor="start">Ablations</text>
-<text x="735.2" y="883.16" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#191919" text-anchor="start">The baseline predicts all 44 settings from one averaged vector. FX-JEPA gives</text>
-<text x="735.2" y="907.86" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#191919" text-anchor="start">each stem and effect its own learned query over the audio tokens. That change</text>
-<text x="735.2" y="932.56" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#191919" text-anchor="start">alone cuts the spectral distance by 10.9%, encoder unchanged.</text>
-<rect x="843.268" y="955.57" width="16" height="9.5" fill="#909296" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
-<text x="865.268" y="963.63" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#191919" text-anchor="start">our baseline</text>
-<rect x="955.648" y="955.57" width="16" height="9.5" fill="#e78d3c" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
-<text x="977.648" y="963.63" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="start">best model</text>
-<text x="1198.903" y="963.63" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="start">median error, baseline to best</text>
-<line x1="990.902" y1="975.63" x2="990.902" y2="1195.85" stroke="#DDDEDC" stroke-width="1.2" stroke-linecap="round"/>
-<line x1="1138.537" y1="975.63" x2="1138.537" y2="1195.85" stroke="#DDDEDC" stroke-width="1.2" stroke-linecap="round"/>
-<line x1="843.268" y1="975.63" x2="843.268" y2="1195.85" stroke="#191919" stroke-width="1.4" stroke-linecap="round"/>
-<text x="833.268" y="998.532" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="end">notch freq</text>
-<rect x="843.268" y="983.482" width="147.635" height="9.5" fill="#909296" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
-<text x="996.902" y="992.522" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#4c4d4e" text-anchor="start">0.50</text>
-<rect x="843.268" y="994.982" width="227.357" height="9.5" fill="#e78d3c" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
-<text x="1076.625" y="1004.022" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#191919" text-anchor="start">0.77</text>
-<text x="1198.903" y="998.532" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#191919" text-anchor="start">0.48 to 0.14 octaves</text>
-<text x="833.268" y="1035.235" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="end">notch gain</text>
-<rect x="843.268" y="1020.185" width="144.682" height="9.5" fill="#909296" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
-<text x="993.95" y="1029.225" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#4c4d4e" text-anchor="start">0.49</text>
-<rect x="843.268" y="1031.685" width="203.736" height="9.5" fill="#e78d3c" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
-<text x="1053.004" y="1040.725" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#191919" text-anchor="start">0.69</text>
-<text x="1198.903" y="1035.235" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#191919" text-anchor="start">2.0 to 1.0 dB</text>
-<text x="833.268" y="1071.938" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="end">delay time</text>
-<rect x="843.268" y="1056.888" width="38.385" height="9.5" fill="#909296" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
-<text x="887.653" y="1065.928" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#4c4d4e" text-anchor="start">0.13</text>
-<rect x="843.268" y="1068.388" width="138.776" height="9.5" fill="#e78d3c" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
-<text x="988.044" y="1077.428" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#191919" text-anchor="start">0.47</text>
-<text x="1198.903" y="1071.938" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#191919" text-anchor="start">93 to 40 ms</text>
-<text x="833.268" y="1108.642" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="end">reverb size</text>
-<rect x="843.268" y="1093.592" width="53.148" height="9.5" fill="#909296" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
-<text x="902.416" y="1102.632" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#4c4d4e" text-anchor="start">0.18</text>
-<rect x="843.268" y="1105.092" width="115.155" height="9.5" fill="#e78d3c" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
-<text x="964.423" y="1114.132" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#191919" text-anchor="start">0.39</text>
-<text x="1198.903" y="1108.642" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#191919" text-anchor="start">decay time 27% to 18% off</text>
-<text x="833.268" y="1145.345" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="end">reverb damping</text>
-<rect x="843.268" y="1130.295" width="8.858" height="9.5" fill="#909296" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
-<text x="858.126" y="1139.335" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#4c4d4e" text-anchor="start">0.03</text>
-<rect x="843.268" y="1141.795" width="53.148" height="9.5" fill="#e78d3c" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
-<text x="902.416" y="1150.835" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#191919" text-anchor="start">0.18</text>
-<text x="1198.903" y="1145.345" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#191919" text-anchor="start">treble decay 6% to 5% off</text>
-<text x="833.268" y="1182.048" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="end">comp ratio</text>
-<text x="849.268" y="1176.038" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#4c4d4e" text-anchor="start">0.00</text>
-<rect x="843.268" y="1178.498" width="14.763" height="9.5" fill="#e78d3c" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
-<text x="864.031" y="1187.538" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#191919" text-anchor="start">0.05</text>
-<text x="1198.903" y="1182.048" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#191919" text-anchor="start">at the guessing level</text>
+<text x="735.2" y="883.16" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#191919" text-anchor="start">The baseline predicts all 44 settings from one learned summary token.</text>
+<text x="735.2" y="907.86" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#191919" text-anchor="start">FX-JEPA gives each stem and effect its own learned query over the audio</text>
+<text x="735.2" y="932.56" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#191919" text-anchor="start">tokens. That change alone cuts the spectral distance by 10.9%, encoder</text>
+<text x="735.2" y="957.26" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#191919" text-anchor="start">unchanged.</text>
+<rect x="843.268" y="980.27" width="16" height="9.5" fill="#909296" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="865.268" y="988.33" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#191919" text-anchor="start">our baseline</text>
+<rect x="955.648" y="980.27" width="16" height="9.5" fill="#e78d3c" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="977.648" y="988.33" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="start">best model</text>
+<text x="1198.903" y="988.33" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="start">median error, baseline to best</text>
+<line x1="990.902" y1="1000.33" x2="990.902" y2="1195.85" stroke="#DDDEDC" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="1138.537" y1="1000.33" x2="1138.537" y2="1195.85" stroke="#DDDEDC" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="843.268" y1="1000.33" x2="843.268" y2="1195.85" stroke="#191919" stroke-width="1.4" stroke-linecap="round"/>
+<text x="833.268" y="1021.173" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="end">peak freq</text>
+<rect x="843.268" y="1006.123" width="147.635" height="9.5" fill="#909296" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="996.902" y="1015.163" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#4c4d4e" text-anchor="start">0.50</text>
+<rect x="843.268" y="1017.623" width="227.357" height="9.5" fill="#e78d3c" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="1076.625" y="1026.663" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#191919" text-anchor="start">0.77</text>
+<text x="1198.903" y="1021.173" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#191919" text-anchor="start">0.48 to 0.14 octaves</text>
+<text x="833.268" y="1053.76" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="end">peak gain</text>
+<rect x="843.268" y="1038.71" width="144.682" height="9.5" fill="#909296" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="993.95" y="1047.75" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#4c4d4e" text-anchor="start">0.49</text>
+<rect x="843.268" y="1050.21" width="203.736" height="9.5" fill="#e78d3c" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="1053.004" y="1059.25" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#191919" text-anchor="start">0.69</text>
+<text x="1198.903" y="1053.76" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#191919" text-anchor="start">2.0 to 1.0 dB</text>
+<text x="833.268" y="1086.347" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="end">delay time</text>
+<rect x="843.268" y="1071.297" width="38.385" height="9.5" fill="#909296" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="887.653" y="1080.337" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#4c4d4e" text-anchor="start">0.13</text>
+<rect x="843.268" y="1082.797" width="138.776" height="9.5" fill="#e78d3c" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="988.044" y="1091.837" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#191919" text-anchor="start">0.47</text>
+<text x="1198.903" y="1086.347" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#191919" text-anchor="start">93 to 40 ms</text>
+<text x="833.268" y="1118.933" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="end">reverb size</text>
+<rect x="843.268" y="1103.883" width="53.148" height="9.5" fill="#909296" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="902.416" y="1112.923" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#4c4d4e" text-anchor="start">0.18</text>
+<rect x="843.268" y="1115.383" width="115.155" height="9.5" fill="#e78d3c" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="964.423" y="1124.423" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#191919" text-anchor="start">0.39</text>
+<text x="1198.903" y="1118.933" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#191919" text-anchor="start">decay time 27% to 18% off</text>
+<text x="833.268" y="1151.52" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="end">reverb damping</text>
+<rect x="843.268" y="1136.47" width="8.858" height="9.5" fill="#909296" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="858.126" y="1145.51" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#4c4d4e" text-anchor="start">0.03</text>
+<rect x="843.268" y="1147.97" width="53.148" height="9.5" fill="#e78d3c" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="902.416" y="1157.01" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#191919" text-anchor="start">0.18</text>
+<text x="1198.903" y="1151.52" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#191919" text-anchor="start">treble decay 6% to 5% off</text>
+<text x="833.268" y="1184.107" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="end">comp ratio</text>
+<text x="849.268" y="1178.097" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#4c4d4e" text-anchor="start">0.00</text>
+<rect x="843.268" y="1180.557" width="14.763" height="9.5" fill="#e78d3c" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="864.031" y="1189.597" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#191919" text-anchor="start">0.05</text>
+<text x="1198.903" y="1184.107" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#191919" text-anchor="start">at the guessing level</text>
 <line x1="843.268" y1="1195.85" x2="1138.537" y2="1195.85" stroke="#191919" stroke-width="1.2" stroke-linecap="round"/>
 <line x1="843.268" y1="1195.85" x2="843.268" y2="1200.85" stroke="#191919" stroke-width="1.2" stroke-linecap="round"/>
 <text x="843.268" y="1213.85" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#707378" text-anchor="middle">0</text>
@@ -303,29 +287,24 @@ Ablations
 <text x="843.268" y="1230.75" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#707378" text-anchor="start">knob skill: 0 = typical-value guess, 1 = perfect</text>
 </g>
 </svg>
-<!-- END:fig-knobs -->
       </div>
       <figcaption>The knob-skill panel from the poster: paired bars for our baseline (grey) and the best model (orange) on six knobs, with the median miss beside each pair. <a href="figures/knobs.svg">Open the figure on its own</a>.</figcaption>
     </figure>
     <div class="prose" style="margin-top:20px">
-<!-- BEGIN:gain-body -->
-<p>The baseline predicts all 44 settings from one averaged vector. FX-JEPA gives each stem and effect its own learned query over the audio tokens. That change alone cuts the spectral distance by 10.9%, encoder unchanged.</p>
-<!-- END:gain-body -->
+<p>The baseline predicts all 44 settings from one learned summary token. FX-JEPA gives each stem and effect its own learned query over the audio tokens. That change alone cuts the spectral distance by 10.9%, encoder unchanged.</p>
     </div>
     <div class="table-scroll">
-<!-- BEGIN:dials -->
 <table>
 <thead><tr><th>Knob</th><th class="num">Skill, our baseline</th><th class="num">Skill, best model</th><th>Median miss, our baseline to best model</th></tr></thead>
 <tbody>
-<tr><td>notch freq</td><td class="num">0.50</td><td class="num">0.77</td><td>0.48 to 0.14 octaves</td></tr>
-<tr><td>notch gain</td><td class="num">0.49</td><td class="num">0.69</td><td>2.0 to 1.0 dB</td></tr>
+<tr><td>peak freq</td><td class="num">0.50</td><td class="num">0.77</td><td>0.48 to 0.14 octaves</td></tr>
+<tr><td>peak gain</td><td class="num">0.49</td><td class="num">0.69</td><td>2.0 to 1.0 dB</td></tr>
 <tr><td>delay time</td><td class="num">0.13</td><td class="num">0.47</td><td>93 to 40 ms</td></tr>
 <tr><td>reverb size</td><td class="num">0.18</td><td class="num">0.39</td><td>decay time 27% to 18% off</td></tr>
 <tr><td>reverb damping</td><td class="num">0.03</td><td class="num">0.18</td><td>treble decay 6% to 5% off</td></tr>
 <tr><td>comp ratio</td><td class="num">0.00</td><td class="num">0.05</td><td>at the guessing level</td></tr>
 </tbody>
 </table>
-<!-- END:dials -->
     </div>
     <div class="prose">
       <p class="note">Knob skill is 0 for always guessing the typical value and 1 for perfect, scored only on stems where that effect is on. 0.47 means about half the error of guessing, not 47% correct. The median misses are on the same stems; for delay time that's 464 stems (<a href="#delay">how delay-time error is measured</a>).</p>
@@ -339,7 +318,6 @@ Ablations
       <p>Each stem has 11 effects with 28 knobs between them. Before the error is measured, every knob is mapped onto 0 to 1 over its range, on the scale in the table; training uses the same mapping. On a log scale a miss counts the same anywhere in the range in ratio terms, so frequency misses read as octaves, and Q, attack and release misses as "times off". Gains and thresholds are already in dB. The two filter slopes are a two-way choice, scored right or wrong. The typical miss is the median error on stems where the true chain has that effect on; the best model's column is its first run.</p>
     </div>
     <div class="table-scroll">
-<!-- BEGIN:knob-ranges -->
 <table class="knob-table">
 <thead><tr><th>Effect</th><th>Knob</th><th>What it does</th><th>Range</th><th>Scale</th><th>Error read as</th><th class="num">Typical miss, our baseline</th><th class="num">Typical miss, best model</th></tr></thead>
 <tbody>
@@ -373,13 +351,12 @@ Ablations
 <tr><td>LPF</td><td>slope</td><td>how steep the cut is</td><td class="nw">6 or 12 dB/oct</td><td>two-way choice</td><td>right or wrong</td><td class="num">14% wrong</td><td class="num">5% wrong</td></tr>
 </tbody>
 </table>
-<!-- END:knob-ranges -->
     </div>
     <p class="note">"Knob units" means the knob's own range, shown in the Range column. For the slopes, the miss is the share of stems where the choice was wrong. Compressor ratio is scored linearly; rescoring it on a log scale barely changes its skill (best model 0.050 to 0.055), so it's near guessing on either scale.</p>
 
     <h3 id="delay">How delay-time error is measured</h3>
     <div class="prose">
-      <p>Delay time runs from 50 to 500 ms on a linear scale. The error we report is the median absolute miss of the predicted delay-time knob, in milliseconds, over the 464 stems in the 1,000 held-out clips whose true chain has the delay on. Every model is scored on the same 464 stems, and the predicted knob value counts even when the model switched the delay off. Our baseline misses by 93 ms at the median and the best model by 40 ms; 33% of the best model's stems land within 10% of the true time. A 40 ms miss is still an audibly different echo.</p>
+      <p>Delay time runs from 50 to 500 ms on a linear scale. The error we report is the median absolute miss of the predicted delay-time knob, in milliseconds, over the 464 stems in the 1,000 held-out clips whose true chain has the delay on. Every model is scored on the same 464 stems, and the predicted knob value counts even when the model switched the delay off. Our baseline misses by 93 ms at the median and the best model by 40 ms; 33% of the best model's stems land within 10% of the true time. In our own listening, not a controlled test, a 40 ms miss is still a different echo.</p>
       <p>Delay time gets its own number because MRSTFT compares magnitude spectrograms and ignores phase, and how strongly MRSTFT penalises a delay-time miss hasn't been measured.</p>
     </div>
   </section>
@@ -392,16 +369,15 @@ Ablations
 
   <section class="caveats">
     <h2>What we don't claim yet</h2>
-<!-- BEGIN:caveats -->
 <ul>
   <li>The same 1,000 held-out clips were used to select the models; songs outside this set have not been tested.</li>
   <li>The best model was trained with corrected vocals-clipper labels; our baseline was not.</li>
-  <li>No listening test has been run on these models; the score is spectral only.</li>
+  <li>No listening test has been run on these models; the score is spectral only. Statements about what is audible come from our own listening, not a controlled test.</li>
+  <li>No users or engineers have been studied; the workflow around the model is untested.</li>
   <li>Compressor ratio, attack and release remain near the guessing level.</li>
   <li>The abstract&#x27;s 17% was a different test: earlier models, an out-of-domain Pedalboard set, against StemFX&#x27;s frozen encoder with our readout.</li>
-  <li>Delay feedback and reverb width are also near guessing. Reverb width is close to inaudible on our material.</li>
+  <li>Delay feedback and reverb width are also near guessing. In our own listening, not a controlled test, reverb width is close to inaudible on our material.</li>
 </ul>
-<!-- END:caveats -->
   </section>
 
   <section id="mrstft" class="prose">
@@ -409,7 +385,7 @@ Ablations
     <ol>
       <li>The model sees the dry stems and the processed stems once and predicts a chain: 44 switches and 112 knob values.</li>
       <li>The dry stems are rendered once through that chain with the same effect strip.</li>
-      <li>For each stem, left and right, the render is compared with the processed version using a <b>multi-resolution STFT distance</b>: both are turned into magnitude spectrograms at three window sizes (FFT 512, 1024 and 2048; short windows catch transients, long ones catch tone), and spectral convergence plus the L1 distance of log magnitudes is averaged over the three. This is the distance StemFX uses.</li>
+      <li>For each stem, left and right, the render is compared with the processed version using a <b>multi-resolution STFT distance</b>: both are turned into magnitude spectrograms at three window sizes (FFT 512, 1024 and 2048 with hop sizes 128, 256 and 512 and Hann windows the length of the FFT; log magnitudes use an epsilon of 1e-5; short windows catch transients, long ones catch tone), and spectral convergence plus the L1 distance of log magnitudes is averaged over the three. This is the distance StemFX uses.</li>
       <li>The 8 channels (4 stems, left and right) are averaged. Stems that are silent in a clip are zeroed so they don't count. That's MRSTFT for one query; the reported number is the mean over the 1,000 queries.</li>
     </ol>
     <p>0 means the render is identical to the processed version, and re-rendering the true chain scores close to 0. Handing back the dry audio unchanged scores 1.17. MRSTFT is unitless, computed per stem rather than on a summed mix, and it's a spectral match, not a listening score.</p>
@@ -419,12 +395,10 @@ Ablations
 
 <footer class="site-foot">
   <div class="wrap">
-<!-- BEGIN:footer -->
 <p>Data: FMA stems split with SCNet, plus MoisesDB studio stems. Public datasets and open-source effects only. No UA plugins, models or data.</p>
 <p>Effects: MultiAFx EQ, torchcomp compressor, tanh saturation, hard clip, delay, Freeverb. Fixed order, 44.1 kHz, 10 s clips. Knob ranges and delay scoring: <a href="results.html#knob-ranges">results page</a>.</p>
 <p>Michael Clemens, Oleksandr Tsymbalenko, Tim Stilson, Scott Van Duyne, Universal Audio. SANE 2026, MIT, 30 October 2026, poster AM-10. Contact: <a href="mailto:mclemens@uaudio.com">mclemens@uaudio.com</a>.</p>
-<p>Site code is MIT licensed; audio credits are on the <a href="listen.html#credits">listen page</a>.</p>
-<!-- END:footer -->
+<p>Site code is MIT licensed and the page text and figures are CC BY 4.0; audio credits are on the <a href="listen.html#credits">listen page</a>.</p>
   </div>
 </footer>
 </body>
