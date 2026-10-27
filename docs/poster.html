@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FX-JEPA poster, SANE 2026</title>
+<meta name="description" content="Companion page for the SANE 2026 poster FX-JEPA: Learning Effect-Aware Audio Representations for Reference-Based Audio Effect Transfer. Poster, architecture, results and listening examples.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="index.html">FX-JEPA<span>SANE 2026</span></a>
+    <nav class="nav" aria-label="Pages">
+      <a href="index.html">Listen</a>
+      <a href="poster.html" aria-current="page">Poster</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="results.html">Results</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="title-block">
+    <h1><span class="model">FX-JEPA</span>Learning Effect-Aware Audio Representations for Reference-Based Audio Effect Transfer</h1>
+    <p class="headline">
+One learned readout per stem and effect cut the spectral error by 10.9% against our baseline.
+    </p>
+    <p class="authors">Michael Clemens, Oleksandr Tsymbalenko, Tim Stilson, Scott Van Duyne</p>
+    <p class="affil"><span>Universal Audio</span><span>SANE 2026, MIT, 30 October 2026</span><span>Poster AM-10</span></p>
+    <p class="actions"><a href="poster.pdf">Download the poster (PDF)</a><a href="index.html">Hear the examples</a></p>
+  </div>
+
+  <figure class="poster">
+    <a class="img" href="poster.pdf" aria-label="Open the poster as a PDF">
+      <img src="poster.png" alt="The FX-JEPA poster: the problem; the pipeline, where dry and processed stems go into FX-JEPA, which predicts a grid of settings that is rendered once and compared with the reference using MRSTFT; three headline numbers; the model with its loss; ablations, with paired knob-skill bars; results on 1,000 held-out clips; and a band of terms." width="3000" height="2000">
+    </a>
+    <figcaption><a href="poster.pdf">Download the poster (PDF)</a><span>Click the image for the full-size PDF.</span></figcaption>
+  </figure>
+
+  <section class="prose">
+    <h2>The task and the main result</h2>
+    <p>A mix engineer with a reference in hand often wants their own dry stems to sound like it, which in practice means working out the effect settings that produced the reference. FX-JEPA takes a set of dry stems and the same stems after processing, and predicts the chain that connects them, i.e., for each of 4 stems (vocals, bass, drums, other), which of 11 effects are on and where their 28 knobs sit; the dry stems are then rendered once through that chain. In its current form the task is chain inversion, since the reference is the same stems run through our own effects strip and is neither a different song nor a finished mix. Our main result concerns the readout, the part of the model that turns what the encoder hears into settings. Our baseline reads every setting from one learned summary token, so the answer about the vocal delay has to share that one vector with the answer about the bass EQ and every other stem and effect, and giving every stem and effect its own named slot, 44 in all, cuts the spectral error of the render by 10.9% against our baseline. We measure that error as MRSTFT, the multi-resolution STFT distance between our render and the reference, over all 8 stem channels (4 stems, left and right), on 1,000 held-out clips from 929 songs not seen in training; lower is better, and handing back the dry stems unchanged scores 1.17. Adding a small conv first layer under the transformer, which we introduced because the baseline's linear patches cannot mark where an echo starts, gives our best model, 16% below our baseline (a second training run gave 10%). That model was also trained with corrected vocals-clipper labels and the baseline was not, so the 16% includes a label change we have not isolated. The FX-Encoder++ design, trained from scratch on our data, is level with our baseline (within run-to-run noise), one run at 70k of 108k steps.</p>
+    <p>We do not credit the improvement to the JEPA objective, because on an out-of-domain held-out test scored once with earlier models, JEPA training tied the same model trained on the knob loss alone. Published effect encoders, with their released weights frozen and a small readout trained on top, score about twice our error, yet the same designs trained from scratch on our data land near our baseline, which suggests that most of that gap comes from training. The model returns one chain per stem. Since no users or workflows have been studied, what an engineer would do with that output remains untested.</p>
+  </section>
+
+  <section>
+    <div class="grid g3">
+      <a class="card" href="architecture.html"><h3>Architecture</h3><p>How the model reads the audio, every term defined, the four published encoders we compare against, and questions people ask.</p><span class="go">Read the walkthrough</span></a>
+      <a class="card" href="results.html"><h3>Results</h3><p>MRSTFT for every model, the second runs, which part helped, every knob's range and how it is scored, and how MRSTFT is computed.</p><span class="go">Read the results</span></a>
+      <a class="card" href="index.html"><h3>Listen</h3><p>Dry stems, the processed version, and our render from the predicted settings, side by side.</p><span class="go">Open the players</span></a>
+    </div>
+  </section>
+
+  <section class="caveats">
+    <h2>What we do not claim</h2>
+<ul>
+  <li>The same 1,000 held-out clips were used to select the models; songs outside this set have not been tested.</li>
+  <li>The best model was trained with corrected vocals-clipper labels; our baseline was not.</li>
+  <li>No listening test has been run on these models; the score is spectral only. Statements about what is audible come from our own listening, not a controlled test.</li>
+  <li>No users or engineers have been studied; the workflow around the model is untested.</li>
+  <li>Compressor ratio, attack and release remain near the guessing level.</li>
+  <li>The abstract&#x27;s 17% was a different test: earlier models, an out-of-domain Pedalboard set, against StemFX&#x27;s frozen encoder with our readout.</li>
+  <li>Delay feedback and reverb width are also near guessing. In our own listening, not a controlled test, reverb width is close to inaudible on our material.</li>
+</ul>
+  </section>
+
+  <section class="prose">
+    <h2>Contact</h2>
+    <p>Michael Clemens, <a href="mailto:mclemens@uaudio.com">mclemens@uaudio.com</a>. Questions about the work, the numbers or the examples are welcome.</p>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+<p>Data: FMA stems split with SCNet, plus MoisesDB studio stems. Public datasets and open-source effects only. No UA plugins, models or data.</p>
+<p>Effects: MultiAFx EQ, torchcomp compressor, tanh saturation, hard clip, delay, Freeverb. Fixed order, 44.1 kHz, 10 s clips. Knob ranges and delay scoring: <a href="results.html#knob-ranges">results page</a>.</p>
+<p>Michael Clemens, Oleksandr Tsymbalenko, Tim Stilson, Scott Van Duyne, Universal Audio. SANE 2026, MIT, 30 October 2026, poster AM-10. Contact: <a href="mailto:mclemens@uaudio.com">mclemens@uaudio.com</a>.</p>
+<p>Site code is MIT licensed and the page text and figures are CC BY 4.0; audio credits are on the <a href="index.html#credits">front page</a>.</p>
+  </div>
+</footer>
+</body>
+</html>

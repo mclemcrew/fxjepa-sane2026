@@ -3,72 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FX-JEPA Listening Examples</title>
-<meta name="description" content="Paired listening examples for FX-JEPA: dry stems, the processed version, and a render from the settings FX-JEPA predicted, with the true and predicted chains.">
-<link rel="icon" href="data:,">
+<meta http-equiv="refresh" content="0; url=index.html#listen">
+<title>FX-JEPA listening examples</title>
+<meta name="description" content="The FX-JEPA listening examples moved to the front page of the companion site.">
+<link rel="canonical" href="index.html">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-<header class="site-head">
-  <div class="wrap">
-    <a class="brand" href="index.html">FX-JEPA<span>SANE 2026</span></a>
-    <nav class="nav" aria-label="Pages">
-      <a href="index.html">Poster</a>
-      <a href="architecture.html">Architecture</a>
-      <a href="results.html">Results</a>
-      <a href="listen.html" aria-current="page">Listen</a>
-    </nav>
-  </div>
-</header>
-
-<main class="wrap">
-  <div class="kicker">Listen</div>
-  <h1 class="page-title">Listening examples</h1>
-  <p class="lede">Each example has three versions of the same clip: the dry stems, the processed version, and the dry stems rendered through the settings FX-JEPA predicted from the first two.</p>
-
-  <section class="prose" style="margin-top:24px">
-    <p>Press play on any row. Switching rows within an example keeps the playback position, so you can flip between the processed version and our render at the same moment. The three versions of a clip were level-matched before encoding, so what differs between them is the processing.</p>
-    <p class="note">Each example is one of the 1,000 held-out clips, from a Free Music Archive song. The processed version comes from our effect strip, built from open-source effects, with a known chain, so it's in-domain, and the render uses the chain predicted by our best model (conv first layer + slot readout). The dry stems are separated from a finished FMA release, so they already carry the artist's own mix; "dry" means before our chain. Stems that were silent in the excerpt are left out of all three versions, as they are in scoring. These clips illustrate the task; they aren't a listening test, and a handful of examples can't show average quality. The <a href="results.html">results page</a> has the measured numbers: across the 1,000 held-out clips, handing back the dry audio scores 1.17 MRSTFT and the best model averages 0.413. MRSTFT is a spectral distance between our render and the reference; lower is better.</p>
-    <p class="note">How we chose the 8: from held-out clips of FMA tracks whose Creative Commons license allows derivatives, picked so that all 11 effect types show up across the set. Their MRSTFT runs from 0.156 to 0.550 against the mean of 0.413 over all 1,000 held-out clips, so 5 of the 8 are better than average; the last three, 0.422, 0.446 and 0.550, are worse.</p>
-  </section>
-
-  <div id="examples" aria-live="polite">
-    <noscript><div class="empty-state"><h2>JavaScript is off</h2><p>The players need JavaScript. The clip list is in <a href="clips/manifest.json">clips/manifest.json</a>.</p></div></noscript>
-  </div>
-
-  <section id="credits">
-    <h2>Credits</h2>
-    <div class="prose">
-      <p>Every song comes from the <a href="https://freemusicarchive.org/">Free Music Archive</a> under a Creative Commons license that allows derivatives. Our changes: excerpted to 10 seconds, split into four stems, each stem processed through an effects chain (the true one or the predicted one) and summed again, level-matched across the three versions, and encoded as MP3. Nothing here comes from Universal Audio products or data.</p>
-    </div>
-    <div class="table-scroll">
-<table>
-<thead><tr><th>Track</th><th>Artist</th><th>License</th><th>Source</th></tr></thead>
-<tbody>
-<tr><td>simple</td><td>Orbique</td><td><a href="https://creativecommons.org/licenses/by-sa/3.0/" title="Attribution-ShareAlike 3.0 International">CC BY-SA 3.0</a></td><td><a href="https://freemusicarchive.org/music/Orbique/none_given_1578/17_-_orbique_-_simple_-_always_now_never_after/">FMA track page</a></td></tr>
-<tr><td>Sia</td><td>Graham Bole</td><td><a href="https://creativecommons.org/licenses/by/4.0/" title="Attribution">CC BY 4.0</a></td><td><a href="https://freemusicarchive.org/music/Graham_Bole/First_New_Day/Graham_Bole_-_02_-_Sia/">FMA track page</a></td></tr>
-<tr><td>Brundlefly</td><td>The Zombie Dandies</td><td><a href="https://creativecommons.org/licenses/by/4.0/" title="Attribution">CC BY 4.0</a></td><td><a href="https://freemusicarchive.org/music/Zombie_Dandies/Dandys_Little_Monsters/The_Zombie_Dandies_-_Dandys_Little_Monsters_-_11_Brundlefly/">FMA track page</a></td></tr>
-<tr><td>Life is Too Dark to Laugh So Hard</td><td>DJ Dougernaut</td><td><a href="https://creativecommons.org/licenses/by/4.0/" title="Attribution">CC BY 4.0</a></td><td><a href="https://freemusicarchive.org/music/DJ_Dougernaut/DJ_Dougernaut_Singles/Life_is_Too_Dark_to_Laugh_So_Hard/">FMA track page</a></td></tr>
-<tr><td>Follow That</td><td>BrokeMC</td><td><a href="https://creativecommons.org/licenses/by/3.0/us/" title="Attribution 3.0 United States">CC BY 3.0 US</a></td><td><a href="https://freemusicarchive.org/music/BrokeMC/Seeing_Things/Follow_That/">FMA track page</a></td></tr>
-<tr><td>What You Know</td><td>Droopies</td><td><a href="https://creativecommons.org/licenses/by/4.0/" title="Attribution">CC BY 4.0</a></td><td><a href="https://freemusicarchive.org/music/Droopies/Droopies/Droopies_-_Droopies_-_09_What_You_Know/">FMA track page</a></td></tr>
-<tr><td>Big Plans (J. Glaze Remix)</td><td>Kellee Maize &amp; J. Glaze Productions</td><td><a href="https://creativecommons.org/licenses/by/4.0/" title="Attribution">CC BY 4.0</a></td><td><a href="https://freemusicarchive.org/music/Kellee_Maize__J_Glaze_Productions/The_Remixes/Big_Plans_J_Glaze_Remix/">FMA track page</a></td></tr>
-<tr><td>Stop</td><td>Vienna Ditto</td><td><a href="https://creativecommons.org/licenses/by/4.0/" title="Attribution">CC BY 4.0</a></td><td><a href="https://freemusicarchive.org/music/Vienna_Ditto/Ugly_1501/Vienna_Ditto_-_Ugly_-_03_Stop/">FMA track page</a></td></tr>
-</tbody>
-</table>
-    </div>
-  </section>
-</main>
-
-<footer class="site-foot">
-  <div class="wrap">
-<p>Data: FMA stems split with SCNet, plus MoisesDB studio stems. Public datasets and open-source effects only. No UA plugins, models or data.</p>
-<p>Effects: MultiAFx EQ, torchcomp compressor, tanh saturation, hard clip, delay, Freeverb. Fixed order, 44.1 kHz, 10 s clips. Knob ranges and delay scoring: <a href="results.html#knob-ranges">results page</a>.</p>
-<p>Michael Clemens, Oleksandr Tsymbalenko, Tim Stilson, Scott Van Duyne, Universal Audio. SANE 2026, MIT, 30 October 2026, poster AM-10. Contact: <a href="mailto:mclemens@uaudio.com">mclemens@uaudio.com</a>.</p>
-<p>Site code is MIT licensed and the page text and figures are CC BY 4.0; audio credits are on the <a href="listen.html#credits">listen page</a>.</p>
-  </div>
-</footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/7.10.1/wavesurfer.min.js" integrity="sha384-6btDZnP+N8oQ9kXtzR8/azNk8kVhH47OfW2Yihmw4bi0q4BYNI584iZPIiUqUOj/" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="assets/listen.js"></script>
+<main class="wrap"><p>The listening examples moved to the <a href="index.html#listen">front page</a>.</p></main>
 </body>
 </html>

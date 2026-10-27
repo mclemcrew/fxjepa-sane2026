@@ -8,7 +8,8 @@ Live at https://mclemcrew.github.io/fxjepa-sane2026/ (GitHub Pages serves this `
 
 | Page | What it shows |
 |---|---|
-| `index.html` | Title, authors, the poster (PNG, with a PDF download), the one-paragraph story and what we don't claim yet |
+| `index.html` | Title and authors, then the listening examples: dry stems, the processed version, and the render from FX-JEPA's predicted settings, with the true and predicted chains |
+| `poster.html` | The poster (PNG, with a PDF download), the task and the main result, and what we do not claim |
 | `architecture.html` | The architecture figure and a plain-language walkthrough, the four published encoders we compare against, and answers to questions readers ask |
 | `results.html` | MRSTFT for every model on 1,000 held-out clips, second runs and noise bounds, the FX-Encoder++ learning curve, knob skill, the 28-knob range and scoring table, how delay-time error is measured, caveats and how MRSTFT is computed |
 | `listen.html` | Paired players: dry stems, processed version, and the render from FX-JEPA's predicted settings, with the true and predicted chains |

@@ -13,18 +13,18 @@
   <div class="wrap">
     <a class="brand" href="index.html">FX-JEPA<span>SANE 2026</span></a>
     <nav class="nav" aria-label="Pages">
-      <a href="index.html">Poster</a>
+      <a href="index.html">Listen</a>
+      <a href="poster.html">Poster</a>
       <a href="architecture.html" aria-current="page">Architecture</a>
       <a href="results.html">Results</a>
-      <a href="listen.html">Listen</a>
     </nav>
   </div>
 </header>
 
 <main class="wrap">
-  <div class="kicker">Architecture</div>
   <h1 class="page-title">How FX-JEPA reads the audio</h1>
-  <p class="lede">Two recordings go in: dry stems and a processed version of the same stems. One grid comes out: for each stem, which effects are on and where their knobs are set. This page walks through every piece in plain language.</p>
+  <p class="lede">FX-JEPA takes two recordings, a set of dry stems and a processed version of the same stems, and returns a grid that gives, for each stem, which effects are on and where their knobs are set. This page walks through each part of the model in plain language, including why it is there.</p>
+  <p class="actions"><a href="#walkthrough">The model, step by step</a><a href="#questions">Questions people ask</a></p>
 
   <figure class="fig">
     <div class="frame">
@@ -153,7 +153,7 @@
 </g>
 </svg>
     </div>
-    <figcaption>The pipeline from the poster: two recordings in, a grid of predicted settings out, one render, compared with the reference using MRSTFT, a spectral distance where lower is better. The grid is an illustration, not a real prediction. <a href="figures/hero.svg">Open the figure on its own</a>.</figcaption>
+    <figcaption>The pipeline from the poster, in which two recordings go in, a grid of predicted settings comes out, and a single render is compared with the reference using MRSTFT (a spectral distance where lower is better). The grid is an illustration and is not a real prediction. <a href="figures/hero.svg">Open the figure on its own</a>.</figcaption>
   </figure>
 
   <figure class="fig">
@@ -272,7 +272,7 @@
 <text x="177.086" y="1090.08" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#191919" text-anchor="middle">0.68</text>
 <line x1="191.015" y1="1086.783" x2="203.062" y2="1086.783" stroke="#191919" stroke-width="1.782" stroke-linecap="round"/>
 <line x1="203.062" y1="1049.361" x2="203.062" y2="1086.783" stroke="#191919" stroke-width="1.782" stroke-linecap="round"/>
-<text x="123.068" y="1105.494" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="10.692" font-weight="700" fill="#191919" text-anchor="middle">...</text>
+<text x="123.068" y="1105.494" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="10.692" font-weight="700" fill="#191919" text-anchor="middle">…</text>
 <path d="M 203.062 1068.072 L 208.068 1068.072" fill="none" stroke="#191919" stroke-width="1.782" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M 213.058 1068.072 L 206.821 1070.692 L 206.821 1065.453 Z" fill="#191919" stroke="#191919" stroke-width="0.535" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M 213.949 1038.669 L 267.409 1049.361 L 267.409 1086.783 L 213.949 1097.475 Z" fill="#4c4d4e" stroke="#191919" stroke-width="1.336" stroke-linecap="round" stroke-linejoin="round"/>
@@ -437,14 +437,14 @@
 </g>
 </svg>
     </div>
-    <figcaption>The model panel from the poster: how the two recordings become tokens, how the 44 slots write the settings, and the check between audio and settings that runs in training only. <a href="figures/model.svg">Open the figure on its own</a>.</figcaption>
+    <figcaption>The model panel from the poster, showing how the two recordings become tokens, how the 44 slots write the settings, and the training-only objective that links the audio embedding to an embedding of the true settings. <a href="figures/model.svg">Open the figure on its own</a>.</figcaption>
   </figure>
 
   <section>
     <h2>The task</h2>
     <div class="prose">
-      <p>A <b>stem</b> is one instrument group's own track. We use four: vocals, bass, drums and other. The <b>dry</b> stems are the four stems before our chain. They are separated from a finished Free Music Archive release, or are MoisesDB studio stems, so they may already carry the artist's own processing; dry means before our strip, not untouched. The the <b>processed</b> version is the same stems after someone ran them through a chain of effects. A <b>chain</b> here is a fixed channel strip of 11 effects, each of which can be switched on or off, with 28 knobs between them. FX-JEPA predicts, for each of the 4 stems, which of the 11 effects are on and the settings of the 28 knobs. That's 44 switches and 112 knobs, the whole action space.</p>
-      <p>The strip is built from open-source effects, and it's the same one used to make the training data. Each training example draws fresh on/off switches and knob values. A different effects library, Pedalboard, is kept for testing only, so that test is out of domain for every model.</p>
+      <p>A <b>stem</b> is one instrument group's own track, and we use four (vocals, bass, drums and other). The <b>dry</b> stems are the four stems before our chain; they are separated from a finished Free Music Archive release or taken from MoisesDB studio stems, so they may already carry the artist's own processing, and "dry" here means only that they come before our strip. The <b>processed</b> version is the same stems after they have been run through a chain of effects. A <b>chain</b> here is a fixed channel strip of 11 effects, each of which can be switched on or off, with 28 knobs between them. For each of the 4 stems, FX-JEPA predicts which of the 11 effects are on and where the 28 knobs sit, which comes to 44 switches and 112 knobs, the whole action space (i.e., everything the model can set).</p>
+      <p>The strip is built from open-source effects and is the same one used to make the training data, with fresh on/off switches and knob values drawn for each training example, so every training pair comes with the exact chain that made it. We keep a different effects library, Pedalboard, for testing only, because a model could learn the quirks of our own strip and still look good on audio made with it; the Pedalboard test is out of domain for every model.</p>
     </div>
     <div class="table-scroll">
 <table>
@@ -469,66 +469,66 @@
   </section>
 
   <section>
-    <h2>The walkthrough</h2>
+    <h2 id="walkthrough">The model, step by step</h2>
 
     <div class="step"><div class="n">1</div><div class="body">
-      <h3>Two recordings in, as pictures of sound</h3>
-      <p>Each example is two 10-second recordings of the same 4 stems: the dry stems and their processed version. Each recording becomes a <b>log-mel spectrogram</b>, a picture of sound with time running across, frequency running up and brightness showing energy. <b>Mel</b> means the frequency axis is spaced the way hearing is, finer at low frequencies. <b>Log</b> means energy is on a decibel-like scale. Four stems in stereo give <b>8 channels</b>, each 80 mel bands by 862 frames of 11.6 ms. Phase is dropped. The same network, with the same weights, encodes the dry and the processed recording.</p>
-      <p>Each spectrogram is then rescaled per channel (<b>InstanceNorm</b>), which removes absolute level, the balance between stems and the level difference between left and right. Gain, pan and width live in exactly those numbers, so step 2 hands them back.</p>
+      <h3>Dry and processed stems as log-mel spectrograms</h3>
+      <p>Each example is two 10-second recordings of the same 4 stems, the dry stems and their processed version, and each recording becomes a <b>log-mel spectrogram</b> (time across, frequency up, energy as brightness). <b>Mel</b> means the frequency axis is spaced the way hearing is, finer at low frequencies, and <b>log</b> means energy is on a decibel-like scale. Four stems in stereo give <b>8 channels</b>, each 80 mel bands by 862 frames of 11.6 ms, and phase is dropped. The same network, with the same weights, encodes both recordings, so that a difference between the two encodings comes from the processing and not from two encoders that describe audio in different ways.</p>
+      <p>Each spectrogram is then rescaled per channel (<b>InstanceNorm</b>), which removes absolute level, the balance between stems and the level difference between left and right. Output gain, pan and width are set by exactly those numbers, so after this step the network would be blind to them, and step 2 hands them back.</p>
     </div></div>
 
     <div class="step"><div class="n">2</div><div class="body">
       <h3>Hand-measured features, added through FiLM</h3>
-      <p>Before training, 64 numbers are measured from each recording with ordinary signal-processing code: loudness, spectral balance and stereo measurements. They're StemFX's 64 mixing features, which StemFX adapted from Diff-MST. They enter the network through <b>FiLM</b> (feature-wise linear modulation): a small network turns the 64 numbers into one scale and one shift per channel, applied inside every transformer block. A further 68 stereo measurements join the readout in step 5.</p>
-      <p>We tested nine variants of these features. None did better than keeping them as they are, and removing them hurt stereo width. They aren't essential to the overall score, though: the FX-Encoder++ design trained with our recipe has no hand features and still lands level with our baseline at 70k steps (one run, within run-to-run noise).</p>
+      <p>Before training, we measure 64 numbers from each recording with ordinary signal-processing code (e.g., loudness, spectral balance and stereo measurements); these are StemFX's 64 mixing features, which StemFX adapted from Diff-MST. They enter the network through <b>FiLM</b> (feature-wise linear modulation), in which a small network turns the 64 numbers into one scale and one shift per channel, applied inside every transformer block, so the level and stereo information removed in step 1 is available at every depth. A further 68 stereo measurements join the readout in step 5.</p>
+      <p>We tested nine variants of these features, and none did better than keeping them as they are, while removing them hurt stereo width. They do not appear essential to the overall score, however, since the FX-Encoder++ design trained from scratch on our data has no hand features and is level with our baseline (within run-to-run noise), one run at 70k of 108k steps.</p>
     </div></div>
 
     <div class="step"><div class="n">3</div><div class="body">
-      <h3>The first layer: from flat patches to a small conv stem</h3>
-      <p><b>Our baseline</b> is a <b>vision transformer (ViT)</b>. A ViT cuts the spectrogram into 16 by 16 patches and turns each patch into one <b>token</b>, a list of 192 numbers, with a single linear map. At 11.6 ms per frame a patch spans 186 ms. The grid is 5 rows of mel bands by 53 columns of time, so 265 tokens, plus one summary token.</p>
-      <p>A linear map can't mark "an onset happened here" before it averages over the patch, so a 120 ms echo inside a 186 ms patch looks like a slightly longer note. A matched CNN with a nonlinear first layer read delay time much better at the same overall score, which pointed at the first layer.</p>
-      <p>The <b>conv first layer</b> (a small "conv stem") replaces the linear patch map with a 7 by 7 convolution at the full frame rate, then three strided 3 by 3 convolutions, then a linear projection, landing on the same 5 by 53 grid. The idea comes from Xiao et al., "Early Convolutions Help Transformers See Better". On its own it lowered delay-time error, improved reverb room size, and left the overall score where it was (inside run-to-run noise). It improves delay and reverb timing; it doesn't fix them. GPU speed stays within 1% of our baseline.</p>
+      <h3>A convolutional first layer in place of linear patches</h3>
+      <p><b>Our baseline</b> is a <b>vision transformer (ViT)</b>, which cuts the spectrogram into 16 by 16 patches and turns each patch into one <b>token</b> (a vector of 192 numbers) with a single linear map. At 11.6 ms per frame a patch spans 186 ms, and the grid is 5 rows of mel bands by 53 columns of time, giving 265 tokens plus one summary token.</p>
+      <p>A linear map cannot mark that an onset happened at a particular frame before it averages over the patch, so a 120 ms echo inside a 186 ms patch looks much like a slightly longer note, in the way a meter with slow ballistics reads a snare hit and its slapback as one event. A matched CNN with a nonlinear first layer read delay time much better at the same overall score, which pointed us to the first layer.</p>
+      <p>The <b>conv first layer</b> (a small "conv stem", following Xiao et al., "Early Convolutions Help Transformers See Better") replaces the linear patch map with a 7 by 7 convolution at the full frame rate, then three strided 3 by 3 convolutions and a linear projection, landing on the same 5 by 53 grid. Our reading, which we have not tested directly, is that because the first convolution works at frame resolution and is nonlinear before the grid is downsampled, the layer can register an onset before the patch is summarised, which the linear map could not do. On its own it lowered delay-time error and improved reverb room size while leaving the overall score where it was (inside run-to-run noise), so it improves delay and reverb timing without solving either. GPU speed stays within 1% of our baseline.</p>
     </div></div>
 
     <div class="step"><div class="n">4</div><div class="body">
-      <h3>The trunk: ViT-Tiny, 12 blocks</h3>
-      <p>Twelve transformer blocks, width 192, 3 attention heads, over the 266 tokens. <b>Attention</b> lets each token look at every other token and take a weighted average of them, with the weights computed from the content. "Tiny" is the size name: about 7.1M parameters in the encoder. Earlier we tested ViT-Tiny, ViT-Small and a matched CNN, and they tied in-domain, so the trunk isn't where the score is decided.</p>
+      <h3>The trunk, a 12-block ViT-Tiny</h3>
+      <p>The trunk is twelve transformer blocks of width 192 with 3 attention heads, run over the 266 tokens. <b>Attention</b> lets each token take a weighted average of every other token, with the weights computed from the content. "Tiny" is the size name, about 7.1M parameters in the encoder, and we kept the small size because in earlier tests ViT-Tiny, ViT-Small and a matched CNN tied in-domain, which suggests the trunk is not where the score is decided.</p>
     </div></div>
 
     <div class="step"><div class="n">5</div><div class="body">
-      <h3>The readout: one summary, or 44 named slots</h3>
-      <p><b>Our baseline's readout</b> keeps only the summary token of each recording. The dry summary, the processed summary and their difference are fused into one 512-number vector, the 68 stereo measurements are added, and a residual MLP turns that vector into 44 switch scores and 112 knob values. Every answer about every stem and every effect has to squeeze through those 512 numbers.</p>
-      <p>The <b>slot readout</b> asks 44 named questions instead, one per stem and effect. It learns 4 stem vectors and 11 effect vectors and adds them, so "vocals" plus "delay" is the vocals-delay query. That's 44 queries from 15 learned vectors, so what a delay looks like is shared across stems. Each query reads all of the dry and processed tokens through <b>cross-attention</b>, and can also see the fused vector our baseline uses. There are four blocks, and in each one the 44 slots also attend to each other, which lets the four delay slots work out which stem has the echo. Each slot then predicts its own switch and its own knobs.</p>
-      <p>The slot readout has fewer parameters than the MLP it replaces (about 2.5M against 7.0M), so model size doesn't explain the improvement. On its own, on top of our baseline, it cut MRSTFT by 10.9%. That's a pre-registered formal call, and the readout is the only thing that differs between the two models. Reading stems out with slot queries follows Stembed; ours are named in advance, so there's no matching step and no contrastive loss.</p>
+      <h3>From one summary token to 44 named slots</h3>
+      <p><b>Our baseline's readout</b> keeps only the summary token of each recording. The dry summary, the processed summary and their difference are fused into one 512-number vector, the 68 stereo measurements are added, and a residual MLP turns that vector into 44 switch scores and 112 knob values. Every answer about every stem and every effect therefore has to pass through those 512 numbers, much as once the stems are summed to the mix bus nothing downstream can treat the vocal on its own, and information about the vocal delay competes for the same space as information about the bass EQ.</p>
+      <p>The <b>slot readout</b> instead asks 44 named questions, one per stem and effect. It learns 4 stem vectors and 11 effect vectors and adds them, so "vocals" plus "delay" is the vocals-delay query, and building 44 queries from 15 learned vectors means that what a delay looks like is shared across stems instead of being learned separately for each. Each query reads all of the dry and processed tokens through <b>cross-attention</b> and can also see the fused vector our baseline uses. The readout has four blocks, and in each one the 44 slots also attend to each other, which lets the four delay slots work out which stem has the echo. Each slot then predicts its own switch and its own knobs.</p>
+      <p>The slot readout has fewer parameters than the MLP it replaces (about 2.5M against 7.0M), so model size does not explain the improvement. Added on its own to our baseline, with nothing else changed, it cut MRSTFT by 10.9%, a pre-registered formal call. Reading stems out with slot queries follows Stembed, although our slots are named in advance, so there is no matching step and no contrastive loss.</p>
     </div></div>
 
     <div class="step"><div class="n">6</div><div class="body">
-      <h3>Training: the JEPA objective plus a knob loss</h3>
-      <p><b>JEPA</b> stands for joint-embedding predictive architecture. "Joint embedding" means audio and effect settings are mapped into one shared space of vectors; "predictive" means one side is trained to predict the other. Here a second small network, the <b>settings encoder</b>, turns the true chain into a vector, and the audio side's embedding of the dry and processed pair is trained to predict that vector. We follow the view of Synth-JEPA, where an audio encoder and a synthesizer-parameter encoder predict each other. With effects the sound also depends on the source, so our audio side encodes a dry and processed pair. <b>SIGReg</b>, a regulariser from LeJEPA, keeps the embeddings spread out instead of collapsing to one point.</p>
-      <p>The <b>knob loss</b> is plain regression on the 44 switches (binary cross-entropy) and 112 knob values (squared error), and it's the main teacher. The whole loss, as trained, is</p>
+      <h3>Training with the JEPA objective and a knob loss</h3>
+      <p><b>JEPA</b> stands for joint-embedding predictive architecture, where "joint embedding" means audio and effect settings are mapped into one shared space of vectors and "predictive" means one side is trained to predict the other. Here a second small network, the <b>settings encoder</b>, turns the true chain into a vector, and the audio side's embedding of the dry and processed pair is trained to predict that vector. The settings encoder is what makes this a joint embedding, since without it the only target left for the audio side would be the raw knob values, which is the knob loss alone. We follow the view of Synth-JEPA, in which an audio encoder and a synthesizer-parameter encoder predict each other, and because with effects the sound also depends on the source, our audio side encodes a dry and processed pair. <b>SIGReg</b>, a regulariser from LeJEPA, keeps the embeddings spread out, since two networks trained only to predict each other can reach zero error by mapping every input to the same point, which leaves an embedding that carries no information.</p>
+      <p>The <b>knob loss</b> is plain regression on the 44 switches (binary cross-entropy) and 112 knob values (squared error), and it is the main teacher, because nothing else trains the readout to write settings. The whole loss, as trained, is</p>
       <p class="eqn"><i>L</i> = (1 - 2λ) / 3 · (<i>L</i><sub>inv</sub> + <i>L</i><sub>fwd</sub> + <i>L</i><sub>src</sub>) + λ (<i>S</i><sub>a</sub> + <i>S</i><sub>p</sub>) + <i>L</i><sub>reg</sub> + 0.5 (<i>L</i><sub>adv</sub> + <i>L</i><sub>D</sub> + <i>L</i><sub>st</sub>), with λ = 0.02.</p>
-      <p><i>L</i><sub>inv</sub>: the audio embedding predicts the settings embedding, as a squared error against a stop-gradient target. <i>L</i><sub>fwd</sub>: the settings embedding predicts the audio embedding. <i>L</i><sub>src</sub>: the settings embedding plus the embedding of the dry stems alone predict each song's pair embedding. <i>S</i><sub>a</sub>, <i>S</i><sub>p</sub>: SIGReg on the audio and settings branches, which keeps each set of embeddings spread out. <i>L</i><sub>reg</sub>: the knob loss. <i>L</i><sub>adv</sub>, <i>L</i><sub>D</sub>, <i>L</i><sub>st</sub>: three terms on the settings side, a margin that keeps the true chain closer than an attacked or resampled one, and two heads that predict hand-measured features and stereo balance from the settings embedding; none of them reaches the audio encoder. The code also carries a dispersion term for several songs sharing one chain; every training step here had one pair per chain, so it was zero throughout and is left out. This total reproduces the logged training loss of the best model's second run. Of the terms that reach the audio encoder, the knob loss has weight 1.0, each JEPA prediction term 0.32 and SIGReg 0.02 on each side. The JEPA side trains alongside the rest and isn't used at prediction time.</p>
+      <p>In <i>L</i><sub>inv</sub> the audio embedding predicts the settings embedding, as a squared error against a stop-gradient target (so the target is not pulled toward the prediction), and <i>L</i><sub>fwd</sub> runs the other way, from the settings embedding to the audio embedding. In <i>L</i><sub>src</sub> the settings embedding, together with the embedding of the dry stems alone, predicts each song's pair embedding, which asks the model to account for the source as well as the chain. <i>S</i><sub>a</sub> and <i>S</i><sub>p</sub> are SIGReg on the audio and settings branches, and <i>L</i><sub>reg</sub> is the knob loss. The three remaining terms, <i>L</i><sub>adv</sub>, <i>L</i><sub>D</sub> and <i>L</i><sub>st</sub>, act on the settings side only, as a margin that keeps the true chain closer than an attacked or resampled one and two heads that predict hand-measured features and stereo balance from the settings embedding. We have not ablated these three terms, so their effect on the score is not known. Their purpose is to tie the settings embedding to what a chain does to the sound, since a settings encoder trained only to be predictable is free to place two chains that sound different close together; none of them reaches the audio encoder. The code also carries a dispersion term for several songs sharing one chain, but every training step here had one pair per chain, so it was zero throughout and is left out. This total reproduces the logged training loss of the best model's second run. Of the terms that reach the audio encoder, the knob loss has weight 1.0, each JEPA prediction term 0.32 and SIGReg 0.02 on each side, and the JEPA side trains alongside the rest but is not used at prediction time.</p>
       <div class="caveats" style="margin-top:6px">
-        <p style="margin-bottom:.6em"><b>The caveat.</b> On an out-of-domain held-out test scored once (Pedalboard effects on MUSDB18 test songs), JEPA-trained heads tied a control: the same encoder trained on the knob loss alone. We haven't shown that the JEPA objective improves MRSTFT over plain regression. The improvements on the poster come from the first layer and the readout. Isolating what the predictive objective adds is future work.</p>
+        <p style="margin-bottom:.6em"><b>We have not shown that the JEPA objective improves MRSTFT over plain regression.</b> On an out-of-domain held-out test scored once (Pedalboard effects on MUSDB18 test songs), JEPA-trained heads tied a control, the same encoder trained on the knob loss alone. The improvements on the poster come from the first layer and the readout, and isolating what the predictive objective adds is future work.</p>
       </div>
     </div></div>
 
     <div class="step"><div class="n">7</div><div class="body">
-      <h3>Render once, then score</h3>
-      <p>At test time the model sees the dry and processed stems once and writes out a chain. The dry stems are rendered once through that chain, and the render is compared with the processed version. That comparison is <b>MRSTFT</b>, the multi-resolution STFT distance between our render and the reference, over all 8 stem channels (4 stems, left and right). Lower is better, and doing nothing scores 1.17. No candidate is rendered before the choice. <a href="results.html#mrstft">How MRSTFT is computed</a>.</p>
+      <h3>Rendering and scoring at test time</h3>
+      <p>At test time the model sees the dry and processed stems once and writes out a chain, the dry stems are rendered once through that chain, and the render is compared with the processed version. We score the render as well as the knobs because different settings can give similar sound, so a knob error alone says little about how far off the result is. That comparison is <b>MRSTFT</b>, the multi-resolution STFT distance between our render and the reference, over all 8 stem channels (4 stems, left and right); lower is better, and doing nothing scores 1.17. No candidate is rendered before the choice, so the score reflects a single prediction with no search. <a href="results.html#mrstft">How MRSTFT is computed</a>.</p>
     </div></div>
   </section>
 
   <section id="baselines">
     <h2>The baselines</h2>
     <div class="prose">
-      <p>We compare against four published effect encoders. Each one is tested two ways where we could: its released weights frozen with our readout on top, and its design trained from scratch with our recipe.</p>
+      <p>We compare against four published effect encoders and, where we could, tested each one in two ways, with its released weights frozen and our readout on top, and with its design trained from scratch with our recipe. The first test asks how well the released representation fits our task and the second asks what the design can do when trained like ours.</p>
     </div>
     <div class="table-scroll">
       <table>
         <thead><tr><th>Encoder</th><th>Who, venue</th><th>What it does</th><th class="num">Frozen + our readout</th><th class="num">Design, our recipe</th></tr></thead>
         <tbody>
-          <tr><td><b>FX-Encoder++</b></td><td>Yeh et al., Sony AI and National Taiwan University; ISMIR 2025</td><td>Hears the effects on each instrument inside a mix. An encoder only; it doesn't output a chain.</td><td class="num">0.897</td><td class="num">0.463<br><span class="note">70k of 108k steps, one run</span></td></tr>
+          <tr><td><b>FX-Encoder++</b></td><td>Yeh et al., Sony AI and National Taiwan University; ISMIR 2025</td><td>Hears the effects on each instrument inside a mix. It is an encoder only and does not output a chain.</td><td class="num">0.897</td><td class="num">0.463<br><span class="note">70k of 108k steps, one run</span></td></tr>
           <tr><td><b>AFx-Rep</b></td><td>Steinmetz et al., Queen Mary University of London; from the ST-ITO paper, ISMIR 2024</td><td>An audio effects representation. ST-ITO uses it to tune settings by rendering and comparing until the result matches.</td><td class="num">0.893</td><td class="num">not trained</td></tr>
           <tr><td><b>StemFX</b></td><td>Cheng et al. (NTU); ISMIR 2026</td><td>Looks at stems and a target mix and writes a chain for each of four stems in one guess. Its encoder, BSFiLM, is a band-split CNN with the 64 features through FiLM.</td><td class="num">0.869</td><td class="num">0.485<br><span class="note">StemFX design (CNN)</span></td></tr>
           <tr><td><b>RelFX</b></td><td>Liu et al., Tencent Music; ISMIR 2026</td><td>Hears the difference in processing between two clips.</td><td class="num">1.024</td><td class="num">not trained</td></tr>
@@ -539,93 +539,93 @@
 
     <h3>What "frozen + our readout" means</h3>
     <div class="prose">
-      <p>We take the released checkpoint, freeze it so its weights don't change, and train a small readout on top of its embeddings to predict the same 44 switches and 112 knobs. Each readout gets 50,000 training examples and up to 40 epochs, keeping the epoch with the best held-out loss, and is scored on the same 1,000 held-out clips with the same code as our models. This tests the released representation on our task. It doesn't test the design, and it's a smaller training budget than our models get, so a stronger readout could narrow the gap. The readouts also didn't get a label fix that our best model had. In their favour, 761 of the 1,000 queries were used to pick each readout's best epoch; on the 239 queries that weren't, the picture is the same (StemFX 0.867 against our baseline 0.494).</p>
+      <p>We take the released checkpoint, freeze it so its weights do not change, and train a small readout on top of its embeddings to predict the same 44 switches and 112 knobs. Each readout gets 50,000 training examples and up to 40 epochs, keeping the epoch with the best held-out loss, and is scored on the same 1,000 held-out clips with the same code as our models. This tests the released representation on our task and does not test the design. It is also a smaller training budget than our models get, so a stronger readout could narrow the gap, and the readouts did not get the label fix that our best model had. In their favour, 761 of the 1,000 queries were used to pick each readout's best epoch, but on the 239 queries that were not, the picture is the same (StemFX 0.867 against our baseline 0.494).</p>
     </div>
 
     <h3>Why we also train the designs our way</h3>
     <div class="prose">
-      <p>To separate the design from the released weights, we trained two of the published designs from random weights with our baseline's data, loss and budget. StemFX's BSFiLM design, trained our way, scores 0.485, within noise of our baseline (0.492). FX-Encoder++'s published encoder (per-stem encoding, no hand features) scores 0.463 at 70k of its 108k training steps: level with our baseline at 70k (within run-to-run noise), one run. Its own run-to-run spread isn't measured, so there's no formal call (<a href="results.html#fxencpp">the learning curve</a>). The gap between 0.897 frozen and 0.463 trained our way says the frozen number measures how well the released weights fit our task, not what the design can do. Most of the distance between the published encoders and our models comes from training. The encoder design moves the score less than the readout does.</p>
+      <p>To separate the design from the released weights, we trained two of the published designs from scratch (i.e., from random weights) with our baseline's data, loss and budget. StemFX's BSFiLM design, trained this way, scores 0.485, within noise of our baseline (0.492). FX-Encoder++'s published encoder (per-stem encoding, no hand features) scores 0.463 and is level with our baseline (within run-to-run noise), one run at 70k of 108k steps; its own run-to-run spread has not been measured, so there is no formal call (<a href="results.html#fxencpp">the learning curve</a>). The fall from 0.897 frozen to 0.463 trained on our data suggests that the frozen number measures how well the released weights fit our task rather than what the design can do, and that most of the distance between the published encoders and our models comes from training. In our runs, the encoder design moves the score less than the readout does.</p>
     </div>
   </section>
 
   <section>
-    <h2>Terms at a glance</h2>
+    <h2>Glossary</h2>
     <dl class="terms">
       <dt>Held-out clips</dt><dd>1,000 dry and processed clips from 929 songs not seen in training, scored the same way for every model. We also used them to pick models.</dd>
       <dt>Our baseline</dt><dd>ViT-Tiny with linear patches, hand features through FiLM, and the single-vector readout.</dd>
-      <dt>Conv first layer</dt><dd>The small nonlinear convolutions from step 3 that replace the linear patch map.</dd>
-      <dt>Slot readout</dt><dd>The 44 named queries from step 5, one per stem and effect.</dd>
+      <dt>Conv first layer</dt><dd>The small nonlinear convolutions from step 3 that replace the linear patch map, so the encoder can mark onsets, and with them echo timing, inside a patch.</dd>
+      <dt>Slot readout</dt><dd>The 44 named queries from step 5, one per stem and effect, which give each stem and effect its own path to the audio tokens instead of one shared summary token.</dd>
       <dt>Baseline + slot readout</dt><dd>Our baseline with the slot readout and nothing else changed. Comparing it with our baseline measures the readout on its own.</dd>
-      <dt>Best model</dt><dd>Our baseline with both the conv first layer and the slot readout. Our best model on the 1,000 held-out clips.</dd>
+      <dt>Best model</dt><dd>Our baseline with both the conv first layer and the slot readout, and the best-scoring model on the 1,000 held-out clips.</dd>
       <dt>FiLM</dt><dd>Feature-wise linear modulation: outside numbers become a scale and a shift applied to each channel.</dd>
       <dt>JEPA</dt><dd>Joint-embedding predictive architecture: two encoders map into one space and one side predicts the other's embedding.</dd>
-      <dt>SIGReg</dt><dd>A regulariser from LeJEPA that keeps embeddings from collapsing to one point.</dd>
+      <dt>SIGReg</dt><dd>A regulariser from LeJEPA that keeps embeddings from collapsing to one point, a trivial solution that would make the JEPA prediction perfect and useless.</dd>
       <dt>MRSTFT</dt><dd>Multi-resolution STFT distance between our render and the reference, over all 8 stem channels (4 stems, left and right). Lower is better; doing nothing scores 1.17.</dd>
-      <dt>Knob skill</dt><dd>1 minus the model's knob error divided by the error of always guessing the typical value. 0 is guessing, 1 is perfect.</dd>
+      <dt>Knob skill</dt><dd>1 minus the model's knob error divided by the error of always guessing the typical value, which puts knobs in different units on one scale; 0 is guessing, 1 is perfect.</dd>
     </dl>
   </section>
 
   <section id="questions">
     <h2>Questions people ask</h2>
     <div class="qa">
-      <p>Answers to the questions readers asked about the poster. Every number is on the 1,000 held-out clips unless the answer names another test.</p>
+      <p>These are the questions readers asked about the poster, with our answers; every number is on the 1,000 held-out clips unless the answer names another test.</p>
 
       <h3>The task and the claim</h3>
       <details class="q"><summary>Is this a representation paper or a parameter-estimation paper?</summary>
-        <p>It estimates effect settings from a dry and processed pair. There is some evidence about the representation too. In an earlier comparison where every encoder was frozen and got the same small readout, our embedding scored 0.636 MRSTFT against 0.842 to 0.871 for StemFX, AFx-Rep and FX-Encoder++ (200 held-out pairs, in-domain, which favours ours), and 1.14 against 1.21 to 1.84 on the out-of-domain Pedalboard test, a held-out test scored once. The slot readout didn't change the pooled embedding: its retrieval top-1 is 0.958 with the conv first layer alone and with the slot readout added.</p>
+        <p>The task is parameter estimation, i.e., estimating effect settings from a dry and processed pair, although there is some evidence about the representation as well. In an earlier comparison where every encoder was frozen and got the same small readout, our embedding scored 0.636 MRSTFT against 0.842 to 0.871 for StemFX, AFx-Rep and FX-Encoder++ (200 held-out pairs, in-domain, which favours ours), and 1.14 against 1.21 to 1.84 on the out-of-domain Pedalboard test, a held-out test scored once. Adding the slot readout did not change the pooled embedding, whose retrieval top-1 is 0.958 both with the conv first layer alone and with the slot readout added.</p>
       </details>
       <details class="q"><summary>If the JEPA objective ties a knob-loss-only control, why call it FX-JEPA? Isn't this regression with extra losses?</summary>
-        <p>Mostly, yes, and we say so. The audio encoder's gradient gets weight 1.0 from the knob loss, 0.32 from the JEPA prediction term and 0.02 from SIGReg. On the Pedalboard held-out test scored once, the JEPA-trained model tied the same encoder trained on the knob loss alone (difference +0.014 MRSTFT, interval -0.026 to +0.052). FX-JEPA names the recipe and the model family. The JEPA side also yields settings and pair embeddings for later use; it hasn't been shown to improve MRSTFT.</p>
+        <p>Largely, yes. The audio encoder's gradient gets weight 1.0 from the knob loss, 0.32 from the JEPA prediction term and 0.02 from SIGReg, and on the Pedalboard held-out test scored once, the JEPA-trained model tied the same encoder trained on the knob loss alone (difference +0.014 MRSTFT, interval -0.026 to +0.052). We keep the name because FX-JEPA refers to the training recipe and the model family, and the JEPA side also yields settings and pair embeddings for later use, although it has not been shown to improve MRSTFT.</p>
       </details>
       <details class="q"><summary>What if the reference is a different song, or was made with effects outside your 11?</summary>
-        <p>Right now this is chain inversion: the reference is the same stems run through our strip. Cross-song was tested only on earlier models, on the Pedalboard set with a chain applied to one song and the answer scored on another: the model scored 1.044, the knob-loss-only control 1.042 and doing nothing 1.703. Of the 14 Pedalboard test effects, our strip makes 8 exactly, the shelves and the compressor only approximately, and chorus and phaser not at all. A reference from outside the strip always gets some chain back, and nothing flags it.</p>
+        <p>In its current form the task is chain inversion, in which the reference is the same stems run through our strip. We tested the cross-song case only on earlier models, on the Pedalboard set with a chain applied to one song and the answer scored on another, where the model scored 1.044, the knob-loss-only control 1.042 and doing nothing 1.703. Of the 14 Pedalboard test effects, our strip reproduces 8 exactly, the shelves and the compressor only approximately, and chorus and phaser not at all. A reference processed outside the strip still gets a chain back, and nothing in the model flags that the chain cannot match.</p>
       </details>
       <details class="q"><summary>Where do I get processed stems? I usually have a stereo reference mix.</summary>
-        <p>Today you'd need them: the input is the 4 processed stems of the same performance. Mix-only references, or splitting a reference mix into stems first, haven't been tested on these models.</p>
+        <p>At present the input is the 4 processed stems of the same performance, so a stereo reference mix on its own is not enough. Mix-only references, and splitting a reference mix into stems first, have not been tested on these models.</p>
       </details>
       <details class="q"><summary>Does it choose the effects and their order, or set the knobs of a fixed chain?</summary>
-        <p>It sets a fixed chain: 11 effects in a fixed order (HPF, low shelf, peak EQ, high shelf, LPF, compressor, saturation, clipper, delay, reverb, output), each switched on or off, with its knobs. The order isn't predicted.</p>
+        <p>It sets a fixed chain of 11 effects in a fixed order (HPF, low shelf, peak EQ, high shelf, LPF, compressor, saturation, clipper, delay, reverb, output), switching each on or off and setting its knobs. The order is not predicted, which keeps the output a grid of fixed size.</p>
       </details>
       <details class="q"><summary>"Audition more options faster": faster than what?</summary>
-        <p>We have no user timing. The model costs one forward pass: 0.29 s per clip for the best model, warm, one clip at a time, on one GPU (0.27 to 0.28 s for the baseline). The search comparison below was timed on the 5 October harness with earlier models, where the readout alone took about 0.1 s per example. A render-and-compare search on the same harness (CMA-ES, 512 renders) took about 7.4 s per target and scored worse than the model. The model returns one chain per stem, rendered once, not a ranked list.</p>
+        <p>We have no user timing. The model costs one forward pass, 0.29 s per clip for the best model, warm, one clip at a time, on one GPU (0.27 to 0.28 s for the baseline). For the comparison with search we have only an earlier measurement, timed on the 5 October harness with earlier models, where the readout alone took about 0.1 s per example and a render-and-compare search (CMA-ES, 512 renders) took about 7.4 s per target and scored worse than the model. The model returns one chain per stem, rendered once, and does not produce a ranked list of options.</p>
       </details>
       <details class="q"><summary>Is the settings grid on the poster a real prediction?</summary>
-        <p>No. The grid, the example settings under it and the render are illustrations. The <a href="listen.html">listen page</a> has real predictions, with the true and predicted chains for each example.</p>
+        <p>No. The grid, the example settings under it and the render are illustrations. The <a href="index.html#listen">listen page</a> has real predictions, with the true and predicted chains for each example.</p>
       </details>
 
       <h3>The model</h3>
       <details class="q"><summary>Is the effect chain differentiable during training?</summary>
-        <p>There's no render in training at all, differentiable or otherwise. The losses are on settings and embeddings. Rendering happens once, at test time.</p>
+        <p>No render takes place in training, differentiable or otherwise, because the losses are on settings and embeddings, which also means the effects did not need differentiable implementations. Rendering happens once, at test time.</p>
       </details>
       <details class="q"><summary>How is the slot readout different from DETR-style queries?</summary>
-        <p>It's the same mechanism, learned queries with cross-attention, but the queries are named: a stem vector plus an effect vector gives 44 queries from 15 learned vectors, so no matching step is needed. It has four blocks of slot self-attention, cross-attention over the 532 dry and processed tokens, and an MLP, about 2.5M parameters in place of a 7.0M MLP. The idea of reading stems out with slot queries comes from Stembed. What we add is the measurement: on our baseline this readout cut MRSTFT by 10.9%, while the JEPA objective tied a knob-loss-only control on a held-out test scored once, with earlier models.</p>
+        <p>The mechanism is the same, learned queries with cross-attention, but our queries are named, with a stem vector plus an effect vector giving 44 queries from 15 learned vectors, so no matching step is needed (DETR has to match its unnamed queries to targets during training because any query may answer for any object). It has four blocks of slot self-attention, cross-attention over the 532 dry and processed tokens, and an MLP, about 2.5M parameters in place of a 7.0M MLP. The idea of reading stems out with slot queries comes from Stembed, and what we add is the measurement, namely that on our baseline this readout cut MRSTFT by 10.9%, while the JEPA objective tied a knob-loss-only control on a held-out test scored once, with earlier models.</p>
       </details>
       <details class="q"><summary>The true settings go into the settings encoder. Isn't the whole thing supervised?</summary>
-        <p>Yes. The settings encoder sees the true settings, and the knob loss is a regression. The JEPA terms are a joint-embedding objective between audio and settings, not self-supervised pretraining on unlabelled audio. We didn't run an unlabelled pretrain-then-probe setup.</p>
+        <p>Yes. The settings encoder sees the true settings and the knob loss is a regression, so the JEPA terms form a joint-embedding objective between audio and settings and are not self-supervised pretraining on unlabelled audio. We did not run an unlabelled pretrain-then-probe setup.</p>
       </details>
       <details class="q"><summary>What does the settings encoder buy at prediction time?</summary>
-        <p>Nothing directly: the settings encoder and the predictors are dropped, and the readout predicts on its own. The ablation is the knob-loss-only control, the same encoder without the JEPA terms. It tied on the Pedalboard held-out test scored once (+0.014, interval -0.026 to +0.052) and on the cross-song version (+0.002, interval -0.072 to +0.067). That comparison hasn't been repeated for the best model.</p>
+        <p>Nothing directly, since the settings encoder and the predictors are dropped and the readout predicts on its own. The relevant ablation is the knob-loss-only control, the same encoder without the JEPA terms, which tied on the Pedalboard held-out test scored once (+0.014, interval -0.026 to +0.052) and on the cross-song version (+0.002, interval -0.072 to +0.067). That comparison has not been repeated for the best model.</p>
       </details>
       <details class="q"><summary>Why doesn't the embedding collapse? Is SIGReg on both sides?</summary>
-        <p>SIGReg, from LeJEPA, runs on both the audio and the settings embedding at weight 0.02 each; the poster figure draws it on one branch only. An early screen varied SIGReg strength on an earlier setup. There's no run without SIGReg and no VICReg comparison on the current models.</p>
+        <p>The prediction terms alone would allow both encoders to map every input to the same point, which predicts perfectly and carries no information. SIGReg, from LeJEPA, counters this by pushing each set of embeddings toward an isotropic Gaussian, and it runs on both the audio and the settings embedding at weight 0.02 each; the poster figure draws it on one branch only. An early screen varied SIGReg strength on an earlier setup, but there is no run without SIGReg and no VICReg comparison on the current models.</p>
       </details>
       <details class="q"><summary>Why a Perceiver for the settings?</summary>
-        <p>It follows Synth-JEPA's settings encoder (32 latents, 8 blocks), one token per true knob. We didn't ablate it.</p>
+        <p>A Perceiver reads a set of input tokens of any size into a fixed number of latents, which suits a chain given as one token per true knob. We followed Synth-JEPA's settings encoder (32 latents, 8 blocks) and did not ablate it.</p>
       </details>
       <details class="q"><summary>What are the 64 hand features, and do the baselines get them?</summary>
-        <p>They're StemFX's 64 mixing features (loudness, spectral balance and stereo measurements), adapted from Diff-MST, fed in through FiLM, plus 68 stereo measurements in the readout. The StemFX design trained our way has them. The FX-Encoder++ design trained our way has none and still scores 0.463 at 70k steps. Removing them from our baseline leaves MRSTFT within noise but drops stereo-width skill from 0.21 to 0.02. Giving AFx-Rep's frozen readout measured stem levels changed nothing (0.894).</p>
+        <p>They are StemFX's 64 mixing features (loudness, spectral balance and stereo measurements), adapted from Diff-MST and fed in through FiLM, plus 68 stereo measurements in the readout. The StemFX design trained from scratch on our data has them, while the FX-Encoder++ design trained the same way has none and scores 0.463 at 70k steps. Removing them from our baseline leaves MRSTFT within noise but drops stereo-width skill from 0.21 to 0.02. Giving AFx-Rep's frozen readout measured stem levels changed nothing (0.894).</p>
       </details>
       <details class="q"><summary>Why a ViT with a conv first layer, when a CNN scores close?</summary>
-        <p>In earlier tests ViT-Tiny, ViT-Small and a matched CNN tied in-domain, so the trunk doesn't decide the score. The conv first layer was added because a linear 186 ms patch can't mark an onset; the idea is from Xiao et al. A CNN with the slot readout wasn't run.</p>
+        <p>In earlier tests ViT-Tiny, ViT-Small and a matched CNN tied in-domain, which suggests the trunk does not decide the score. We added the conv first layer because a linear 186 ms patch cannot mark an onset, following Xiao et al., and we have not run a CNN with the slot readout.</p>
       </details>
       <details class="q"><summary>Why log-mel? It drops phase and the transient detail attack and release need.</summary>
-        <p>The input is 80 mel bands, FFT 2048, hop 512 at 44.1 kHz (11.6 ms frames), with phase discarded. Compressor attack and release stay near guessing for every model. An earlier study that swapped in the true value one knob group at a time put them at about 0.1% of MRSTFT, so they don't move the headline.</p>
+        <p>The input is 80 mel bands, FFT 2048, hop 512 at 44.1 kHz (11.6 ms frames), with phase discarded, and compressor attack and release stay near guessing for every model, which is consistent with that concern. An earlier study that swapped in the true value one knob group at a time put them at about 0.1% of MRSTFT, so they do not move the headline number.</p>
       </details>
       <details class="q"><summary>Hard or soft switches? Many chains make the same sound. How do you handle that?</summary>
-        <p>Switches are trained as on/off probabilities and decoded at 0.5, with at least the most likely effect switched on per stem. Knobs are regressed directly on values mapped to 0 to 1, so equivalent settings get averaged; nothing models the ambiguity. Training labels mark an inaudible effect as off, for example a compressor with under 1 dB of gain reduction or an EQ band under 0.5 dB. MRSTFT scores the sound and knob skill scores the parameters, which is why both are shown.</p>
+        <p>Switches are trained as on/off probabilities and decoded at 0.5, with at least the most likely effect switched on per stem. Knobs are regressed directly on values mapped to 0 to 1, so when several settings give the same sound the regression averages them, and nothing in the model represents that ambiguity. Training labels mark an inaudible effect as off (e.g., a compressor with under 1 dB of gain reduction or an EQ band under 0.5 dB), so the model is not asked to detect an effect that leaves almost no trace in the audio. MRSTFT scores the sound and knob skill scores the parameters, which is why we report both.</p>
       </details>
       <details class="q"><summary>What's the knob loss when an effect is off?</summary>
-        <p>It's masked: the knob error counts only the knobs of effects that are on in the true chain. Knob skill is also scored only where the effect is on.</p>
+        <p>It is masked, so the knob error counts only the knobs of effects that are on in the true chain, since the knobs of an effect that is off do not change the sound and there is nothing in the audio to learn them from. Knob skill is also scored only where the effect is on.</p>
       </details>
 
       <h3>The numbers</h3>
@@ -633,62 +633,62 @@
         <p>No. 0.492 is the first run and the reference model; the second run (0.504) was trained later to measure noise. The same goes for the best model: 0.413 is the first run, 0.443 the second.</p>
       </details>
       <details class="q"><summary>Why a second run for the best model but not for baseline + slot readout?</summary>
-        <p>Training budget. The best model's second run was trained as the noise ruler. Baseline + slot readout has one run, so its own run-to-run spread isn't measured, though its formal call holds against both runs of our baseline.</p>
+        <p>Training budget was the limit. The best model's second run was trained as the noise ruler, and baseline + slot readout has one run, so its own run-to-run spread has not been measured, though its formal call holds against both runs of our baseline.</p>
       </details>
       <details class="q"><summary>Are the knob improvements from the conv layer, the hand features or the label fix?</summary>
-        <p>Not the hand features: every model in our baseline's family has them. The label fix removed a false "vocals clip on" label from short chains; its effect on MRSTFT was assumed to be zero and wasn't measured. Baseline + slot readout, which has neither the fix nor the conv layer, separates the parts: its EQ skill matches the best model's, and its median delay miss is 74 ms against the best model's 40 ms.</p>
+        <p>The hand features can be ruled out, since every model in our baseline's family has them. The label fix removed a false "vocals clip on" label from short chains, and its effect on MRSTFT was assumed to be zero and was not measured. Baseline + slot readout, which has neither the fix nor the conv layer, separates the parts, with EQ skill that matches the best model's and a median delay miss of 74 ms against the best model's 40 ms.</p>
       </details>
       <details class="q"><summary>Frozen published encoders against end-to-end models isn't apples to apples. Isn't the 2x gap just that?</summary>
-        <p>Largely, yes. The same designs trained our way land at 0.485 (StemFX's design) and 0.463 (FX-Encoder++'s design at 70k steps), next to our baseline. The frozen rows test released weights through a readout trained on 50,000 examples without the label fix, and 761 of the 1,000 queries were used to pick each readout's best epoch, which favours them; the other 239 queries give the same picture. An earlier frozen-against-frozen check, with the same readout for every encoder, still favoured ours: 0.636 against 0.842 to 0.871.</p>
+        <p>Largely, yes. The same designs trained from scratch on our data land at 0.485 (StemFX's design) and 0.463 (FX-Encoder++'s design at 70k steps), next to our baseline. The frozen rows test released weights through a readout trained on 50,000 examples without the label fix, and 761 of the 1,000 queries were used to pick each readout's best epoch, which favours them, although the other 239 queries give the same picture. An earlier frozen-against-frozen check, with the same readout for every encoder, still favoured ours (0.636 against 0.842 to 0.871).</p>
       </details>
       <details class="q"><summary>How does the frozen readouts' budget compare with your training?</summary>
         <p>Each frozen readout gets 50,000 training examples and up to 40 epochs. Our models train for 108,000 updates at batch 256, about 27.6M pair presentations.</p>
       </details>
       <details class="q"><summary>The FX-Encoder++ design trained your way scores below your baseline. Is that settled?</summary>
-        <p>No. It's a snapshot at 70k of 108k steps from one run: 0.463 against our baseline's 0.492, a 5.9% gap, with a paired interval of -0.046 to -0.013 MRSTFT that doesn't cross zero. That gap sits inside the baseline family's run-to-run spread of about 6%, and this design's own spread isn't measured, so there's no formal call. Level with our baseline at 70k, one run; the 108k score goes in the paper.</p>
+        <p>No. The number is a snapshot at 70k of 108k steps from one run, 0.463 against our baseline's 0.492, a 5.9% gap with a paired interval of -0.046 to -0.013 MRSTFT that does not cross zero. That gap sits inside the baseline family's run-to-run spread of about 6%, and this design's own spread has not been measured, so there is no formal call, and we read the design as level with our baseline (within run-to-run noise), one run at 70k of 108k steps. The 108k score goes in the paper.</p>
       </details>
       <details class="q"><summary>Is there a ceiling? What does rendering the true settings score?</summary>
-        <p>Re-rendering the true chain reproduces the reference, so the floor is about 0 (0.003 or exactly 0 in our checks). MRSTFT between two different chains that sound alike hasn't been measured.</p>
+        <p>Re-rendering the true chain reproduces the reference, so the floor is about 0 (0.003 or exactly 0 in our checks). MRSTFT between two different chains that sound alike has not been measured.</p>
       </details>
       <details class="q"><summary>Are the bars means or medians?</summary>
-        <p>Means over the 1,000 queries. Per-query scores exist, but we haven't plotted their distribution.</p>
+        <p>They are means over the 1,000 queries. Per-query scores exist, but we have not plotted their distribution.</p>
       </details>
       <details class="q"><summary>Which effects drive the MRSTFT gap?</summary>
-        <p>It hasn't been broken down for the best model. The earlier study on our baseline, which swapped in the true value one knob group at a time, found delay time was its biggest fixable error, with low shelf and clipper near zero and compressor attack and release about 0.1% of MRSTFT.</p>
+        <p>We have not broken it down for the best model. The earlier study on our baseline, which swapped in the true value one knob group at a time, found delay time was its biggest fixable error, with low shelf and clipper near zero and compressor attack and release about 0.1% of MRSTFT.</p>
       </details>
       <details class="q"><summary>Is MRSTFT phase-blind? Would a delay that's 40 ms off barely register?</summary>
-        <p>It compares magnitudes only, so it ignores phase. How strongly it penalises a delay-time miss hasn't been measured, which is why delay time gets its own number (<a href="results.html#delay">how it's measured</a>).</p>
+        <p>It compares magnitudes only and so ignores phase, and because we have not measured how strongly it penalises a delay-time miss, we report delay time as its own number (<a href="results.html#delay">how it is measured</a>).</p>
       </details>
       <details class="q"><summary>Is a 40 ms delay miss good? Can delay time even be read from the audio?</summary>
-        <p>Delay time runs 50 to 500 ms. 40 ms is the best model's median miss over the 464 stems with a delay in the 1,000 held-out clips, and 33% land within 10%. In our own listening, not a controlled test, that is still a different echo. The lag is in the audio: an autocorrelation of the processed minus the dry signal found it on 107 of 107 stems we checked.</p>
+        <p>Delay time runs from 50 to 500 ms, and 40 ms is the best model's median miss over the 464 stems with a delay in the 1,000 held-out clips, with 33% landing within 10% of the true time. In our own listening, not a controlled test, that is still a different echo. The lag can be read from the audio, since an autocorrelation of the processed minus the dry signal found it on 107 of 107 stems we checked.</p>
       </details>
       <details class="q"><summary>Is switch accuracy reported?</summary>
-        <p>As AUROC per effect for the best model: from 0.884 (low shelf) to 0.999 (LPF), with compressor 0.986, delay 0.982 and reverb 0.998. We don't report F1.</p>
+        <p>We report it as AUROC per effect for the best model, which ranges from 0.884 (low shelf) to 0.999 (LPF), with compressor 0.986, delay 0.982 and reverb 0.998. We do not report F1.</p>
       </details>
       <details class="q"><summary>The compressor is near guessing. Is that the data, the representation, or the audio?</summary>
-        <p>The best model's skill is 0.05 for ratio, 0.07 for attack and 0.02 for release; threshold is 0.51. Ratio is scored linearly (1.5 to 10), and rescoring it on a log scale changes almost nothing (0.050 to 0.055). Likely causes: tokens and conv fields average over envelope changes of a few milliseconds, and threshold, ratio and auto makeup gain trade off against each other. We don't have a measurement-based ceiling for the compressor knobs.</p>
+        <p>The best model's skill is 0.05 for ratio, 0.07 for attack and 0.02 for release; threshold is 0.51. Ratio is scored linearly (1.5 to 10), and rescoring it on a log scale changes almost nothing (0.050 to 0.055). We believe two causes are likely, namely that tokens and conv fields average over envelope changes of a few milliseconds, and that threshold, ratio and auto makeup gain trade off against each other (e.g., a lower threshold with a gentler ratio can give gain reduction similar to a higher threshold with a steeper one). We do not have a measurement-based ceiling for the compressor knobs.</p>
       </details>
 
       <h3>Data and effects</h3>
       <details class="q"><summary>How much training data, and are the stems separated or from the studio?</summary>
-        <p>Both. FMA's 20,000-track subset, split into stems with SCNet XL (80,000 stem files), plus MoisesDB studio stems summed to 4 classes. Training uses 10 s windows at 44.1 kHz, about 27.6M pair presentations in all. Hours of audio, distinct pairs and separator artefacts in the dry stems haven't been studied.</p>
+        <p>Both. We use FMA's 20,000-track subset, split into stems with SCNet XL (80,000 stem files), plus MoisesDB studio stems summed to 4 classes. Training uses 10 s windows at 44.1 kHz, about 27.6M pair presentations in all. We have not counted hours of audio or distinct pairs, and we have not studied separator artefacts in the dry stems.</p>
       </details>
       <details class="q"><summary>How are training chains sampled?</summary>
-        <p>Each effect switches on with a per-stem probability (for vocals: compressor 0.75, reverb 0.6, delay 0.35). Knob values come 70% of the time from a realistic per-stem range and 30% from the full range. Effects too weak to hear are labelled off.</p>
+        <p>Each effect switches on with a per-stem probability (for vocals: compressor 0.75, reverb 0.6, delay 0.35). Knob values come 70% of the time from a realistic per-stem range and 30% from the full range, so most training chains resemble ordinary mixing settings while the extremes of each knob are still covered. Effects too weak to hear are labelled off.</p>
       </details>
       <details class="q"><summary>Do training and the held-out clips share songs? Which library renders which test?</summary>
-        <p>The songs are disjoint. The 1,000 held-out clips use the same effect strip as training, so it's in-domain. Pedalboard is used for testing only, so that test is out of domain for every model.</p>
+        <p>The songs are disjoint. The 1,000 held-out clips use the same effect strip as training, so that test is in-domain. Pedalboard is used for testing only, so that test is out of domain for every model.</p>
       </details>
       <details class="q"><summary>What exactly are the effects?</summary>
-        <p><b>Filters.</b> HPF and LPF are Butterworth, order 1 or 2 (6 or 12 dB/oct, predicted as a two-way choice). The shelves and the peak are RBJ biquads with shelf Q fixed at 0.707, matching MultiAFx's filters.</p>
-        <p><b>Compressor.</b> torchcomp: a one-pole 5 ms RMS detector, stereo-linked, hard knee, auto makeup gain, threshold relative to its input's RMS peak, attack 1 to 50 ms, release 50 to 500 ms.</p>
-        <p><b>Saturation and clipper.</b> Saturation is tanh, rescaled to the input's sample peak, with no oversampling. The clipper is a hard clip relative to its input's sample peak. Saturation runs first.</p>
-        <p><b>Delay.</b> A feedback comb: 50 to 500 ms, feedback 0 to 0.5, no filter in the loop and no tempo sync.</p>
-        <p><b>Reverb.</b> Freeverb, the algorithm behind Pedalboard's reverb, with fixed tunings, so the render is deterministic.</p>
-        <p><b>Output.</b> Gain, a balance-style pan, and mid/side width. Every knob's range is on the <a href="results.html#knob-ranges">results page</a>.</p>
+        <p><b>The filters</b> are Butterworth for HPF and LPF, of order 1 or 2 (6 or 12 dB/oct, predicted as a two-way choice), and RBJ biquads for the shelves and the peak, with shelf Q fixed at 0.707, matching MultiAFx's filters.</p>
+        <p><b>The compressor</b> is torchcomp, with a one-pole 5 ms RMS detector, stereo linking, a hard knee, auto makeup gain, a threshold relative to its input's RMS peak, attack from 1 to 50 ms and release from 50 to 500 ms.</p>
+        <p><b>Saturation and clipper</b> are separate stages, and saturation runs first. Saturation is tanh, rescaled to the input's sample peak, with no oversampling, and the clipper is a hard clip relative to its input's sample peak.</p>
+        <p><b>The delay</b> is a feedback comb from 50 to 500 ms with feedback from 0 to 0.5, no filter in the loop and no tempo sync.</p>
+        <p><b>The reverb</b> is Freeverb, the algorithm behind Pedalboard's reverb, with fixed tunings so the render is deterministic.</p>
+        <p><b>The output stage</b> has gain, a balance-style pan and mid/side width. Every knob's range is on the <a href="results.html#knob-ranges">results page</a>.</p>
       </details>
       <details class="q"><summary>Why are saturation and clipper separate? Where are the limiter, de-esser and widener?</summary>
-        <p>The list was chosen as console basics matched to the Pedalboard test, where distortion and clipping are separate effects. A limiter, gate, de-esser, a second peak band, and chorus and phaser were left for later. Stereo width lives in the output stage.</p>
+        <p>We chose the list as console basics matched to the Pedalboard test, where distortion and clipping are separate effects, which is why saturation and clipper are separate here. A limiter, gate, de-esser, a second peak band, and chorus and phaser were left for later, and stereo width is handled in the output stage.</p>
       </details>
     </div>
   </section>
@@ -720,7 +720,7 @@
 <p>Data: FMA stems split with SCNet, plus MoisesDB studio stems. Public datasets and open-source effects only. No UA plugins, models or data.</p>
 <p>Effects: MultiAFx EQ, torchcomp compressor, tanh saturation, hard clip, delay, Freeverb. Fixed order, 44.1 kHz, 10 s clips. Knob ranges and delay scoring: <a href="results.html#knob-ranges">results page</a>.</p>
 <p>Michael Clemens, Oleksandr Tsymbalenko, Tim Stilson, Scott Van Duyne, Universal Audio. SANE 2026, MIT, 30 October 2026, poster AM-10. Contact: <a href="mailto:mclemens@uaudio.com">mclemens@uaudio.com</a>.</p>
-<p>Site code is MIT licensed and the page text and figures are CC BY 4.0; audio credits are on the <a href="listen.html#credits">listen page</a>.</p>
+<p>Site code is MIT licensed and the page text and figures are CC BY 4.0; audio credits are on the <a href="index.html#credits">front page</a>.</p>
   </div>
 </footer>
 </body>

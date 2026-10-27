@@ -13,57 +13,65 @@
   <div class="wrap">
     <a class="brand" href="index.html">FX-JEPA<span>SANE 2026</span></a>
     <nav class="nav" aria-label="Pages">
-      <a href="index.html" aria-current="page">Poster</a>
+      <a href="index.html" aria-current="page">Listen</a>
+      <a href="poster.html">Poster</a>
       <a href="architecture.html">Architecture</a>
       <a href="results.html">Results</a>
-      <a href="listen.html">Listen</a>
     </nav>
   </div>
 </header>
 
 <main class="wrap">
   <div class="title-block">
-    <div class="kicker">Poster AM-10</div>
     <h1><span class="model">FX-JEPA</span>Learning Effect-Aware Audio Representations for Reference-Based Audio Effect Transfer</h1>
     <p class="headline">
 One learned readout per stem and effect cut the spectral error by 10.9% against our baseline.
     </p>
     <p class="authors">Michael Clemens, Oleksandr Tsymbalenko, Tim Stilson, Scott Van Duyne</p>
     <p class="affil"><span>Universal Audio</span><span>SANE 2026, MIT, 30 October 2026</span><span>Poster AM-10</span></p>
+    <p class="actions"><a href="poster.html">See the poster</a><a href="poster.pdf">Download the poster (PDF)</a></p>
   </div>
 
-  <figure class="poster">
-    <a class="img" href="poster.pdf" aria-label="Open the poster as a PDF">
-      <img src="poster.png" alt="The FX-JEPA poster: the problem; the pipeline, where dry and processed stems go into FX-JEPA, which predicts a grid of settings that is rendered once and compared with the reference using MRSTFT; three headline numbers; the model with its loss; ablations, with paired knob-skill bars; results on 1,000 held-out clips; and a band of terms." width="3000" height="2000">
-    </a>
-    <figcaption><a href="poster.pdf">Download the poster (PDF)</a><span>Click the image for the full-size PDF.</span></figcaption>
-  </figure>
 
-  <section class="prose">
-    <h2>The story</h2>
-    <p>A mix engineer has a reference and wants their dry stems to sound like it. FX-JEPA takes the dry stems and the same stems processed, and predicts the chain: for each of 4 stems (vocals, bass, drums, other), which of 11 effects are on and where their 28 knobs sit. The dry stems are then rendered once through that chain. In its current form the task is chain inversion: the reference is the same stems run through our own effects strip, not a different song or a finished mix. The main result is about the readout, the part that turns what the model hears into settings. Giving every stem and effect its own named slot, 44 in all, cuts the spectral error of the render by 10.9% against our baseline. We measure that error as MRSTFT, the multi-resolution STFT distance between our render and the reference, over all 8 stem channels (4 stems, left and right), on 1,000 held-out clips from 929 songs not seen in training. Lower is better; doing nothing scores 1.17. Adding a small conv first layer under the transformer gives our best model, 16% below our baseline (a second training run gave 10%). That model was also trained with corrected vocals-clipper labels and the baseline was not, so the 16% includes a label change we have not isolated.</p> The FX-Encoder++ design trained our way is level with our baseline (within run-to-run noise, one run at 70k of 108k steps).</p>
-    <p>We don't credit the improvement to the JEPA objective. On an out-of-domain held-out test scored once, with earlier models, JEPA training tied the same model trained on the knob loss alone. Published effect encoders, with their released weights frozen and a small readout on top, score about twice our error; trained our way, the same designs land near our baseline, so most of that gap is training. The model returns one chain per stem. No users or workflows have been studied yet; what an engineer would do with the output is untested.</p>
+  <section class="prose" id="listen">
+    <h2>Listening examples</h2>
+    <p class="lede">Each example has three versions of the same clip: the dry stems, the processed version, and the dry stems rendered through the settings FX-JEPA predicted from the first two.</p>
   </section>
 
+  <div id="examples" aria-live="polite">
+    <noscript><div class="empty-state"><h2>JavaScript is off</h2><p>The players need JavaScript. The clip list is in <a href="clips/manifest.json">clips/manifest.json</a>.</p></div></noscript>
+  </div>
+
+  <section id="credits">
+    <h2>Credits</h2>
+    <div class="prose">
+    <p>Each row plays one version, and switching rows within an example keeps the playback position, which makes it possible to flip between the processed version and our render at the same moment in the clip. We level-matched the three versions of each clip before encoding, because in a quick A/B the louder version tends to sound better, and without matching a level difference could pass for a difference in processing.</p>
+    <p class="note">Each example is one of the 1,000 held-out clips and comes from a Free Music Archive (FMA) song. The processed version was made with our own effect strip, built from open-source effects, using a known chain, so these examples are in-domain, and the render uses the chain predicted by our best model (conv first layer + slot readout). Because the dry stems are separated from a finished FMA release, they already carry the artist's own mix, and "dry" here means only that they come before our chain. Stems that were silent in the excerpt are left out of all three versions, as they are in scoring. These clips illustrate the task and are not a listening test, and a handful of examples cannot show average quality. The <a href="results.html">results page</a> has the measured numbers: across the 1,000 held-out clips, handing back the dry audio scores 1.17 MRSTFT and the best model averages 0.413, where MRSTFT is a spectral distance between our render and the reference and lower is better.</p>
+    <p class="note">We chose the 8 examples from held-out clips of FMA tracks whose Creative Commons license allows derivatives, picking them so that all 11 effect types appear somewhere in the set. Their MRSTFT runs from 0.156 to 0.550 against the mean of 0.413 over all 1,000 held-out clips, so 5 of the 8 are better than average and the last three (0.422, 0.446 and 0.550) are worse.</p>
+      <p>Every song comes from the <a href="https://freemusicarchive.org/">Free Music Archive</a> under a Creative Commons license that allows derivatives. We excerpted 10 seconds of each song, split it into four stems, processed each stem through an effects chain (the true one or the predicted one), summed the stems again, level-matched the three versions and encoded them as MP3. Nothing here comes from Universal Audio products or data.</p>
+    </div>
+    <div class="table-scroll">
+<table>
+<thead><tr><th>Track</th><th>Artist</th><th>License</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>simple</td><td>Orbique</td><td><a href="https://creativecommons.org/licenses/by-sa/3.0/" title="Attribution-ShareAlike 3.0 International">CC BY-SA 3.0</a></td><td><a href="https://freemusicarchive.org/music/Orbique/none_given_1578/17_-_orbique_-_simple_-_always_now_never_after/">FMA track page</a></td></tr>
+<tr><td>Sia</td><td>Graham Bole</td><td><a href="https://creativecommons.org/licenses/by/4.0/" title="Attribution">CC BY 4.0</a></td><td><a href="https://freemusicarchive.org/music/Graham_Bole/First_New_Day/Graham_Bole_-_02_-_Sia/">FMA track page</a></td></tr>
+<tr><td>Brundlefly</td><td>The Zombie Dandies</td><td><a href="https://creativecommons.org/licenses/by/4.0/" title="Attribution">CC BY 4.0</a></td><td><a href="https://freemusicarchive.org/music/Zombie_Dandies/Dandys_Little_Monsters/The_Zombie_Dandies_-_Dandys_Little_Monsters_-_11_Brundlefly/">FMA track page</a></td></tr>
+<tr><td>Life is Too Dark to Laugh So Hard</td><td>DJ Dougernaut</td><td><a href="https://creativecommons.org/licenses/by/4.0/" title="Attribution">CC BY 4.0</a></td><td><a href="https://freemusicarchive.org/music/DJ_Dougernaut/DJ_Dougernaut_Singles/Life_is_Too_Dark_to_Laugh_So_Hard/">FMA track page</a></td></tr>
+<tr><td>Follow That</td><td>BrokeMC</td><td><a href="https://creativecommons.org/licenses/by/3.0/us/" title="Attribution 3.0 United States">CC BY 3.0 US</a></td><td><a href="https://freemusicarchive.org/music/BrokeMC/Seeing_Things/Follow_That/">FMA track page</a></td></tr>
+<tr><td>What You Know</td><td>Droopies</td><td><a href="https://creativecommons.org/licenses/by/4.0/" title="Attribution">CC BY 4.0</a></td><td><a href="https://freemusicarchive.org/music/Droopies/Droopies/Droopies_-_Droopies_-_09_What_You_Know/">FMA track page</a></td></tr>
+<tr><td>Big Plans (J. Glaze Remix)</td><td>Kellee Maize &amp; J. Glaze Productions</td><td><a href="https://creativecommons.org/licenses/by/4.0/" title="Attribution">CC BY 4.0</a></td><td><a href="https://freemusicarchive.org/music/Kellee_Maize__J_Glaze_Productions/The_Remixes/Big_Plans_J_Glaze_Remix/">FMA track page</a></td></tr>
+<tr><td>Stop</td><td>Vienna Ditto</td><td><a href="https://creativecommons.org/licenses/by/4.0/" title="Attribution">CC BY 4.0</a></td><td><a href="https://freemusicarchive.org/music/Vienna_Ditto/Ugly_1501/Vienna_Ditto_-_Ugly_-_03_Stop/">FMA track page</a></td></tr>
+</tbody>
+</table>
+    </div>
+  </section>
   <section>
     <div class="grid g3">
       <a class="card" href="architecture.html"><h3>Architecture</h3><p>How the model reads the audio, every term defined, the four published encoders we compare against, and questions people ask.</p><span class="go">Read the walkthrough</span></a>
-      <a class="card" href="results.html"><h3>Results</h3><p>MRSTFT for every model, the second runs, which part helped, every knob's range and how it's scored, and how MRSTFT is computed.</p><span class="go">See the numbers</span></a>
-      <a class="card" href="listen.html"><h3>Listen</h3><p>Dry stems, the processed version, and our render from the predicted settings, side by side.</p><span class="go">Open the players</span></a>
+      <a class="card" href="results.html"><h3>Results</h3><p>MRSTFT for every model, the second runs, which part helped, every knob's range and how it is scored, and how MRSTFT is computed.</p><span class="go">Read the results</span></a>
+      <a class="card" href="poster.html"><h3>Poster</h3><p>The poster as printed, the task and the main result in one page, and what we do not claim.</p><span class="go">See the poster</span></a>
     </div>
-  </section>
-
-  <section class="caveats">
-    <h2>What we don't claim yet</h2>
-<ul>
-  <li>The same 1,000 held-out clips were used to select the models; songs outside this set have not been tested.</li>
-  <li>The best model was trained with corrected vocals-clipper labels; our baseline was not.</li>
-  <li>No listening test has been run on these models; the score is spectral only. Statements about what is audible come from our own listening, not a controlled test.</li>
-  <li>No users or engineers have been studied; the workflow around the model is untested.</li>
-  <li>Compressor ratio, attack and release remain near the guessing level.</li>
-  <li>The abstract&#x27;s 17% was a different test: earlier models, an out-of-domain Pedalboard set, against StemFX&#x27;s frozen encoder with our readout.</li>
-  <li>Delay feedback and reverb width are also near guessing. In our own listening, not a controlled test, reverb width is close to inaudible on our material.</li>
-</ul>
   </section>
 
   <section class="prose">
@@ -77,8 +85,10 @@ One learned readout per stem and effect cut the spectral error by 10.9% against 
 <p>Data: FMA stems split with SCNet, plus MoisesDB studio stems. Public datasets and open-source effects only. No UA plugins, models or data.</p>
 <p>Effects: MultiAFx EQ, torchcomp compressor, tanh saturation, hard clip, delay, Freeverb. Fixed order, 44.1 kHz, 10 s clips. Knob ranges and delay scoring: <a href="results.html#knob-ranges">results page</a>.</p>
 <p>Michael Clemens, Oleksandr Tsymbalenko, Tim Stilson, Scott Van Duyne, Universal Audio. SANE 2026, MIT, 30 October 2026, poster AM-10. Contact: <a href="mailto:mclemens@uaudio.com">mclemens@uaudio.com</a>.</p>
-<p>Site code is MIT licensed and the page text and figures are CC BY 4.0; audio credits are on the <a href="listen.html#credits">listen page</a>.</p>
+<p>Site code is MIT licensed and the page text and figures are CC BY 4.0; audio credits are on the <a href="index.html#credits">front page</a>.</p>
   </div>
 </footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/7.10.1/wavesurfer.min.js" integrity="sha384-6btDZnP+N8oQ9kXtzR8/azNk8kVhH47OfW2Yihmw4bi0q4BYNI584iZPIiUqUOj/" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="assets/listen.js"></script>
 </body>
 </html>

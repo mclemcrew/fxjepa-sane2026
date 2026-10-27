@@ -13,16 +13,15 @@
   <div class="wrap">
     <a class="brand" href="index.html">FX-JEPA<span>SANE 2026</span></a>
     <nav class="nav" aria-label="Pages">
-      <a href="index.html">Poster</a>
+      <a href="index.html">Listen</a>
+      <a href="poster.html">Poster</a>
       <a href="architecture.html">Architecture</a>
       <a href="results.html" aria-current="page">Results</a>
-      <a href="listen.html">Listen</a>
     </nav>
   </div>
 </header>
 
 <main class="wrap">
-  <div class="kicker">Results</div>
   <h1 class="page-title">Results on 1,000 held-out clips</h1>
   <p class="lede">Every number here is MRSTFT, the multi-resolution STFT distance between our render and the reference, over all 8 stem channels (4 stems, left and right), on 1,000 held-out clips from 929 songs not seen in training, scored the same way for every model. Lower is better. Handing back the dry audio scores 1.17.</p>
 
@@ -107,7 +106,7 @@
   </figure>
 
   <section>
-    <h2>The numbers</h2>
+    <h2>MRSTFT for every model</h2>
     <div class="table-scroll">
 <table>
 <thead><tr><th>Row</th><th>What it is</th><th class="num">MRSTFT</th></tr></thead>
@@ -149,17 +148,17 @@ Model comparison
   <section id="noise" class="prose">
     <h2>Second runs</h2>
 <p>Run-to-run noise bounds are about 6% for the baseline family and 12% for the best model (98.75% bootstrap bounds over songs; the observed second-run gaps are 2.4% and 7.3%). Spectral only; no listening test.</p>
-    <p>Two models were trained twice with the same recipe and a different random seed: our baseline (first run 0.492, second run 0.504) and the best model (first run 0.413, second run 0.443). On the chart the bar is the first run, and it's the one every comparison on this page uses; the hollow dot on the FX-JEPA row is the best model's second run. Our baseline's second run is in the table. We didn't keep the better of the two. Every other row is a single run.</p>
-    <p>The second runs are our ruler for noise. Two runs of our baseline's recipe differ by up to about 6%, and two runs of the best model's recipe by up to about 12% (98.75% bounds from a paired bootstrap over songs). With one pair per recipe these are rulers, not a seed distribution. The observed gaps between the two runs are 2.4% (0.492 to 0.504) and 7.3% (0.413 to 0.443); the bounds are wider than the observed gaps because they come from the bootstrap over songs. A gap smaller than that is treated as noise unless a formal call says otherwise.</p>
-    <p>A <b>formal call</b> is a pre-registered decision: the endpoint, the interval level and the rule were fixed before the models were trained. The interval comes from a paired bootstrap that resamples songs, not stems, 10,000 times, because stems from one song move together. A call only counts if the new model also comes out ahead of the baseline's second run. Two calls are on the poster: baseline + slot readout against our baseline (-10.9%) and the best model against our baseline (-16.1%, interval -20% to -12%). The StemFX design trained our way has no formal call and sits inside our baseline's noise. The FX-Encoder++ design has no formal call either; <a href="#fxencpp">see below</a>.</p>
-    <p>The conv first layer and the slot readout don't show an interaction beyond adding up: the measured interaction is inside the run-to-run floor, so we don't claim one.</p>
+    <p>A single training run cannot separate a difference between two models from the luck of the random seed, so we trained two models twice with the same recipe and a different seed, our baseline (first run 0.492, second run 0.504) and the best model (first run 0.413, second run 0.443). On the chart each bar is the first run, which is the run every comparison on this page uses, and the hollow dot on the FX-JEPA row is the best model's second run; our baseline's second run is in the table. We did not keep the better of the two runs, and every other row is a single run.</p>
+    <p>We use the second runs as a ruler for noise. From a paired bootstrap over songs (98.75% bounds), two runs of our baseline's recipe may differ by up to about 6%, and two runs of the best model's recipe by up to about 12%. The observed gaps between the two runs are smaller, 2.4% (0.492 to 0.504) and 7.3% (0.413 to 0.443), because the bounds also carry the uncertainty from which songs happen to be in the test set. With one pair of runs per recipe, these bounds give a rough scale for seed noise and say little about its distribution, and we treat any gap smaller than the bound as noise unless a formal call says otherwise.</p>
+    <p>A <b>formal call</b> is a pre-registered decision, in which the endpoint, the interval level and the decision rule were fixed before the models were trained, so that the test could not be chosen after seeing which one favoured the new model. The interval comes from a paired bootstrap that resamples songs rather than stems, 10,000 times, because stems from one song move together, and resampling them one by one would make the interval narrower than the evidence supports. A call counts only if the new model also comes out ahead of our baseline's second run. The poster carries two calls, baseline + slot readout against our baseline (-10.9%) and the best model against our baseline (-16.1%, interval -20% to -12%). The StemFX design trained from scratch on our data has no formal call and sits inside our baseline's noise, and the FX-Encoder++ design has no formal call either (<a href="#fxencpp">see below</a>).</p>
+    <p>We do not claim an interaction between the conv first layer and the slot readout (i.e., a combined gain larger than the two gains added together), because the measured interaction falls inside the run-to-run floor.</p>
   </section>
 
   <section id="fxencpp">
     <h2>The FX-Encoder++ design, trained our way</h2>
     <div class="prose">
-      <p>To separate a published design from its released weights, we trained FX-Encoder++'s encoder from random weights with our baseline's data, loss, batch size and seed. It has no hand features. At 70,000 of its 108,000 training steps it scores 0.463 against our baseline's 0.492, a 5.9% gap. The paired difference per query is -0.029 MRSTFT, with a 95% interval of -0.046 to -0.013 from resampling songs. That interval is reported, not a pre-registered call; the gap is inside the baseline family's run-to-run spread of about 6%, and this design's own spread isn't measured. So the reading is: level with our baseline at 70k, one run. On the 239 queries that no outside readout used for picking an epoch, the gap is smaller: 0.489 against 0.494 (-1%).</p>
-      <p>The slot readout alone takes our baseline down 10.9%, and that is a formal call.</p>
+      <p>A frozen checkpoint tests the released weights on our task and says little about the design behind them, so to separate the two we trained FX-Encoder++'s encoder from scratch (i.e., from random weights) with our baseline's data, loss, batch size and seed; this design has no hand features. At 70,000 of its 108,000 training steps it scores 0.463 against our baseline's 0.492, a 5.9% gap, and the paired difference per query is -0.029 MRSTFT with a 95% interval of -0.046 to -0.013 from resampling songs. We report that interval without treating it as a pre-registered call, because the gap is inside the baseline family's run-to-run spread of about 6% and this design's own spread has not been measured. We therefore read it as level with our baseline (within run-to-run noise), one run at 70k of 108k steps. On the 239 queries that no outside readout used for picking an epoch, the gap is smaller, 0.489 against 0.494 (-1%).</p>
+      <p>For comparison, changing only the readout of our baseline lowers MRSTFT by 10.9%, a formal call, so in our runs the readout moves the score more than this change of encoder design does.</p>
     </div>
     <figure class="fig small">
       <div class="frame">
@@ -212,10 +211,10 @@ Model comparison
     <div class="table-scroll">
 <table>
 <thead><tr><th>Training steps</th><th class="num">10k</th><th class="num">20k</th><th class="num">30k</th><th class="num">40k</th><th class="num">50k</th><th class="num">60k</th><th class="num">70k</th><th class="num">Our baseline, for reference</th></tr></thead>
-<tbody><tr><td>MRSTFT</td><td class="num">0.582</td><td class="num">0.515</td><td class="num">0.494</td><td class="num">0.509</td><td class="num">0.473</td><td class="num">0.450</td><td class="num">0.463</td><td class="num">0.492</td></tr></tbody>
+<tbody><tr><td>MRSTFT at that step</td><td class="num">0.582</td><td class="num">0.515</td><td class="num">0.494</td><td class="num">0.509</td><td class="num">0.473</td><td class="num">0.450</td><td class="num">0.463</td><td class="num">0.492</td></tr></tbody>
 </table>
     </div>
-    <p class="note">Scored at fixed steps, so no held-out clip picked the snapshot. The learning rate is constant, so an earlier snapshot is a less-trained model, not a different one. The 40k point sitting above our baseline shows how much a single snapshot can move. The snapshot shown is the latest one scored; the 108k score goes in the paper.</p>
+    <p class="note">We scored snapshots at fixed steps, so no held-out clip was used to pick one. Because the learning rate is constant, an earlier snapshot is a less-trained version of the same model, and the 40k point, which sits above our baseline, shows how much a single snapshot can move. The snapshot shown is the latest one scored; the 108k score goes in the paper.</p>
   </section>
 
   <section id="knobs">
@@ -307,15 +306,15 @@ Ablations
 </table>
     </div>
     <div class="prose">
-      <p class="note">Knob skill is 0 for always guessing the typical value and 1 for perfect, scored only on stems where that effect is on. 0.47 means about half the error of guessing, not 47% correct. The median misses are on the same stems; for delay time that's 464 stems (<a href="#delay">how delay-time error is measured</a>).</p>
-      <p>The bars compare our baseline with the best model, so they mix both changes. Baseline + slot readout, which has no conv first layer, separates them. The EQ improvement comes from the readout: the slot readout alone reaches 0.78 skill on peak frequency and 0.71 on peak gain. So does most of the reverb improvement: room size goes from 0.18 to 0.30 with the readout alone and 0.39 with both changes, damping from 0.03 to 0.14 and 0.18. Delay time is mostly the conv first layer: the median miss is 93 ms for our baseline, 74 ms with the readout alone and 40 ms with both.</p>
+      <p class="note">The knobs are measured in units as different as octaves, decibels and milliseconds, so knob skill puts them on one scale by comparing the model's error with the error of always guessing the typical value, where 0 means no better than that guess and 1 means perfect; without this, a knob whose true values cluster tightly would look well predicted even if the model had learned nothing about it. Skill is scored only on stems where that effect is on, and 0.47 means about half the error of guessing (it is not a 47% hit rate). The median misses are on the same stems, which for delay time is 464 stems (<a href="#delay">how delay-time error is measured</a>).</p>
+      <p>Because the bars compare our baseline with the best model, they mix both changes, and baseline + slot readout, which has no conv first layer, is the model that separates them. The EQ improvement comes from the readout, since the slot readout alone reaches 0.78 skill on peak frequency and 0.71 on peak gain, and so does most of the reverb improvement (room size goes from 0.18 to 0.30 with the readout alone and to 0.39 with both changes, damping from 0.03 to 0.14 and 0.18). Delay time improves mostly with the conv first layer, with a median miss of 93 ms for our baseline, 74 ms with the readout alone and 40 ms with both, which is consistent with the reason the layer was added (a linear patch cannot mark where an echo starts).</p>
     </div>
   </section>
 
   <section id="knob-ranges">
     <h2>Knob ranges and how each knob is scored</h2>
     <div class="prose">
-      <p>Each stem has 11 effects with 28 knobs between them. Before the error is measured, every knob is mapped onto 0 to 1 over its range, on the scale in the table; training uses the same mapping. On a log scale a miss counts the same anywhere in the range in ratio terms, so frequency misses read as octaves, and Q, attack and release misses as "times off". Gains and thresholds are already in dB. The two filter slopes are a two-way choice, scored right or wrong. The typical miss is the median error on stems where the true chain has that effect on; the best model's column is its first run.</p>
+      <p>Each stem has 11 effects with 28 knobs between them. Before the error is measured, every knob is mapped onto 0 to 1 over its range on the scale given in the table, and training uses the same mapping. Frequencies, Q, attack and release use a log scale because these knobs are heard in ratios (e.g., a 100 Hz miss is a full octave at 100 Hz and a small fraction of one at 8 kHz), so on that scale a miss counts the same anywhere in the range and reads as octaves for frequency or as "times off" for Q, attack and release. Gains and thresholds are already in dB, and the two filter slopes are a two-way choice scored as right or wrong. The typical miss is the median error on stems where the true chain has that effect on, and the best model's column is its first run.</p>
     </div>
     <div class="table-scroll">
 <table class="knob-table">
@@ -352,23 +351,23 @@ Ablations
 </tbody>
 </table>
     </div>
-    <p class="note">"Knob units" means the knob's own range, shown in the Range column. For the slopes, the miss is the share of stems where the choice was wrong. Compressor ratio is scored linearly; rescoring it on a log scale barely changes its skill (best model 0.050 to 0.055), so it's near guessing on either scale.</p>
+    <p class="note">"Knob units" means the knob's own range, shown in the Range column. For the slopes, the miss is the share of stems where the choice was wrong. Compressor ratio is scored linearly; rescoring it on a log scale barely changes its skill (best model 0.050 to 0.055), so it is near guessing on either scale.</p>
 
     <h3 id="delay">How delay-time error is measured</h3>
     <div class="prose">
       <p>Delay time runs from 50 to 500 ms on a linear scale. The error we report is the median absolute miss of the predicted delay-time knob, in milliseconds, over the 464 stems in the 1,000 held-out clips whose true chain has the delay on. Every model is scored on the same 464 stems, and the predicted knob value counts even when the model switched the delay off. Our baseline misses by 93 ms at the median and the best model by 40 ms; 33% of the best model's stems land within 10% of the true time. In our own listening, not a controlled test, a 40 ms miss is still a different echo.</p>
-      <p>Delay time gets its own number because MRSTFT compares magnitude spectrograms and ignores phase, and how strongly MRSTFT penalises a delay-time miss hasn't been measured.</p>
+      <p>We report delay time as its own number because MRSTFT compares magnitude spectrograms and ignores phase, and we have not measured how strongly it penalises a delay-time miss, so a small change in MRSTFT could hide an audible difference in echo timing.</p>
     </div>
   </section>
 
   <section id="abstract" class="prose">
     <h2>About the 17% in the abstract</h2>
-    <p>The abstract reports a 17% reduction in spectral error. That was a different test: an out-of-domain held-out set, scored once, processed with Pedalboard effects on MUSDB18 test songs (200 queries from 50 songs), run on earlier models, against StemFX's frozen encoder with our readout. This page shows the 1,000 held-out clips instead: in-domain, on our own effect strip, with the newer models. Both tests give the same ordering, with our trained models ahead of every frozen published encoder under the same readout. Neither is a fresh-song confirmation yet.</p>
-    <p>The same Pedalboard test is also where the JEPA-trained model tied a control trained on the knob loss alone. That's why we don't credit the improvement to the JEPA objective.</p>
+    <p>The abstract reports a 17% reduction in spectral error from a different test, an out-of-domain held-out set scored once, processed with Pedalboard effects on MUSDB18 test songs (200 queries from 50 songs), run on earlier models and measured against StemFX's frozen encoder with our readout. This page instead reports the 1,000 held-out clips, which are in-domain, use our own effect strip and cover the newer models. Both tests give the same ordering, with our trained models ahead of every frozen published encoder under the same readout, although neither has yet been confirmed on fresh songs.</p>
+    <p>The same Pedalboard test is where the JEPA-trained model tied a control trained on the knob loss alone, which is why we do not credit the improvement to the JEPA objective.</p>
   </section>
 
   <section class="caveats">
-    <h2>What we don't claim yet</h2>
+    <h2>What we do not claim</h2>
 <ul>
   <li>The same 1,000 held-out clips were used to select the models; songs outside this set have not been tested.</li>
   <li>The best model was trained with corrected vocals-clipper labels; our baseline was not.</li>
@@ -385,10 +384,10 @@ Ablations
     <ol>
       <li>The model sees the dry stems and the processed stems once and predicts a chain: 44 switches and 112 knob values.</li>
       <li>The dry stems are rendered once through that chain with the same effect strip.</li>
-      <li>For each stem, left and right, the render is compared with the processed version using a <b>multi-resolution STFT distance</b>: both are turned into magnitude spectrograms at three window sizes (FFT 512, 1024 and 2048 with hop sizes 128, 256 and 512 and Hann windows the length of the FFT; log magnitudes use an epsilon of 1e-5; short windows catch transients, long ones catch tone), and spectral convergence plus the L1 distance of log magnitudes is averaged over the three. This is the distance StemFX uses.</li>
-      <li>The 8 channels (4 stems, left and right) are averaged. Stems that are silent in a clip are zeroed so they don't count. That's MRSTFT for one query; the reported number is the mean over the 1,000 queries.</li>
+      <li>For each stem, left and right, the render is compared with the processed version using a <b>multi-resolution STFT distance</b>. Both are turned into magnitude spectrograms at three window sizes (FFT 512, 1024 and 2048 with hop sizes 128, 256 and 512, Hann windows the length of the FFT, and an epsilon of 1e-5 inside the log), and spectral convergence plus the L1 distance of log magnitudes is averaged over the three. We use several window sizes because any single STFT trades time detail for frequency detail, so short windows catch transients (e.g., a clipped drum hit) and long ones catch tone (e.g., an EQ boost), and a distance at one size would be partly blind to one of them. This is the distance StemFX uses, which keeps our numbers comparable with theirs.</li>
+      <li>The 8 channels (4 stems, left and right) are averaged, with stems that are silent in a clip zeroed so they do not count, which gives MRSTFT for one query; the reported number is the mean over the 1,000 queries.</li>
     </ol>
-    <p>0 means the render is identical to the processed version, and re-rendering the true chain scores close to 0. Handing back the dry audio unchanged scores 1.17. MRSTFT is unitless, computed per stem rather than on a summed mix, and it's a spectral match, not a listening score.</p>
+    <p>A score of 0 means the render is identical to the processed version, and re-rendering the true chain scores close to 0, while handing back the dry audio unchanged scores 1.17. MRSTFT is unitless and computed per stem rather than on a summed mix, so an error on one stem cannot hide under the others in the sum. It measures a spectral match and is not a listening score.</p>
     <p><b>Knob skill</b>, used for the bars, is 1 minus the model's knob error divided by the error of always guessing the typical value, on stems where the effect is on. The scale each knob is scored on is in the <a href="#knob-ranges">knob table</a>.</p>
   </section>
 </main>
@@ -398,7 +397,7 @@ Ablations
 <p>Data: FMA stems split with SCNet, plus MoisesDB studio stems. Public datasets and open-source effects only. No UA plugins, models or data.</p>
 <p>Effects: MultiAFx EQ, torchcomp compressor, tanh saturation, hard clip, delay, Freeverb. Fixed order, 44.1 kHz, 10 s clips. Knob ranges and delay scoring: <a href="results.html#knob-ranges">results page</a>.</p>
 <p>Michael Clemens, Oleksandr Tsymbalenko, Tim Stilson, Scott Van Duyne, Universal Audio. SANE 2026, MIT, 30 October 2026, poster AM-10. Contact: <a href="mailto:mclemens@uaudio.com">mclemens@uaudio.com</a>.</p>
-<p>Site code is MIT licensed and the page text and figures are CC BY 4.0; audio credits are on the <a href="listen.html#credits">listen page</a>.</p>
+<p>Site code is MIT licensed and the page text and figures are CC BY 4.0; audio credits are on the <a href="index.html#credits">front page</a>.</p>
   </div>
 </footer>
 </body>
