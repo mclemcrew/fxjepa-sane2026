@@ -1,0 +1,1896 @@
+[
+ {
+  "id": "q0555",
+  "title": "simple",
+  "artist": "Orbique",
+  "fma_track_id": 71302,
+  "license": "Attribution-ShareAlike 3.0 International",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+  "fma_url": "https://freemusicarchive.org/music/Orbique/none_given_1578/17_-_orbique_-_simple_-_always_now_never_after/",
+  "dry": "clips/q0555_dry.mp3",
+  "processed": "clips/q0555_wet.mp3",
+  "predicted": "clips/q0555_pred.mp3",
+  "chain_true": {
+   "stems": {
+    "vocals": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 33.84,
+       "slope": 12.0
+      }
+     },
+     {
+      "effect": "delay",
+      "params": {
+       "time_ms": 190.6,
+       "feedback": 0.3589,
+       "mix": 0.2115
+      }
+     },
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.7977,
+       "damping": 0.3806,
+       "wet": 0.4648,
+       "dry": 0.7117,
+       "width": 0.9169
+      }
+     },
+     {
+      "effect": "out",
+      "params": {
+       "gain_db": -5.9,
+       "pan": 0.03667,
+       "width": 1.195
+      }
+     }
+    ],
+    "bass": [
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 1780.0,
+       "gain_db": 8.779,
+       "q": 2.012
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -5.465,
+       "ratio": 4.552,
+       "attack_ms": 6.924,
+       "release_ms": 78.94
+      }
+     }
+    ],
+    "drums": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 412.1,
+       "slope": 12.0
+      }
+     },
+     {
+      "effect": "low_shelf",
+      "params": {
+       "freq": 182.4,
+       "gain_db": 2.424
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -10.8,
+       "ratio": 6.752,
+       "attack_ms": 21.01,
+       "release_ms": 58.54
+      }
+     },
+     {
+      "effect": "sat",
+      "params": {
+       "drive_db": 29.94
+      }
+     }
+    ],
+    "other": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 172.9,
+       "slope": 6.0
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -10.14,
+       "ratio": 2.074,
+       "attack_ms": 19.89,
+       "release_ms": 268.7
+      }
+     },
+     {
+      "effect": "out",
+      "params": {
+       "gain_db": -3.044,
+       "pan": 0.1957,
+       "width": 0.9595
+      }
+     }
+    ]
+   }
+  },
+  "chain_pred": {
+   "stems": {
+    "vocals": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 69.21,
+       "slope": 6.0
+      }
+     },
+     {
+      "effect": "delay",
+      "params": {
+       "time_ms": 287.6,
+       "feedback": 0.2422,
+       "mix": 0.3201
+      }
+     },
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.6636,
+       "damping": 0.5206,
+       "wet": 0.3181,
+       "dry": 0.6877,
+       "width": 0.8089
+      }
+     },
+     {
+      "effect": "out",
+      "params": {
+       "gain_db": -4.402,
+       "pan": 0.06324,
+       "width": 1.079
+      }
+     }
+    ],
+    "bass": [
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 1784.0,
+       "gain_db": 9.032,
+       "q": 1.751
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -6.371,
+       "ratio": 4.425,
+       "attack_ms": 13.79,
+       "release_ms": 110.1
+      }
+     }
+    ],
+    "drums": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 416.9,
+       "slope": 12.0
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -14.09,
+       "ratio": 5.089,
+       "attack_ms": 11.26,
+       "release_ms": 139.8
+      }
+     }
+    ],
+    "other": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 219.2,
+       "slope": 6.0
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -10.37,
+       "ratio": 2.494,
+       "attack_ms": 12.18,
+       "release_ms": 134.3
+      }
+     },
+     {
+      "effect": "out",
+      "params": {
+       "gain_db": -3.504,
+       "pan": 0.2388,
+       "width": 1.001
+      }
+     }
+    ]
+   }
+  },
+  "m8_pred": 0.1561
+ },
+ {
+  "id": "q0629",
+  "title": "Sia",
+  "artist": "Graham Bole",
+  "fma_track_id": 124097,
+  "license": "Attribution",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "fma_url": "https://freemusicarchive.org/music/Graham_Bole/First_New_Day/Graham_Bole_-_02_-_Sia/",
+  "dry": "clips/q0629_dry.mp3",
+  "processed": "clips/q0629_wet.mp3",
+  "predicted": "clips/q0629_pred.mp3",
+  "chain_true": {
+   "stems": {
+    "vocals": [
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.3616,
+       "damping": 0.6223,
+       "wet": 0.2805,
+       "dry": 0.9691,
+       "width": 0.7298
+      }
+     }
+    ],
+    "drums": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 64.91,
+       "slope": 6.0
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -7.351,
+       "ratio": 5.008,
+       "attack_ms": 31.93,
+       "release_ms": 72.12
+      }
+     },
+     {
+      "effect": "clip",
+      "params": {
+       "threshold_db": -3.833
+      }
+     },
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.4155,
+       "damping": 0.63,
+       "wet": 0.07299,
+       "dry": 0.8241,
+       "width": 0.9504
+      }
+     }
+    ],
+    "other": [
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 1452.0,
+       "gain_db": -10.4,
+       "q": 0.8496
+      }
+     },
+     {
+      "effect": "lpf",
+      "params": {
+       "cutoff": 8521.0,
+       "slope": 6.0
+      }
+     }
+    ]
+   }
+  },
+  "chain_pred": {
+   "stems": {
+    "vocals": [
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.3786,
+       "damping": 0.588,
+       "wet": 0.2402,
+       "dry": 0.8726,
+       "width": 0.8353
+      }
+     }
+    ],
+    "drums": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 70.78,
+       "slope": 6.0
+      }
+     },
+     {
+      "effect": "sat",
+      "params": {
+       "drive_db": 9.075
+      }
+     },
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.39,
+       "damping": 0.5161,
+       "wet": 0.08634,
+       "dry": 0.8286,
+       "width": 0.8087
+      }
+     }
+    ],
+    "other": [
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 1467.0,
+       "gain_db": -10.25,
+       "q": 0.83
+      }
+     },
+     {
+      "effect": "lpf",
+      "params": {
+       "cutoff": 8100.0,
+       "slope": 6.0
+      }
+     }
+    ]
+   }
+  },
+  "m8_pred": 0.1666
+ },
+ {
+  "id": "q0969",
+  "title": "Brundlefly",
+  "artist": "The Zombie Dandies",
+  "fma_track_id": 147412,
+  "license": "Attribution",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "fma_url": "https://freemusicarchive.org/music/Zombie_Dandies/Dandys_Little_Monsters/The_Zombie_Dandies_-_Dandys_Little_Monsters_-_11_Brundlefly/",
+  "dry": "clips/q0969_dry.mp3",
+  "processed": "clips/q0969_wet.mp3",
+  "predicted": "clips/q0969_pred.mp3",
+  "chain_true": {
+   "stems": {
+    "vocals": [
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 4867.0,
+       "gain_db": -5.148,
+       "q": 1.39
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -3.026,
+       "ratio": 3.177,
+       "attack_ms": 10.2,
+       "release_ms": 185.4
+      }
+     },
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.6959,
+       "damping": 0.5256,
+       "wet": 0.1447,
+       "dry": 0.7377,
+       "width": 0.897
+      }
+     }
+    ],
+    "bass": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 21.49,
+       "slope": 6.0
+      }
+     },
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 351.5,
+       "gain_db": -5.189,
+       "q": 2.81
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -7.429,
+       "ratio": 5.231,
+       "attack_ms": 13.5,
+       "release_ms": 408.4
+      }
+     }
+    ],
+    "drums": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 36.77,
+       "slope": 6.0
+      }
+     },
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 9180.0,
+       "gain_db": 7.6,
+       "q": 1.73
+      }
+     },
+     {
+      "effect": "clip",
+      "params": {
+       "threshold_db": -16.31
+      }
+     }
+    ],
+    "other": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 279.0,
+       "slope": 6.0
+      }
+     },
+     {
+      "effect": "high_shelf",
+      "params": {
+       "freq": 6935.0,
+       "gain_db": -5.177
+      }
+     },
+     {
+      "effect": "out",
+      "params": {
+       "gain_db": -3.172,
+       "pan": -0.0791,
+       "width": 1.126
+      }
+     }
+    ]
+   }
+  },
+  "chain_pred": {
+   "stems": {
+    "vocals": [
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 4265.0,
+       "gain_db": -5.65,
+       "q": 1.734
+      }
+     },
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.7054,
+       "damping": 0.591,
+       "wet": 0.1617,
+       "dry": 0.8482,
+       "width": 0.8939
+      }
+     }
+    ],
+    "bass": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 26.32,
+       "slope": 6.0
+      }
+     },
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 419.1,
+       "gain_db": -4.697,
+       "q": 2.302
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -9.673,
+       "ratio": 4.066,
+       "attack_ms": 9.854,
+       "release_ms": 147.0
+      }
+     }
+    ],
+    "drums": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 31.08,
+       "slope": 6.0
+      }
+     },
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 8614.0,
+       "gain_db": 8.624,
+       "q": 2.214
+      }
+     },
+     {
+      "effect": "clip",
+      "params": {
+       "threshold_db": -17.88
+      }
+     }
+    ],
+    "other": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 295.9,
+       "slope": 6.0
+      }
+     },
+     {
+      "effect": "high_shelf",
+      "params": {
+       "freq": 5469.0,
+       "gain_db": -4.252
+      }
+     },
+     {
+      "effect": "out",
+      "params": {
+       "gain_db": -3.18,
+       "pan": -0.05186,
+       "width": 1.07
+      }
+     }
+    ]
+   }
+  },
+  "m8_pred": 0.2392
+ },
+ {
+  "id": "q0749",
+  "title": "Life is Too Dark to Laugh So Hard",
+  "artist": "DJ Dougernaut",
+  "fma_track_id": 58230,
+  "license": "Attribution",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "fma_url": "https://freemusicarchive.org/music/DJ_Dougernaut/DJ_Dougernaut_Singles/Life_is_Too_Dark_to_Laugh_So_Hard/",
+  "dry": "clips/q0749_dry.mp3",
+  "processed": "clips/q0749_wet.mp3",
+  "predicted": "clips/q0749_pred.mp3",
+  "chain_true": {
+   "stems": {
+    "vocals": [
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 296.3,
+       "gain_db": -5.566,
+       "q": 1.541
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -19.85,
+       "ratio": 6.189,
+       "attack_ms": 2.091,
+       "release_ms": 140.9
+      }
+     },
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.6095,
+       "damping": 0.5757,
+       "wet": 0.1232,
+       "dry": 0.9475,
+       "width": 0.7599
+      }
+     },
+     {
+      "effect": "out",
+      "params": {
+       "gain_db": 4.156,
+       "pan": -0.04342,
+       "width": 0.9327
+      }
+     }
+    ],
+    "bass": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 40.31,
+       "slope": 6.0
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -6.865,
+       "ratio": 1.748,
+       "attack_ms": 1.157,
+       "release_ms": 57.94
+      }
+     },
+     {
+      "effect": "sat",
+      "params": {
+       "drive_db": 3.247
+      }
+     }
+    ],
+    "drums": [
+     {
+      "effect": "high_shelf",
+      "params": {
+       "freq": 2740.0,
+       "gain_db": 1.034
+      }
+     },
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.4736,
+       "damping": 0.6508,
+       "wet": 0.1138,
+       "dry": 0.8333,
+       "width": 0.722
+      }
+     }
+    ],
+    "other": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 185.2,
+       "slope": 12.0
+      }
+     },
+     {
+      "effect": "low_shelf",
+      "params": {
+       "freq": 229.9,
+       "gain_db": -4.812
+      }
+     },
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 686.1,
+       "gain_db": 4.755,
+       "q": 2.564
+      }
+     },
+     {
+      "effect": "high_shelf",
+      "params": {
+       "freq": 7216.0,
+       "gain_db": 3.961
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -4.265,
+       "ratio": 2.483,
+       "attack_ms": 21.33,
+       "release_ms": 170.9
+      }
+     },
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.5793,
+       "damping": 0.4998,
+       "wet": 0.2536,
+       "dry": 0.8547,
+       "width": 0.9983
+      }
+     }
+    ]
+   }
+  },
+  "chain_pred": {
+   "stems": {
+    "vocals": [
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 296.7,
+       "gain_db": -6.199,
+       "q": 1.489
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -20.34,
+       "ratio": 7.024,
+       "attack_ms": 8.651,
+       "release_ms": 140.3
+      }
+     },
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.5072,
+       "damping": 0.5022,
+       "wet": 0.1525,
+       "dry": 0.8805,
+       "width": 0.8234
+      }
+     },
+     {
+      "effect": "out",
+      "params": {
+       "gain_db": 3.76,
+       "pan": -0.07666,
+       "width": 0.8791
+      }
+     }
+    ],
+    "bass": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 38.36,
+       "slope": 6.0
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -5.533,
+       "ratio": 4.137,
+       "attack_ms": 11.57,
+       "release_ms": 138.8
+      }
+     },
+     {
+      "effect": "sat",
+      "params": {
+       "drive_db": 2.013
+      }
+     }
+    ],
+    "drums": [
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.2918,
+       "damping": 0.5555,
+       "wet": 0.1624,
+       "dry": 0.8974,
+       "width": 0.8378
+      }
+     }
+    ],
+    "other": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 238.2,
+       "slope": 12.0
+      }
+     },
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 671.4,
+       "gain_db": 4.08,
+       "q": 1.705
+      }
+     },
+     {
+      "effect": "high_shelf",
+      "params": {
+       "freq": 7175.0,
+       "gain_db": 4.67
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -5.735,
+       "ratio": 3.043,
+       "attack_ms": 11.28,
+       "release_ms": 126.6
+      }
+     },
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.5816,
+       "damping": 0.6762,
+       "wet": 0.2897,
+       "dry": 0.8369,
+       "width": 0.8581
+      }
+     }
+    ]
+   }
+  },
+  "m8_pred": 0.3286
+ },
+ {
+  "id": "q0596",
+  "title": "Follow That",
+  "artist": "BrokeMC",
+  "fma_track_id": 7490,
+  "license": "Attribution 3.0 United States",
+  "license_url": "https://creativecommons.org/licenses/by/3.0/us/",
+  "fma_url": "https://freemusicarchive.org/music/BrokeMC/Seeing_Things/Follow_That/",
+  "dry": "clips/q0596_dry.mp3",
+  "processed": "clips/q0596_wet.mp3",
+  "predicted": "clips/q0596_pred.mp3",
+  "chain_true": {
+   "stems": {
+    "vocals": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 148.2,
+       "slope": 12.0
+      }
+     },
+     {
+      "effect": "high_shelf",
+      "params": {
+       "freq": 6306.0,
+       "gain_db": 3.803
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -14.69,
+       "ratio": 3.535,
+       "attack_ms": 19.16,
+       "release_ms": 68.97
+      }
+     },
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.4486,
+       "damping": 0.4468,
+       "wet": 0.2474,
+       "dry": 0.7247,
+       "width": 0.8123
+      }
+     },
+     {
+      "effect": "out",
+      "params": {
+       "gain_db": 2.084,
+       "pan": 0.02837,
+       "width": 0.9427
+      }
+     }
+    ],
+    "bass": [
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 427.1,
+       "gain_db": 4.438,
+       "q": 1.088
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -7.473,
+       "ratio": 3.911,
+       "attack_ms": 5.069,
+       "release_ms": 281.1
+      }
+     },
+     {
+      "effect": "sat",
+      "params": {
+       "drive_db": 11.67
+      }
+     },
+     {
+      "effect": "clip",
+      "params": {
+       "threshold_db": -18.59
+      }
+     }
+    ],
+    "drums": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 35.32,
+       "slope": 12.0
+      }
+     },
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 712.2,
+       "gain_db": 5.126,
+       "q": 1.236
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -16.96,
+       "ratio": 2.715,
+       "attack_ms": 30.28,
+       "release_ms": 57.58
+      }
+     },
+     {
+      "effect": "sat",
+      "params": {
+       "drive_db": 16.09
+      }
+     }
+    ],
+    "other": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 23.81,
+       "slope": 6.0
+      }
+     },
+     {
+      "effect": "low_shelf",
+      "params": {
+       "freq": 171.0,
+       "gain_db": 1.899
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -11.47,
+       "ratio": 2.668,
+       "attack_ms": 23.64,
+       "release_ms": 244.6
+      }
+     },
+     {
+      "effect": "sat",
+      "params": {
+       "drive_db": 0.03711
+      }
+     }
+    ]
+   }
+  },
+  "chain_pred": {
+   "stems": {
+    "vocals": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 153.6,
+       "slope": 12.0
+      }
+     },
+     {
+      "effect": "high_shelf",
+      "params": {
+       "freq": 5886.0,
+       "gain_db": 3.725
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -15.71,
+       "ratio": 5.008,
+       "attack_ms": 4.431,
+       "release_ms": 103.8
+      }
+     },
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.5106,
+       "damping": 0.4626,
+       "wet": 0.2499,
+       "dry": 0.8523,
+       "width": 0.8475
+      }
+     },
+     {
+      "effect": "out",
+      "params": {
+       "gain_db": 2.573,
+       "pan": 0.01865,
+       "width": 0.9818
+      }
+     }
+    ],
+    "bass": [
+     {
+      "effect": "low_shelf",
+      "params": {
+       "freq": 117.1,
+       "gain_db": -4.832
+      }
+     },
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 483.2,
+       "gain_db": -2.522,
+       "q": 1.589
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -10.18,
+       "ratio": 4.332,
+       "attack_ms": 8.808,
+       "release_ms": 125.7
+      }
+     },
+     {
+      "effect": "clip",
+      "params": {
+       "threshold_db": -15.19
+      }
+     }
+    ],
+    "drums": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 42.71,
+       "slope": 6.0
+      }
+     },
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 663.4,
+       "gain_db": 5.061,
+       "q": 1.672
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -14.59,
+       "ratio": 6.002,
+       "attack_ms": 13.89,
+       "release_ms": 117.6
+      }
+     },
+     {
+      "effect": "sat",
+      "params": {
+       "drive_db": 15.71
+      }
+     }
+    ],
+    "other": [
+     {
+      "effect": "low_shelf",
+      "params": {
+       "freq": 183.8,
+       "gain_db": 2.087
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -11.07,
+       "ratio": 3.043,
+       "attack_ms": 8.733,
+       "release_ms": 117.4
+      }
+     }
+    ]
+   }
+  },
+  "m8_pred": 0.3739
+ },
+ {
+  "id": "q0867",
+  "title": "What You Know",
+  "artist": "Droopies",
+  "fma_track_id": 127552,
+  "license": "Attribution",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "fma_url": "https://freemusicarchive.org/music/Droopies/Droopies/Droopies_-_Droopies_-_09_What_You_Know/",
+  "dry": "clips/q0867_dry.mp3",
+  "processed": "clips/q0867_wet.mp3",
+  "predicted": "clips/q0867_pred.mp3",
+  "chain_true": {
+   "stems": {
+    "vocals": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 169.8,
+       "slope": 12.0
+      }
+     },
+     {
+      "effect": "high_shelf",
+      "params": {
+       "freq": 8878.0,
+       "gain_db": 4.432
+      }
+     },
+     {
+      "effect": "sat",
+      "params": {
+       "drive_db": 11.37
+      }
+     },
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.4332,
+       "damping": 0.1691,
+       "wet": 0.07425,
+       "dry": 0.602,
+       "width": 0.8294
+      }
+     }
+    ],
+    "bass": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 23.63,
+       "slope": 12.0
+      }
+     },
+     {
+      "effect": "low_shelf",
+      "params": {
+       "freq": 179.3,
+       "gain_db": 2.17
+      }
+     },
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 137.1,
+       "gain_db": -5.703,
+       "q": 0.8735
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -6.216,
+       "ratio": 3.715,
+       "attack_ms": 26.1,
+       "release_ms": 89.08
+      }
+     },
+     {
+      "effect": "out",
+      "params": {
+       "gain_db": 0.8714,
+       "pan": -0.07176,
+       "width": 1.091
+      }
+     }
+    ],
+    "drums": [
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -15.05,
+       "ratio": 4.094,
+       "attack_ms": 31.31,
+       "release_ms": 228.1
+      }
+     },
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.6951,
+       "damping": 0.5155,
+       "wet": 0.4546,
+       "dry": 0.8213,
+       "width": 0.7665
+      }
+     },
+     {
+      "effect": "out",
+      "params": {
+       "gain_db": 1.41,
+       "pan": 0.1106,
+       "width": 1.233
+      }
+     }
+    ],
+    "other": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 96.21,
+       "slope": 12.0
+      }
+     },
+     {
+      "effect": "lpf",
+      "params": {
+       "cutoff": 8330.0,
+       "slope": 6.0
+      }
+     },
+     {
+      "effect": "sat",
+      "params": {
+       "drive_db": 15.46
+      }
+     }
+    ]
+   }
+  },
+  "chain_pred": {
+   "stems": {
+    "vocals": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 157.2,
+       "slope": 12.0
+      }
+     },
+     {
+      "effect": "high_shelf",
+      "params": {
+       "freq": 8071.0,
+       "gain_db": 5.644
+      }
+     },
+     {
+      "effect": "sat",
+      "params": {
+       "drive_db": 9.782
+      }
+     },
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.5407,
+       "damping": 0.469,
+       "wet": 0.09251,
+       "dry": 0.8264,
+       "width": 0.8616
+      }
+     },
+     {
+      "effect": "out",
+      "params": {
+       "gain_db": -3.99,
+       "pan": -0.06573,
+       "width": 1.131
+      }
+     }
+    ],
+    "bass": [
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 146.7,
+       "gain_db": -6.369,
+       "q": 0.9592
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -5.667,
+       "ratio": 4.512,
+       "attack_ms": 9.909,
+       "release_ms": 120.8
+      }
+     },
+     {
+      "effect": "out",
+      "params": {
+       "gain_db": 1.527,
+       "pan": -0.1221,
+       "width": 1.081
+      }
+     }
+    ],
+    "drums": [
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -12.86,
+       "ratio": 5.359,
+       "attack_ms": 14.74,
+       "release_ms": 132.7
+      }
+     },
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.6936,
+       "damping": 0.4644,
+       "wet": 0.4354,
+       "dry": 0.7393,
+       "width": 0.8771
+      }
+     },
+     {
+      "effect": "out",
+      "params": {
+       "gain_db": 4.053,
+       "pan": 0.1228,
+       "width": 1.284
+      }
+     }
+    ],
+    "other": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 101.1,
+       "slope": 6.0
+      }
+     },
+     {
+      "effect": "sat",
+      "params": {
+       "drive_db": 15.66
+      }
+     }
+    ]
+   }
+  },
+  "m8_pred": 0.4459
+ },
+ {
+  "id": "q0124",
+  "title": "Big Plans (J. Glaze Remix)",
+  "artist": "Kellee Maize & J. Glaze Productions",
+  "fma_track_id": 110262,
+  "license": "Attribution",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "fma_url": "https://freemusicarchive.org/music/Kellee_Maize__J_Glaze_Productions/The_Remixes/Big_Plans_J_Glaze_Remix/",
+  "dry": "clips/q0124_dry.mp3",
+  "processed": "clips/q0124_wet.mp3",
+  "predicted": "clips/q0124_pred.mp3",
+  "chain_true": {
+   "stems": {
+    "vocals": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 32.47,
+       "slope": 12.0
+      }
+     },
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 5974.0,
+       "gain_db": 3.969,
+       "q": 1.744
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -10.12,
+       "ratio": 2.833,
+       "attack_ms": 2.397,
+       "release_ms": 120.1
+      }
+     }
+    ],
+    "bass": [
+     {
+      "effect": "high_shelf",
+      "params": {
+       "freq": 6116.0,
+       "gain_db": -3.146
+      }
+     },
+     {
+      "effect": "sat",
+      "params": {
+       "drive_db": 23.39
+      }
+     }
+    ],
+    "drums": [
+     {
+      "effect": "lpf",
+      "params": {
+       "cutoff": 14760.0,
+       "slope": 6.0
+      }
+     },
+     {
+      "effect": "sat",
+      "params": {
+       "drive_db": 7.762
+      }
+     },
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.7356,
+       "damping": 0.8034,
+       "wet": 0.1294,
+       "dry": 0.5681,
+       "width": 0.8262
+      }
+     }
+    ],
+    "other": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 151.7,
+       "slope": 6.0
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -6.917,
+       "ratio": 1.945,
+       "attack_ms": 5.109,
+       "release_ms": 104.8
+      }
+     },
+     {
+      "effect": "clip",
+      "params": {
+       "threshold_db": -1.528
+      }
+     },
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.3109,
+       "damping": 0.6794,
+       "wet": 0.2339,
+       "dry": 0.8981,
+       "width": 0.7501
+      }
+     },
+     {
+      "effect": "out",
+      "params": {
+       "gain_db": 0.005508,
+       "pan": -0.4035,
+       "width": 0.9403
+      }
+     }
+    ]
+   }
+  },
+  "chain_pred": {
+   "stems": {
+    "vocals": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 26.98,
+       "slope": 12.0
+      }
+     },
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 5438.0,
+       "gain_db": 4.204,
+       "q": 1.927
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -11.21,
+       "ratio": 4.872,
+       "attack_ms": 7.248,
+       "release_ms": 114.7
+      }
+     }
+    ],
+    "bass": [
+     {
+      "effect": "high_shelf",
+      "params": {
+       "freq": 6080.0,
+       "gain_db": -3.259
+      }
+     },
+     {
+      "effect": "sat",
+      "params": {
+       "drive_db": 17.95
+      }
+     }
+    ],
+    "drums": [
+     {
+      "effect": "lpf",
+      "params": {
+       "cutoff": 11030.0,
+       "slope": 6.0
+      }
+     },
+     {
+      "effect": "sat",
+      "params": {
+       "drive_db": 5.688
+      }
+     },
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.7447,
+       "damping": 0.5884,
+       "wet": 0.1688,
+       "dry": 0.7461,
+       "width": 0.827
+      }
+     }
+    ],
+    "other": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 126.3,
+       "slope": 6.0
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -6.316,
+       "ratio": 3.361,
+       "attack_ms": 10.42,
+       "release_ms": 131.1
+      }
+     },
+     {
+      "effect": "clip",
+      "params": {
+       "threshold_db": -1.574
+      }
+     },
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.2243,
+       "damping": 0.5343,
+       "wet": 0.1892,
+       "dry": 0.8377,
+       "width": 0.8003
+      }
+     },
+     {
+      "effect": "out",
+      "params": {
+       "gain_db": 1.458,
+       "pan": -0.4023,
+       "width": 0.9637
+      }
+     }
+    ]
+   }
+  },
+  "m8_pred": 0.422
+ },
+ {
+  "id": "q0477",
+  "title": "Stop",
+  "artist": "Vienna Ditto",
+  "fma_track_id": 107615,
+  "license": "Attribution",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "fma_url": "https://freemusicarchive.org/music/Vienna_Ditto/Ugly_1501/Vienna_Ditto_-_Ugly_-_03_Stop/",
+  "dry": "clips/q0477_dry.mp3",
+  "processed": "clips/q0477_wet.mp3",
+  "predicted": "clips/q0477_pred.mp3",
+  "chain_true": {
+   "stems": {
+    "vocals": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 161.5,
+       "slope": 12.0
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -11.29,
+       "ratio": 4.649,
+       "attack_ms": 18.99,
+       "release_ms": 225.7
+      }
+     },
+     {
+      "effect": "delay",
+      "params": {
+       "time_ms": 432.2,
+       "feedback": 0.2277,
+       "mix": 0.1315
+      }
+     },
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.7745,
+       "damping": 0.5031,
+       "wet": 0.1544,
+       "dry": 0.7714,
+       "width": 0.7391
+      }
+     }
+    ],
+    "bass": [
+     {
+      "effect": "low_shelf",
+      "params": {
+       "freq": 51.02,
+       "gain_db": -10.35
+      }
+     },
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 176.9,
+       "gain_db": 5.872,
+       "q": 1.047
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -13.69,
+       "ratio": 4.193,
+       "attack_ms": 23.18,
+       "release_ms": 480.1
+      }
+     }
+    ],
+    "drums": [
+     {
+      "effect": "low_shelf",
+      "params": {
+       "freq": 367.5,
+       "gain_db": -3.4
+      }
+     },
+     {
+      "effect": "high_shelf",
+      "params": {
+       "freq": 6424.0,
+       "gain_db": 2.249
+      }
+     },
+     {
+      "effect": "lpf",
+      "params": {
+       "cutoff": 14810.0,
+       "slope": 12.0
+      }
+     },
+     {
+      "effect": "delay",
+      "params": {
+       "time_ms": 183.7,
+       "feedback": 0.01434,
+       "mix": 0.118
+      }
+     }
+    ],
+    "other": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 52.51,
+       "slope": 6.0
+      }
+     },
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.5806,
+       "damping": 0.5104,
+       "wet": 0.07339,
+       "dry": 0.785,
+       "width": 0.9964
+      }
+     },
+     {
+      "effect": "out",
+      "params": {
+       "gain_db": -5.164,
+       "pan": 0.4367,
+       "width": 1.972
+      }
+     }
+    ]
+   }
+  },
+  "chain_pred": {
+   "stems": {
+    "vocals": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 155.8,
+       "slope": 12.0
+      }
+     },
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 7306.0,
+       "gain_db": 4.327,
+       "q": 1.276
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -10.77,
+       "ratio": 4.052,
+       "attack_ms": 7.658,
+       "release_ms": 136.7
+      }
+     },
+     {
+      "effect": "delay",
+      "params": {
+       "time_ms": 457.6,
+       "feedback": 0.2045,
+       "mix": 0.1801
+      }
+     },
+     {
+      "effect": "reverb",
+      "params": {
+       "room_size": 0.6524,
+       "damping": 0.469,
+       "wet": 0.1601,
+       "dry": 0.8304,
+       "width": 0.8796
+      }
+     }
+    ],
+    "bass": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 51.14,
+       "slope": 12.0
+      }
+     },
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 155.5,
+       "gain_db": 6.708,
+       "q": 1.19
+      }
+     },
+     {
+      "effect": "comp",
+      "params": {
+       "threshold_db": -13.68,
+       "ratio": 4.151,
+       "attack_ms": 13.02,
+       "release_ms": 127.9
+      }
+     }
+    ],
+    "drums": [
+     {
+      "effect": "low_shelf",
+      "params": {
+       "freq": 335.0,
+       "gain_db": -5.665
+      }
+     },
+     {
+      "effect": "peak",
+      "params": {
+       "freq": 243.1,
+       "gain_db": -3.584,
+       "q": 1.221
+      }
+     },
+     {
+      "effect": "high_shelf",
+      "params": {
+       "freq": 7021.0,
+       "gain_db": 5.253
+      }
+     },
+     {
+      "effect": "lpf",
+      "params": {
+       "cutoff": 13710.0,
+       "slope": 12.0
+      }
+     },
+     {
+      "effect": "delay",
+      "params": {
+       "time_ms": 322.0,
+       "feedback": 0.1832,
+       "mix": 0.1701
+      }
+     }
+    ],
+    "other": [
+     {
+      "effect": "hpf",
+      "params": {
+       "cutoff": 57.56,
+       "slope": 6.0
+      }
+     },
+     {
+      "effect": "out",
+      "params": {
+       "gain_db": -2.906,
+       "pan": 0.3847,
+       "width": 1.81
+      }
+     }
+    ]
+   }
+  },
+  "m8_pred": 0.5498
+ }
+]

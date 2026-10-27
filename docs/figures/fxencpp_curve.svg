@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="460" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0.0 0.0 300.0 230.0" role="img" aria-labelledby="title-fxencpp_curve">
+<title id="title-fxencpp_curve">Learning curve of the FX-Encoder++ design trained with our recipe: MRSTFT 0.582 at 10k, 0.515 at 20k, 0.494 at 30k, 0.509 at 40k, 0.473 at 50k, 0.450 at 60k and 0.463 at 70k of 108k steps, against our baseline at 0.492. One run.</title>
+<rect x="0.0" y="0.0" width="300.0" height="230.0" fill="#FDFAF4"/>
+<g id="fig-fxencpp_curve-fxencpp_curve">
+<text x="12" y="21.75" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="start">FX-Encoder++ design, our recipe</text>
+<rect x="42.286" y="35" width="245.714" height="135" fill="#FDFAF4" stroke="#C4C4C4" stroke-width="1.2" stroke-linejoin="round"/>
+<line x1="38.286" y1="152.812" x2="42.286" y2="152.812" stroke="#191919" stroke-width="1" stroke-linecap="round"/>
+<text x="36.286" y="156.662" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#707378" text-anchor="end">0.45</text>
+<line x1="38.286" y1="116.875" x2="42.286" y2="116.875" stroke="#191919" stroke-width="1" stroke-linecap="round"/>
+<text x="36.286" y="120.725" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#707378" text-anchor="end">0.50</text>
+<line x1="38.286" y1="80.937" x2="42.286" y2="80.937" stroke="#191919" stroke-width="1" stroke-linecap="round"/>
+<text x="36.286" y="84.787" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#707378" text-anchor="end">0.55</text>
+<line x1="38.286" y1="45" x2="42.286" y2="45" stroke="#191919" stroke-width="1" stroke-linecap="round"/>
+<text x="36.286" y="48.85" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#707378" text-anchor="end">0.60</text>
+<line x1="42.286" y1="122.625" x2="288" y2="122.625" stroke="#191919" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="4 4"/>
+<text x="48.286" y="135.625" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#707378" text-anchor="start">our baseline 0.492</text>
+<path d="M 58.29 57.94 L 93.91 106.09 L 129.52 121.19 L 165.14 110.41 L 200.76 136.28 L 236.38 152.81 L 272.00 143.47" fill="none" stroke="#e78d3c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="58.286" cy="57.938" r="3.4" fill="#e78d3c" stroke="#191919" stroke-width="1"/>
+<circle cx="93.905" cy="106.094" r="3.4" fill="#e78d3c" stroke="#191919" stroke-width="1"/>
+<circle cx="129.524" cy="121.188" r="3.4" fill="#e78d3c" stroke="#191919" stroke-width="1"/>
+<circle cx="165.143" cy="110.406" r="3.4" fill="#e78d3c" stroke="#191919" stroke-width="1"/>
+<circle cx="200.762" cy="136.281" r="3.4" fill="#e78d3c" stroke="#191919" stroke-width="1"/>
+<circle cx="236.381" cy="152.812" r="3.4" fill="#e78d3c" stroke="#191919" stroke-width="1"/>
+<circle cx="272" cy="143.469" r="3.4" fill="#e78d3c" stroke="#191919" stroke-width="1"/>
+<line x1="58.286" y1="170" x2="58.286" y2="174" stroke="#191919" stroke-width="1" stroke-linecap="round"/>
+<text x="58.286" y="185" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#707378" text-anchor="middle">10k</text>
+<line x1="93.905" y1="170" x2="93.905" y2="174" stroke="#191919" stroke-width="1" stroke-linecap="round"/>
+<text x="93.905" y="185" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#707378" text-anchor="middle">20k</text>
+<line x1="129.524" y1="170" x2="129.524" y2="174" stroke="#191919" stroke-width="1" stroke-linecap="round"/>
+<text x="129.524" y="185" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#707378" text-anchor="middle">30k</text>
+<line x1="165.143" y1="170" x2="165.143" y2="174" stroke="#191919" stroke-width="1" stroke-linecap="round"/>
+<text x="165.143" y="185" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#707378" text-anchor="middle">40k</text>
+<line x1="200.762" y1="170" x2="200.762" y2="174" stroke="#191919" stroke-width="1" stroke-linecap="round"/>
+<text x="200.762" y="185" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#707378" text-anchor="middle">50k</text>
+<line x1="236.381" y1="170" x2="236.381" y2="174" stroke="#191919" stroke-width="1" stroke-linecap="round"/>
+<text x="236.381" y="185" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#707378" text-anchor="middle">60k</text>
+<line x1="272" y1="170" x2="272" y2="174" stroke="#191919" stroke-width="1" stroke-linecap="round"/>
+<text x="272" y="185" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#707378" text-anchor="middle">70k</text>
+<text x="265" y="157.469" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#191919" text-anchor="end">0.463</text>
+<text x="150" y="200.4" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#707378" text-anchor="middle">training steps (of 108k); same data,</text>
+<text x="150" y="213.6" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#707378" text-anchor="middle">loss and seed as our baseline</text>
+</g>
+</svg>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1422" height="2084" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="1414.0 226.0 710.8 1042.0" role="img" aria-labelledby="title-results">
+<title id="title-results">Bar chart. MRSTFT, 1,000 held-out clips from 929 songs; lower is better. No processing, the dry stems, unchanged: 1.17; Best published encoder, as released, best of four: StemFX, AFx-Rep, FX-Encoder++, RelFX; frozen, small readout on top: 0.869; StemFX design, retrained on our data, our data and recipe: 0.485; FX-Encoder++ design, retrained on our data, our data and recipe: 0.463; Our baseline, ViT-Tiny; all settings from one averaged vector; second run 0.504: 0.492; Baseline + conv first layer, convolutions before the ViT; alone, within run-to-run noise: 0.495; Baseline + slot readout, one query per stem and effect: 0.439; Both changes (FX-JEPA), conv first layer + slot readout: 0.413. Below it, a table of every model we scored: StemFX, released weights, frozen 0.869; AFx-Rep, released weights, frozen 0.893; FX-Encoder++, released weights, frozen 0.897; RelFX, released weights, frozen 1.024; StemFX design (CNN), trained on our data 0.485; FX-Encoder++ design, trained on our data 0.463; Our baseline (ViT) 0.492; Our baseline + slot readout 0.439; FX-JEPA: conv first layer + slot readout (best) 0.413. Run-to-run noise is about 6% for the baseline family and 12% for the best model. Spectral only; no listening test.</title>
+<rect x="1414.0" y="226.0" width="710.8" height="1042.0" fill="#FDFAF4"/>
+<g id="fig-results-results">
+<path d="M 1440 234 H 2098.8 A 18 18 0 0 1 2116.8 252 V 1242 A 18 18 0 0 1 2098.8 1260 H 1440 A 18 18 0 0 1 1422 1242 V 252 A 18 18 0 0 1 1440 234 Z" fill="none" stroke="#191919" stroke-width="2" stroke-linecap="butt" stroke-linejoin="round" stroke-dasharray="12 8"/>
+<text x="1448" y="284.48" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="34" font-weight="700" fill="#191919" text-anchor="start">Spectral distance to the reference</text>
+<text x="1448" y="312.56" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#707378" text-anchor="start">MRSTFT, 1,000 held-out clips from 929 songs; lower is better.</text>
+<text x="1448" y="352.16" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#191919" text-anchor="start">No processing</text>
+<text x="1448" y="368.96" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#707378" text-anchor="start">the dry stems, unchanged</text>
+<line x1="1687.556" y1="373.38" x2="1687.556" y2="403.38" stroke="#DDDEDC" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="1448" y1="373.38" x2="1448" y2="403.38" stroke="#191919" stroke-width="1.4" stroke-linecap="round"/>
+<rect x="1448" y="376.38" width="560.562" height="24" fill="#d1d2d4" stroke="#909296" stroke-width="1.2" rx="2" ry="2" stroke-linejoin="round"/>
+<text x="2020.562" y="395.22" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#191919" text-anchor="start">1.17</text>
+<text x="1448" y="456.331" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#191919" text-anchor="start">Best published encoder, as released</text>
+<text x="1448" y="473.131" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#707378" text-anchor="start">best of four: StemFX, AFx-Rep, FX-Encoder++, RelFX; frozen, small readout on top</text>
+<line x1="1687.556" y1="477.551" x2="1687.556" y2="507.551" stroke="#DDDEDC" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="1448" y1="477.551" x2="1448" y2="507.551" stroke="#191919" stroke-width="1.4" stroke-linecap="round"/>
+<rect x="1448" y="480.551" width="416.349" height="24" fill="#d1d2d4" stroke="#909296" stroke-width="1.2" rx="2" ry="2" stroke-linejoin="round"/>
+<text x="1876.349" y="499.391" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#191919" text-anchor="start">0.869</text>
+<text x="1448" y="560.502" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#191919" text-anchor="start">StemFX design, retrained on our data</text>
+<text x="1448" y="577.303" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#707378" text-anchor="start">our data and recipe</text>
+<line x1="1687.556" y1="581.722" x2="1687.556" y2="611.722" stroke="#DDDEDC" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="1448" y1="581.722" x2="1448" y2="611.722" stroke="#191919" stroke-width="1.4" stroke-linecap="round"/>
+<rect x="1448" y="584.722" width="232.37" height="24" fill="#909296" stroke="#191919" stroke-width="1.2" rx="2" ry="2" stroke-linejoin="round"/>
+<text x="1692.37" y="603.562" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#191919" text-anchor="start">0.485</text>
+<text x="1448" y="664.674" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#191919" text-anchor="start">FX-Encoder++ design, retrained on our data</text>
+<text x="1448" y="681.474" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#707378" text-anchor="start">our data and recipe</text>
+<line x1="1687.556" y1="685.894" x2="1687.556" y2="715.894" stroke="#DDDEDC" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="1448" y1="685.894" x2="1448" y2="715.894" stroke="#191919" stroke-width="1.4" stroke-linecap="round"/>
+<rect x="1448" y="688.894" width="221.829" height="24" fill="#909296" stroke="#191919" stroke-width="1.2" rx="2" ry="2" stroke-linejoin="round"/>
+<text x="1681.829" y="707.734" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#191919" text-anchor="start">0.463</text>
+<text x="1448" y="768.845" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#191919" text-anchor="start">Our baseline</text>
+<text x="1448" y="785.645" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#707378" text-anchor="start">ViT-Tiny; all settings from one averaged vector; second run 0.504</text>
+<line x1="1687.556" y1="790.065" x2="1687.556" y2="820.065" stroke="#DDDEDC" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="1448" y1="790.065" x2="1448" y2="820.065" stroke="#191919" stroke-width="1.4" stroke-linecap="round"/>
+<rect x="1448" y="793.065" width="235.723" height="24" fill="#4c4d4e" stroke="#191919" stroke-width="1.2" rx="2" ry="2" stroke-linejoin="round"/>
+<text x="1695.723" y="811.905" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#191919" text-anchor="start">0.492</text>
+<text x="1448" y="873.016" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#191919" text-anchor="start">Baseline + conv first layer</text>
+<text x="1448" y="889.816" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#707378" text-anchor="start">convolutions before the ViT; alone, within run-to-run noise</text>
+<line x1="1687.556" y1="894.236" x2="1687.556" y2="924.236" stroke="#DDDEDC" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="1448" y1="894.236" x2="1448" y2="924.236" stroke="#191919" stroke-width="1.4" stroke-linecap="round"/>
+<rect x="1448" y="897.236" width="237.161" height="24" fill="#4c4d4e" stroke="#191919" stroke-width="1.2" rx="2" ry="2" stroke-linejoin="round"/>
+<text x="1697.161" y="916.076" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#191919" text-anchor="start">0.495</text>
+<text x="1448" y="977.188" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#191919" text-anchor="start">Baseline + slot readout</text>
+<text x="1448" y="993.988" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#707378" text-anchor="start">one query per stem and effect</text>
+<line x1="1687.556" y1="998.408" x2="1687.556" y2="1028.408" stroke="#DDDEDC" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="1448" y1="998.408" x2="1448" y2="1028.408" stroke="#191919" stroke-width="1.4" stroke-linecap="round"/>
+<rect x="1448" y="1001.408" width="210.33" height="24" fill="#4c4d4e" stroke="#191919" stroke-width="1.2" rx="2" ry="2" stroke-linejoin="round"/>
+<text x="1670.33" y="1020.248" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#191919" text-anchor="start">0.439</text>
+<text x="1448" y="1081.359" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#191919" text-anchor="start">Both changes (FX-JEPA)</text>
+<text x="1448" y="1098.159" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#707378" text-anchor="start">conv first layer + slot readout</text>
+<line x1="1687.556" y1="1102.579" x2="1687.556" y2="1132.579" stroke="#DDDEDC" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="1448" y1="1102.579" x2="1448" y2="1132.579" stroke="#191919" stroke-width="1.4" stroke-linecap="round"/>
+<rect x="1448" y="1105.579" width="197.873" height="24" fill="#e78d3c" stroke="#191919" stroke-width="1.2" rx="2" ry="2" stroke-linejoin="round"/>
+<text x="1657.873" y="1124.419" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#191919" text-anchor="start">0.413</text>
+<line x1="1448" y1="1171.85" x2="2022.935" y2="1171.85" stroke="#191919" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="1448" y1="1171.85" x2="1448" y2="1176.85" stroke="#191919" stroke-width="1.2" stroke-linecap="round"/>
+<text x="1448" y="1189.85" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#707378" text-anchor="middle">0</text>
+<line x1="1687.556" y1="1171.85" x2="1687.556" y2="1176.85" stroke="#191919" stroke-width="1.2" stroke-linecap="round"/>
+<text x="1687.556" y="1189.85" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#707378" text-anchor="middle">0.5</text>
+<line x1="2008.562" y1="1171.85" x2="2008.562" y2="1176.85" stroke="#191919" stroke-width="1.2" stroke-linecap="round"/>
+<text x="2008.562" y="1189.85" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#707378" text-anchor="middle">1.17</text>
+<text x="1728.281" y="1206.75" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#707378" text-anchor="middle">MRSTFT, 0 = identical to the reference; lower is better</text>
+</g>
+</svg>

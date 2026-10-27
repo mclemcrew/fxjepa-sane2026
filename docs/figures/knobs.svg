@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1422" height="950" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="701.2 793.0 710.8 475.0" role="img" aria-labelledby="title-knobs">
+<title id="title-knobs">Paired bar chart of knob skill, our baseline against the best model, on six knobs: peak freq 0.50 to 0.77, peak gain 0.49 to 0.69, delay time 0.13 to 0.47, room size 0.18 to 0.39, damping 0.03 to 0.18, comp ratio 0.00 to 0.05. Beside each pair, the median miss from our baseline to the best model.</title>
+<rect x="701.2" y="793.0" width="710.8" height="475.0" fill="#FDFAF4"/>
+<g id="fig-knobs-knobs">
+<path d="M 727.2 801 H 1386 A 18 18 0 0 1 1404 819 V 1242 A 18 18 0 0 1 1386 1260 H 727.2 A 18 18 0 0 1 709.2 1242 V 819 A 18 18 0 0 1 727.2 801 Z" fill="none" stroke="#191919" stroke-width="2" stroke-linecap="butt" stroke-linejoin="round" stroke-dasharray="12 8"/>
+<text x="735.2" y="851.48" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="34" font-weight="700" fill="#191919" text-anchor="start">Ablations</text>
+<text x="735.2" y="883.16" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#191919" text-anchor="start">The baseline predicts all 44 settings from one averaged vector. FX-JEPA gives</text>
+<text x="735.2" y="907.86" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#191919" text-anchor="start">each stem and effect its own learned query over the audio tokens. That change</text>
+<text x="735.2" y="932.56" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="400" fill="#191919" text-anchor="start">alone cuts the spectral distance by 10.9%, encoder unchanged.</text>
+<rect x="843.268" y="955.57" width="16" height="9.5" fill="#909296" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="865.268" y="963.63" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#191919" text-anchor="start">our baseline</text>
+<rect x="955.648" y="955.57" width="16" height="9.5" fill="#e78d3c" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="977.648" y="963.63" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="start">best model</text>
+<text x="1198.903" y="963.63" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="start">median error, baseline to best</text>
+<line x1="990.902" y1="975.63" x2="990.902" y2="1195.85" stroke="#DDDEDC" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="1138.537" y1="975.63" x2="1138.537" y2="1195.85" stroke="#DDDEDC" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="843.268" y1="975.63" x2="843.268" y2="1195.85" stroke="#191919" stroke-width="1.4" stroke-linecap="round"/>
+<text x="833.268" y="998.532" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="end">notch freq</text>
+<rect x="843.268" y="983.482" width="147.635" height="9.5" fill="#909296" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="996.902" y="992.522" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#4c4d4e" text-anchor="start">0.50</text>
+<rect x="843.268" y="994.982" width="227.357" height="9.5" fill="#e78d3c" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="1076.625" y="1004.022" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#191919" text-anchor="start">0.77</text>
+<text x="1198.903" y="998.532" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#191919" text-anchor="start">0.48 to 0.14 octaves</text>
+<text x="833.268" y="1035.235" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="end">notch gain</text>
+<rect x="843.268" y="1020.185" width="144.682" height="9.5" fill="#909296" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="993.95" y="1029.225" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#4c4d4e" text-anchor="start">0.49</text>
+<rect x="843.268" y="1031.685" width="203.736" height="9.5" fill="#e78d3c" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="1053.004" y="1040.725" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#191919" text-anchor="start">0.69</text>
+<text x="1198.903" y="1035.235" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#191919" text-anchor="start">2.0 to 1.0 dB</text>
+<text x="833.268" y="1071.938" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="end">delay time</text>
+<rect x="843.268" y="1056.888" width="38.385" height="9.5" fill="#909296" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="887.653" y="1065.928" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#4c4d4e" text-anchor="start">0.13</text>
+<rect x="843.268" y="1068.388" width="138.776" height="9.5" fill="#e78d3c" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="988.044" y="1077.428" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#191919" text-anchor="start">0.47</text>
+<text x="1198.903" y="1071.938" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#191919" text-anchor="start">93 to 40 ms</text>
+<text x="833.268" y="1108.642" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="end">reverb size</text>
+<rect x="843.268" y="1093.592" width="53.148" height="9.5" fill="#909296" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="902.416" y="1102.632" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#4c4d4e" text-anchor="start">0.18</text>
+<rect x="843.268" y="1105.092" width="115.155" height="9.5" fill="#e78d3c" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="964.423" y="1114.132" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#191919" text-anchor="start">0.39</text>
+<text x="1198.903" y="1108.642" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#191919" text-anchor="start">decay time 27% to 18% off</text>
+<text x="833.268" y="1145.345" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="end">reverb damping</text>
+<rect x="843.268" y="1130.295" width="8.858" height="9.5" fill="#909296" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="858.126" y="1139.335" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#4c4d4e" text-anchor="start">0.03</text>
+<rect x="843.268" y="1141.795" width="53.148" height="9.5" fill="#e78d3c" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="902.416" y="1150.835" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#191919" text-anchor="start">0.18</text>
+<text x="1198.903" y="1145.345" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#191919" text-anchor="start">treble decay 6% to 5% off</text>
+<text x="833.268" y="1182.048" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="end">comp ratio</text>
+<text x="849.268" y="1176.038" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#4c4d4e" text-anchor="start">0.00</text>
+<rect x="843.268" y="1178.498" width="14.763" height="9.5" fill="#e78d3c" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
+<text x="864.031" y="1187.538" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#191919" text-anchor="start">0.05</text>
+<text x="1198.903" y="1182.048" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#191919" text-anchor="start">at the guessing level</text>
+<line x1="843.268" y1="1195.85" x2="1138.537" y2="1195.85" stroke="#191919" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="843.268" y1="1195.85" x2="843.268" y2="1200.85" stroke="#191919" stroke-width="1.2" stroke-linecap="round"/>
+<text x="843.268" y="1213.85" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#707378" text-anchor="middle">0</text>
+<line x1="990.902" y1="1195.85" x2="990.902" y2="1200.85" stroke="#191919" stroke-width="1.2" stroke-linecap="round"/>
+<text x="990.902" y="1213.85" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#707378" text-anchor="middle">0.5</text>
+<line x1="1138.537" y1="1195.85" x2="1138.537" y2="1200.85" stroke="#191919" stroke-width="1.2" stroke-linecap="round"/>
+<text x="1138.537" y="1213.85" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#707378" text-anchor="middle">1</text>
+<text x="843.268" y="1230.75" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#707378" text-anchor="start">knob skill: 0 = typical-value guess, 1 = perfect</text>
+</g>
+</svg>
