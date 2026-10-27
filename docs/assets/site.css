@@ -31,6 +31,7 @@
   --orange: #e78d3c;  /* the one accent */
   --peach:  #edb576;  /* its tint, for fills */
   --peach-t: #F8E3C9;
+  --orange-deep: #a8561a;  /* the accent, darkened for small text so it clears 4.5:1 on cream */
   --font-body: "UA Sans", "Helvetica Now Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --maxw: 1120px;
@@ -245,15 +246,21 @@ main a:not(.card):not(.img) { white-space: nowrap; }
 /* knob tracks in the chain table: the knob's full range as a bar, the true value (ink) and the predicted value
    (orange) as ticks, the gap between them shaded */
 .chain-table td.knobs { padding-top: 8px; padding-bottom: 8px; }
-.chain-table td.fx .params { display: block; color: var(--orange); }
+.chain-table td.fx .params { display: block; color: var(--orange-deep); }
 .chain-table tr.switch-miss td { background: var(--peach-t); }
-.knob { display: grid; grid-template-columns: 88px minmax(120px, 1fr) auto; gap: 0 12px; align-items: center; min-height: 24px; }
+.knob { display: grid; grid-template-columns: 96px minmax(120px, 1fr) 150px; gap: 0 12px; align-items: center; min-height: 26px; margin-bottom: 10px; }
+.knob.noted .kname { color: var(--ink); font-weight: 500; }
+.knob.noted .kname::after { content: " listen for"; color: var(--orange-deep); font-weight: 400; }
+.knob .kname .logtag { margin-left: 6px; font-size: 11px; color: var(--grey); border: 1px solid var(--grey-l); border-radius: 999px; padding: 0 5px; }
 .knob .kname { font-size: 13px; color: var(--grey-d); }
 .knob .track { position: relative; height: 10px; background: var(--panel); border: 1px solid var(--hair); border-radius: 6px; }
 .knob .track .gap { position: absolute; top: 0; bottom: 0; background: var(--peach); opacity: .7; }
-.knob .track .tick { position: absolute; top: -4px; width: 3px; height: 16px; margin-left: -1.5px; border-radius: 2px; }
-.knob .track .tick.t { background: var(--ink); }
-.knob .track .tick.p { background: var(--orange); }
+.knob .track .tick { position: absolute; border-radius: 2px; }
+.knob .track .tick.t { top: -5px; width: 3px; height: 18px; margin-left: -1.5px; background: var(--ink); }
+.knob .track .tick.p { top: -1px; width: 5px; height: 10px; margin-left: -2.5px; background: var(--orange); border: 1px solid var(--cream); }
+.knob .track .end { position: absolute; top: 12px; font-size: 10px; color: var(--grey); line-height: 1; }
+.knob .track .end.lo { left: 0; }
+.knob .track .end.hi { right: 0; }
 .knob .track.choices { background: none; border: 0; height: auto; display: flex; gap: 8px; }
 .knob .track .choice { font-size: 12px; padding: 0 8px; border-radius: 999px; border: 1px solid var(--grey-l); color: var(--grey-d); }
 .knob .track .choice.t { border-color: var(--ink); color: var(--ink); }
@@ -262,4 +269,7 @@ main a:not(.card):not(.img) { white-space: nowrap; }
 .knob .track.none { background: none; border: 0; }
 .knob .kvals { font-size: 13px; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .knob .kvals b { color: var(--ink); font-weight: 500; }
-.knob .kvals i { color: var(--orange); font-style: normal; margin-left: 6px; }
+.knob .kvals i { color: var(--orange-deep); font-style: normal; margin-left: 6px; }
+
+.chain-table { min-width: 640px; }
+.legend { max-width: none; }

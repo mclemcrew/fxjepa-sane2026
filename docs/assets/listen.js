@@ -120,10 +120,11 @@
 
   var RANGES = {};   // filled from clips/knob_ranges.json: {"peak.freq": {lo, hi, scale, unit}}
   var UNITS = { freq: " Hz", cutoff: " Hz", gain_db: " dB", threshold_db: " dB", drive_db: " dB", attack_ms: " ms",
-                release_ms: " ms", time_ms: " ms", slope: " dB/oct" };
+                release_ms: " ms", time_ms: " ms", slope: " dB/oct", ratio: ":1" };
   function fmtVal(k, v) {
     if (typeof v !== "number") return String(v);
     if (k === "slope") return String(Math.round(v)) + UNITS[k];
+    if (Number.isInteger(v)) return String(v) + (UNITS[k] || "");
     var a = Math.abs(v), d = a >= 100 ? 0 : a >= 10 ? 1 : 2;
     return v.toFixed(d) + (UNITS[k] || "");
   }
@@ -135,11 +136,16 @@
   }
   // one knob: its name, a track across the knob's full range with the true value (ink) and the predicted value
   // (orange) marked and the gap between them shaded, then the two numbers
-  function knobRow(fx, k, tv, pv) {
+  function knobRow(fx, k, tv, pv, noted) {
     var r = RANGES[fx + "." + k];
-    var row = el("div", "knob");
-    row.appendChild(el("span", "kname", prettyParam(k)));
+    var row = el("div", "knob" + (noted ? " noted" : ""));
+    var name = el("span", "kname", prettyParam(k));
+    if (r && r.scale === "log") name.appendChild(el("span", "logtag", "log"));
+    row.appendChild(name);
     var track = el("div", "track");
+    track.setAttribute("role", "img");
+    track.setAttribute("aria-label", prettyParam(k) + ": true " + (typeof tv === "number" ? fmtVal(k, tv) : "off") +
+      ", predicted " + (typeof pv === "number" ? fmtVal(k, pv) : "off"));
     if (r && r.choices) {
       r.choices.forEach(function (c) {
         var tag = el("span", "choice" + (tv === c ? " t" : "") + (pv === c ? " p" : ""), fmtVal(k, c));
@@ -152,6 +158,8 @@
       var mt = el("span", "tick t"); mt.style.left = (a * 100) + "%"; mt.title = "true " + fmtVal(k, tv);
       var mpp = el("span", "tick p"); mpp.style.left = (bp * 100) + "%"; mpp.title = "predicted " + fmtVal(k, pv);
       track.appendChild(gap); track.appendChild(mt); track.appendChild(mpp);
+      track.appendChild(el("span", "end lo", fmtVal(k, r.lo)));
+      track.appendChild(el("span", "end hi", fmtVal(k, r.hi)));
     } else {
       track.className = "track none";
     }
@@ -168,12 +176,32 @@
                       drive_db: "drive", time_ms: "time", room_size: "room size", q: "Q" };
   function prettyParam(k) { return PARAM_NAMES[k] || k; }
 
+  // the two largest relative knob misses among effects both chains have on: the same rule the "Listen for" line uses
+  function notedKnobs(t, p) {
+    var rows = [];
+    Object.keys(t).forEach(function (stem) {
+      Object.keys(t[stem]).forEach(function (fx) {
+        if (!p[stem] || !p[stem][fx]) return;
+        Object.keys(t[stem][fx]).forEach(function (k) {
+          var tv = t[stem][fx][k], pv = p[stem][fx][k];
+          if (typeof tv === "number" && typeof pv === "number") {
+            rows.push({ key: stem + "|" + fx + "|" + k, rel: Math.abs(tv - pv) / Math.max(Math.abs(tv), Math.abs(pv), 1e-6) });
+          }
+        });
+      });
+    });
+    rows.sort(function (a, b) { return b.rel - a.rel; });
+    var out = {}; rows.slice(0, 2).forEach(function (r) { out[r.key] = true; });
+    return out;
+  }
+
   function chainTable(item) {
     var t = indexChain(item.chain_true), p = indexChain(item.chain_pred);
+    var noted = notedKnobs(t, p);
     var stems = stemOrder(Object.keys(Object.assign({}, t, p)));
     var table = el("table", "chain-table");
     var thead = el("thead"), hr = el("tr");
-    ["Stem", "Effect", "Knobs: true value in ink, predicted in orange, on the knob's full range"].forEach(function (h) { hr.appendChild(el("th", null, h)); });
+    ["Stem", "Effect", "Knobs"].forEach(function (h) { hr.appendChild(el("th", null, h)); });
     thead.appendChild(hr); table.appendChild(thead);
     var tbody = el("tbody");
     var agree = 0, total = 0;
@@ -203,7 +231,8 @@
         var kc = el("td", "knobs");
         var keys = Object.keys(Object.assign({}, ts[fx] || {}, ps[fx] || {}));
         keys.forEach(function (k) {
-          kc.appendChild(knobRow(fx, k, inT ? (ts[fx] || {})[k] : undefined, inP ? (ps[fx] || {})[k] : undefined));
+          kc.appendChild(knobRow(fx, k, inT ? (ts[fx] || {})[k] : undefined, inP ? (ps[fx] || {})[k] : undefined,
+                                 !!noted[stem + "|" + fx + "|" + k]));
         });
         tr.appendChild(kc);
         tbody.appendChild(tr);
@@ -395,9 +424,9 @@
     var sum = el("summary", null, "True and predicted chain, per stem");
     det.appendChild(sum);
     if (ct.total) {
-      if (item.listen_for) det.appendChild(el("p", "note", "Listen for: " + item.listen_for));
-      det.appendChild(el("p", "note", "Switches agree on " + ct.agree + " of the " + ct.total +
-        " effects that are on in either chain. Knob values are in each effect's own units."));
+      det.appendChild(el("p", "note legend", "Each bar is one knob's full range, its ends labelled. The ink tick is the value in the chain that was applied, the orange tick is the model's prediction, and the peach band between them is the gap. Knobs marked log sit on a log scale, so a band's length is a ratio there and a difference elsewhere. Rows tinted peach are effects one chain has on and the other off. This is one clip; the model is scored by MRSTFT over 1,000 clips, not by this table."));
+      if (item.listen_for) det.appendChild(el("p", "note", "Listen for: " + item.listen_for + " The two largest relative knob misses are marked in the table."));
+      det.appendChild(el("p", "note", "The two chains agree on which effects are on for " + ct.agree + " of the " + ct.total + " effects that either chain has on."));
     }
     var wrap = el("div", "table-scroll");
     wrap.appendChild(ct.table);

@@ -228,7 +228,7 @@
       }
     },
     "mrstft": 0.1561,
-    "listen_for": "drums low shelf (true on, predicted off); drums saturation (true on, predicted off); drums compressor release: true 58.54 ms, predicted 139.8 ms; vocals high-pass cutoff: true 33.84 Hz, predicted 69.21 Hz."
+    "listen_for": "drums low shelf (true on, predicted off); drums saturation (true on, predicted off); drums compressor release: true 58.5 ms, predicted 140 ms; vocals high-pass cutoff: true 33.8 Hz, predicted 69.2 Hz."
   },
   {
     "id": "q0629",
@@ -367,7 +367,7 @@
       }
     },
     "mrstft": 0.1666,
-    "listen_for": "drums compressor (true on, predicted off); drums clipper (true on, predicted off); drums reverb damping: true 0.63, predicted 0.5161; drums reverb wet: true 0.07299, predicted 0.08634."
+    "listen_for": "drums compressor (true on, predicted off); drums clipper (true on, predicted off); drums reverb damping: true 0.63, predicted 0.516; drums reverb wet: true 0.073, predicted 0.0863."
   },
   {
     "id": "q0969",
@@ -584,7 +584,7 @@
       }
     },
     "mrstft": 0.2392,
-    "listen_for": "vocals compressor (true on, predicted off); bass compressor release: true 408.4 ms, predicted 147 ms; other output pan: true -0.0791, predicted -0.05186."
+    "listen_for": "vocals compressor (true on, predicted off); bass compressor release: true 408 ms, predicted 147 ms; other output pan: true -0.0791, predicted -0.0519."
   },
   {
     "id": "q0749",
@@ -852,7 +852,7 @@
       }
     },
     "mrstft": 0.3286,
-    "listen_for": "drums high shelf (true on, predicted off); other low shelf (true on, predicted off); bass compressor attack: true 1.157 ms, predicted 11.57 ms; vocals compressor attack: true 2.091 ms, predicted 8.651 ms."
+    "listen_for": "drums high shelf (true on, predicted off); other low shelf (true on, predicted off); bass compressor attack: true 1.16 ms, predicted 11.6 ms; vocals compressor attack: true 2.09 ms, predicted 8.65 ms."
   },
   {
     "id": "q0596",
@@ -1136,7 +1136,7 @@
       }
     },
     "mrstft": 0.3739,
-    "listen_for": "bass saturation (true on, predicted off); bass low shelf (predicted on, true off); bass peak EQ gain: true 4.438 dB, predicted -2.522 dB; vocals compressor attack: true 19.16 ms, predicted 4.431 ms."
+    "listen_for": "bass saturation (true on, predicted off); bass low shelf (predicted on, true off); bass peak EQ gain: true 4.44 dB, predicted -2.52 dB; vocals compressor attack: true 19.2 ms, predicted 4.43 ms."
   },
   {
     "id": "q0867",
@@ -1393,7 +1393,7 @@
       }
     },
     "mrstft": 0.4459,
-    "listen_for": "vocals output (predicted on, true off); bass high-pass (true on, predicted off); drums output gain: true 1.41 dB, predicted 4.053 dB; vocals reverb damping: true 0.1691, predicted 0.469."
+    "listen_for": "vocals output (predicted on, true off); bass high-pass (true on, predicted off); drums output gain: true 1.41 dB, predicted 4.05 dB; vocals reverb damping: true 0.169, predicted 0.469."
   },
   {
     "id": "q0124",
@@ -1631,7 +1631,7 @@
       }
     },
     "mrstft": 0.422,
-    "listen_for": "other output gain: true 0.005508 dB, predicted 1.458 dB; vocals compressor attack: true 2.397 ms, predicted 7.248 ms."
+    "listen_for": "other output gain: true 0.00551 dB, predicted 1.46 dB; vocals compressor attack: true 2.4 ms, predicted 7.25 ms."
   },
   {
     "id": "q0477",
@@ -1899,6 +1899,6 @@
       }
     },
     "mrstft": 0.5498,
-    "listen_for": "vocals peak EQ (predicted on, true off); bass low shelf (true on, predicted off); drums delay feedback: true 0.01434, predicted 0.1832; bass compressor release: true 480.1 ms, predicted 127.9 ms."
+    "listen_for": "vocals peak EQ (predicted on, true off); bass low shelf (true on, predicted off); drums delay feedback: true 0.0143, predicted 0.183; bass compressor release: true 480 ms, predicted 128 ms."
   }
 ]
