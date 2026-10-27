@@ -114,7 +114,7 @@
 <text x="815" y="718.6" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="44" font-weight="700" fill="#191919" text-anchor="middle">65%</text>
 <text x="815" y="740.12" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#191919" text-anchor="middle">less spectral distance</text>
 <text x="815" y="759.32" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#191919" text-anchor="middle">than leaving the stems dry</text>
-<text x="1056.6" y="718.6" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="44" font-weight="700" fill="#191919" text-anchor="middle">0.1 s</text>
+<text x="1056.6" y="718.6" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="44" font-weight="700" fill="#191919" text-anchor="middle">0.3 s</text>
 <text x="1056.6" y="740.12" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#191919" text-anchor="middle">to predict one clip's</text>
 <text x="1056.6" y="759.32" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#191919" text-anchor="middle">settings, on one GPU</text>
 <text x="1298.2" y="718.6" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="44" font-weight="700" fill="#191919" text-anchor="middle">10.9%</text>

@@ -12,7 +12,7 @@
 <rect x="843.268" y="980.27" width="16" height="9.5" fill="#909296" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
 <text x="865.268" y="988.33" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#191919" text-anchor="start">our baseline</text>
 <rect x="955.648" y="980.27" width="16" height="9.5" fill="#e78d3c" stroke="#191919" stroke-width="1" rx="1.5" ry="1.5" stroke-linejoin="round"/>
-<text x="977.648" y="988.33" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="start">best model</text>
+<text x="977.648" y="988.33" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="start">both changes (FX-JEPA)</text>
 <text x="1198.903" y="988.33" font-family="Helvetica Now Display, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#191919" text-anchor="start">median error, baseline to best</text>
 <line x1="990.902" y1="1000.33" x2="990.902" y2="1195.85" stroke="#DDDEDC" stroke-width="1.2" stroke-linecap="round"/>
 <line x1="1138.537" y1="1000.33" x2="1138.537" y2="1195.85" stroke="#DDDEDC" stroke-width="1.2" stroke-linecap="round"/>
