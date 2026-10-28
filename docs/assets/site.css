@@ -272,4 +272,4 @@ main a:not(.card):not(.img) { white-space: nowrap; }
 .knob .kvals i { color: var(--orange-deep); font-style: normal; margin-left: 6px; }
 
 .chain-table { min-width: 640px; }
-.legend { max-width: none; }
+.example p, .example .note, .example li { max-width: none; }   /* inside a card the text runs the card's width */
