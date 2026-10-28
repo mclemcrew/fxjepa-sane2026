@@ -237,8 +237,7 @@ main a:not(.card):not(.img) { white-space: nowrap; }
 @media (min-width: 900px) {
   .title-block { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: 40px; align-items: start; }
   .title-block h1 { grid-column: 1 / -1; }
-  .title-block .headline { grid-column: 1; max-width: none; }
-  .title-block .authors, .title-block .affil, .title-block .actions { grid-column: 2; }
+  .title-block .authors, .title-block .affil, .title-block .actions { grid-column: 1 / -1; }
   .title-block .authors { margin-top: 20px; }
   .title-block .actions { margin-top: 16px; }
 }
